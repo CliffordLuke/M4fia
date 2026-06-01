@@ -1,14 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
+  background-color: black;
 }
 
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 0px 20px;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header a:hover {
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 nav ul {
@@ -19,31 +40,32 @@ nav ul {
   padding: 0;
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
 main {
   display: flex;
-}
-
-main p,
-main h1 {
-  color: white;
+  padding-top: 75px;
 }
 
 .landing {
   min-height: 100vh;
-  background: url("images/landing-temporary.png");
+  min-width: 100%;
+  background: url("images/landing-temporary.png") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.italics {
+  font-style: italic;
+}
+
+.main-text {
+  font-size: 200px;
+  color: white;
+}
+
+.sub-text {
+  font-size: 25px;
+  color: #adadad;
 }
