@@ -1,8 +1,9 @@
+/* HEADER STYLE */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 0px 20px;
 }
 
@@ -14,12 +15,12 @@ nav ul {
   padding: 0;
 }
 
-a {
+header a {
   text-decoration: none;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
-a:hover {
+header a:hover {
   text-decoration: underline;
   font-weight: bold;
 }
