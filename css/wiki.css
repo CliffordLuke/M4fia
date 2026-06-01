@@ -2,6 +2,11 @@ body {
     background-color: rgb(47, 47, 47);
 }
 
+h1, h2 {
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
 /* HEADER STYLE */
 header {
   display: flex;
@@ -28,3 +33,32 @@ header a:hover {
   text-decoration: underline;
   font-weight: bold;
 }
+
+/* INFORMATION STYLE */
+#M4FIA-INFORMATION {
+    background-color: rgb(60, 60, 60);
+    border-radius: 10px;
+    width: 80%;
+    height: 600px;
+    padding: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+#M4FIA-INFORMATION button {
+    width: 30%;
+    height: 80%;
+    margin: 20px;
+    border-radius: 10px;
+    transition: scale 0.3s;
+}
+
+#M4FIA-INFORMATION button span {
+    font-size: 20px;
+}
+
+#M4FIA-INFORMATION button:hover {
+    scale: 1.02;
+    cursor: pointer;
+}
+
