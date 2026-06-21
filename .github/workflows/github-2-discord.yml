@@ -7,7 +7,6 @@ jobs:
   discord:
     runs-on: ubuntu-latest
 
-```
 steps:
   - name: Get short SHA
     run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
@@ -35,4 +34,3 @@ steps:
         ]
       }' \
       "$WEBHOOK_URL"
-```
