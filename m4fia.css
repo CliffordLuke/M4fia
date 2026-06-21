@@ -24,6 +24,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 999;
 }
 
 header a {
@@ -97,11 +98,45 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  inset: 0;
+  opacity: 0;
+  animation: fadeCycle 21s infinite;
 }
 
 .about p {
   margin-left: 5%;
-  margin-right: 5%;
+  width: 750px;
+}
+
+.part1 {
+  animation-delay: 0s;
+  background: url("images/Remn_bg.png") center/cover no-repeat;
+}
+.part2 {
+  animation-delay: 7s;
+  background: url("images/Synd_bg.png") center/cover no-repeat;
+}
+.part3 {
+  animation-delay: 14s;
+  background: url("images/Null_bg.png") center/cover no-repeat;
+}
+
+@keyframes fadeCycle {
+  0% {
+    opacity: 0;
+  }
+  6.67% {
+    opacity: 1;
+  }
+  26.67% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 
@@ -123,8 +158,13 @@ main {
   color: white;
 }
 
-.sub-text {
+.subtitle-text {
   font-size: 25px;
   color: #adadad;
 }
 
+.sub-text {
+  font-size: 25px;
+  color: #dadada;
+}
+  
