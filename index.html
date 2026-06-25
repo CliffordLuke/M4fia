@@ -22,6 +22,19 @@
   </head>
   
   <body>
+    <nav class="toc">
+      <a href="#landing">
+        <span class="toc_dot"></span>
+        <span class="toc_label">Landing</span>
+      </a>
+
+      <a href="#about">
+        <span class="toc_dot"></span>
+        <span class="toc_label">About</span>
+      </a>
+    </nav>
+
+
     <header>
       <a href="index.html">
         <h1>M4FIA</h1>
@@ -35,22 +48,28 @@
       </nav>
     </header>
 
-    <main> <!-- To be updated -->
-      <section class="landing">
-        <h1>M4FIA</h1>
-        <p>Clif's expansion of the classic social deduction game <span class="italics">'mafia'</span></p>
-        <p><span class=italics>"Speak wisely, Act carefully, Trust rarely"</span></p>
-
-        <aside class="home-table">
-          <p>Table of Contents</p>
-          <p>content 1</p>
-          <p>content 2</p>
-        </aside>
+    <main>
+      <section id="landing" class="landing">
+        <p><span class="title-text">M4FIA</span></p>
+        <p><span class="subtitle-text">Clif's expansion of the classic social deduction game <span class="italics">'mafia'</span></span></p>
+        <p><span class="italics subtitle-text">"Speak wisely, Act carefully, Trust rarely"</span></p>
       </section>
 
-      <section class="about">
-      </section>
-      <section class="FAQ">
+      <section id="about" class="about">
+        <div class="about-slider">
+          <div class="about-slider-part part1">
+            <p><span class="main-text">REMNANTS</span></p>
+            <p><span class="sub-text">The last loyalists of a dying government. Though the system is flawed and riddled with corruption, they believe it can still be saved. By uncovering the truth, rooting out conspirators, and restoring trust, they seek to rebuild order before the town falls into complete ruin.</span></p>
+          </div>
+          <div class="about-slider-part part2">
+            <p><span class="main-text">SYNDICATE</span></p>
+            <p><span class="sub-text">A hidden network of corrupt officials, profiteers, and power-hungry opportunists. They believe the current system is beyond saving and intend to accelerate its collapse. If they succeed, they intend to forge a new order built to serve their interests alone.</span></p>
+          </div>
+          <div class="about-slider-part part3">
+            <p><span class="main-text">NULL</span></p>
+            <p><span class="sub-text">Neither loyalists nor conspirators. These individuals answer only to themselves. Some seek revenge for old wounds, others thrive in chaos, and some simply wish to entertain themselves in the drama.</span></p>
+          </div>
+        </div>
       </section>
     </main>
   </body>
