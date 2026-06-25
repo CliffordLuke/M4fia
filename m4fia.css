@@ -24,7 +24,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 101;
 }
 
 header a {
@@ -139,6 +139,48 @@ main {
   }
 }
 
+
+
+
+
+.toc {
+  position: fixed;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 100;
+}
+
+.toc a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.toc_dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: 0.3s ease;
+}
+
+.toc_label {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.toc:hover .toc_label {
+  opacity: 1;
+  transform: translateX(0);
+}
 
 
 
