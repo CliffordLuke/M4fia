@@ -1,6 +1,7 @@
 body {
-    background: rgb(23, 23, 23);
+    background: rgb(19, 19, 19);
     background-size: cover;
+    margin: 0;
 }
 
 h1, h2, h3 {
@@ -19,7 +20,7 @@ header {
 
 nav ul {
   display: flex;
-  gap: 20px;
+  gap: 20px;    
   list-style: none;
   margin: 0;
   padding: 0;
@@ -35,27 +36,16 @@ header a:hover {
   font-weight: bold;
 }
 
-/* INFORMATION STYLE */
-#M4FIA-INFORMATION {
-    background-color: rgb(60, 60, 60);
-    border-radius: 10px;
-    width: 90%;
-    height: fit-content;
-    padding: 10px;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
+/* BANNER STYLE */
 #M4FIA-BANNER {
     position: relative;
 }
 
 #M4FIA-BANNER-VIDEO {
-    width: 100vw;
-    height: 300px;
+    width: 100%;
+    height: 90vh;
     object-fit: cover;
+    box-shadow: 0px 9px 24px 7px rgba(0,0,0,0.88);
 }
 
 #M4FIA-BANNER-TEXT {
@@ -67,23 +57,136 @@ header a:hover {
     animation: flicker 2s;
 }
 
-@keyframes flicker {
-    0%   { opacity: 0; }
-    5%   { opacity: 0.2; }
-    10%  { opacity: 0.9; }
-    15%  { opacity: 0.1; }
-    20%  { opacity: 1; }
-    25%  { opacity: 0.3; }
-    30%  { opacity: 1; }
-    60%  { opacity: 1; }
-    100% { opacity: 1; }
+/* INFORMATION STYLE */
+#M4FIA-INFORMATION {
+    box-sizing: content-box;
+    margin-top: 5rem;
+    padding: 2rem;
+    background-color: rgb(31, 31, 31);
+    height: fit-content;
+    text-align: center;
 }
+
+#M4FIA-INFORMATION-TITLE {
+    font-size: 2rem;
+}
+
+#FOLDER-SECTION {
+    display: flex;
+    justify-content: center;
+}
+
+    /* FOLDERS */
+    .folder {
+        position: relative;
+        height: 85vh;
+        aspect-ratio: 1/1.25;
+        margin: 2rem;
+        border-radius: 0.7rem;
+        box-shadow: 8px 6px 80px 3px rgba(0,0,0,0.5);
+        transition: all 0.25s ease;
+        perspective: 800px;
+    }
+
+    .folder .back {
+        position: absolute;
+        background-color: rgb(153, 97, 60);
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    .folder .inside-1 {
+        position: absolute;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 8px 6px 21px 3px rgba(0,0,0,0.3);
+        width: 95%;
+        height: 95%;
+        top: 2%;
+        left: 4%;
+        rotate: 3deg;
+        z-index: 1;
+        transition: all 0.2s ease;
+    }
+
+    .folder .inside-2 {
+        position: absolute;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 8px 6px 21px 3px rgba(0,0,0,0.3);
+        width: 95%;
+        height: 95%;
+        top: 2%;
+        left: 3%;
+        rotate: 1deg;
+        z-index: 1;
+        transition: all 0.2s ease;
+    }
+    
+    .folder .front {
+        position: absolute;
+        background-color: rgb(192, 126, 83);
+        width: 92%;
+        height: 100%;
+        border-radius: inherit;
+        z-index: 2;
+        transform-origin: left center;
+        transition: all 0.2s ease;
+    }
+
+    .folder .front::after {
+        content: " ";
+        background-color: rgb(192, 126, 83);
+        position: absolute;
+        bottom: 0;
+        right: -6.5%;
+        width: 4rem;
+        height: 25rem;
+        border-radius: inherit;
+        z-index: 2;
+
+    }
+    
+    .folder:hover .inside-2{
+        transform: translateX(3%) translateY(2%) rotate(2deg);
+    }
+
+    .folder:hover .inside-1 {
+        transform: translateX(4.5%) translateY(2.3%) rotate(5deg);
+    }
+
+    .folder:hover .front {
+        transform: rotateY(-5deg);
+    }
+
+    /* FOLDER TEXT */
+    .front h3 {
+        font-size: 3rem;
+    }
+
+
+    /* INDIVUDAL FOLDERS */
+    .folder:hover {
+        box-shadow: 0px 0px 25px 10px rgba(255,255,255,0.6);
+        z-index: 99;
+    }
+
+    #FOLDER-RULES {
+        rotate: -3deg;
+        left: 10vw;
+        z-index: 1;
+    }
+    
+
+    #FOLDER-LORE {
+        rotate: 5deg;
+        right: 10vw;
+    }
 
 /* CARD CATALOG STYLE */
 #M4FIA-ROLES-CATALOG {
-    background-color: rgb(60, 60, 60);
+    background-color: rgb(43, 43, 43);
     border-radius: 10px;
-    width: 95%;
+    width: 95vw;
     padding: 10px;
     margin: auto;
     margin-top: 20px;
@@ -136,4 +239,15 @@ header a:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 15px;
+}
+
+/* ANIMATIONS */
+@keyframes flicker {
+    0%   { opacity: 0; }
+    5%   { opacity: 0.2; }
+    10%  { opacity: 0.9; }
+    15%  { opacity: 0.1; }
+    20%  { opacity: 1; }
+    25%  { opacity: 0.3; }
+    30%  { opacity: 1; }
 }
