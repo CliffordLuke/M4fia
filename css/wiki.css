@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(47, 47, 47);
+    background: rgb(23, 23, 23);
+    background-size: cover;
 }
 
 h1, h2, h3 {
@@ -39,7 +40,7 @@ header a:hover {
     background-color: rgb(60, 60, 60);
     border-radius: 10px;
     width: 90%;
-    height: 600px;
+    height: fit-content;
     padding: 10px;
     margin: auto;
     margin-top: 20px;
@@ -47,21 +48,35 @@ header a:hover {
     text-align: center;
 }
 
-#M4FIA-INFORMATION button {
-    width: 30%;
-    height: 80%;
-    margin: 20px;
-    border-radius: 10px;
-    transition: scale 0.3s;
+#M4FIA-BANNER {
+    position: relative;
 }
 
-#M4FIA-INFORMATION button span {
-    font-size: 20px;
+#M4FIA-BANNER-VIDEO {
+    width: 100vw;
+    height: 300px;
+    object-fit: cover;
 }
 
-#M4FIA-INFORMATION button:hover {
-    scale: 1.02;
-    cursor: pointer;
+#M4FIA-BANNER-TEXT {
+    position: absolute;
+    align-self: center;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: 5rem;
+    animation: flicker 2s;
+}
+
+@keyframes flicker {
+    0%   { opacity: 0; }
+    5%   { opacity: 0.2; }
+    10%  { opacity: 0.9; }
+    15%  { opacity: 0.1; }
+    20%  { opacity: 1; }
+    25%  { opacity: 0.3; }
+    30%  { opacity: 1; }
+    60%  { opacity: 1; }
+    100% { opacity: 1; }
 }
 
 /* CARD CATALOG STYLE */
