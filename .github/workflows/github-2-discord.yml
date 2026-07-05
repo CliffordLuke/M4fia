@@ -14,23 +14,31 @@ jobs:
     - name: Send Discord notification
       env:
         WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        ACTOR: ${{ github.actor }}
+        AVATAR: ${{ github.event.sender.avatar_url }}
+        REPO: ${{ github.repository }}
+        REF_NAME: ${{ github.ref_name }}
+        COMMIT_MSG: ${{ github.event.head_commit.message }}
+        COMMIT_URL: ${{ github.event.head_commit.url }}
+        COMMITS_COUNT: ${{ github.event.commits && github.event.commits.length || 1 }}
       run: |
-        curl -H "Content-Type: application/json" \
-        -X POST \
-        -d '{
+        cat > payload.json <<EOF
+        {
           "embeds": [
             {
               "author": {
-                "name": "${{ github.actor }}",
-                "icon_url": "${{ github.event.sender.avatar_url }}"
+                "name": "${ACTOR}",
+                "icon_url": "${AVATAR}"
               },
-              "title": "${{ github.repository }}:${{ github.ref_name }}",
-              "description": "**'${{ env.SHORT_SHA }}'** - ${{ github.event.head_commit.message }}",
-              "url": "${{ github.event.head_commit.url }}",
+              "title": "${REPO}:${REF_NAME}",
+              "description": "**${SHORT_SHA}** - ${COMMIT_MSG}",
+              "url": "${COMMIT_URL}",
               "footer": {
-                "text": "'${{ github.event.commits && github.event.commits.size || 1 }}' new commit(s)"
+                "text": "${COMMITS_COUNT} new commit(s)"
               }
             }
           ]
-        }' \
-        "$WEBHOOK_URL"
+        }
+        EOF
+
+        curl -H "Content-Type: application/json" -X POST -d @payload.json "$WEBHOOK_URL"

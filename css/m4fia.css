@@ -64,7 +64,7 @@ main {
 .landing {
   min-height: 100vh;
   min-width: 100%;
-  background: url("images/landing-temporary.png") center/cover no-repeat;
+  background: url("../images/landing-temporary.png") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,9 +81,7 @@ main {
   min-height: 100vh;
   min-width: 100%;
   display: flex;
-  position:relative;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 }
 
 .about-slider {
@@ -100,7 +98,7 @@ main {
   justify-content: center;
   inset: 0;
   opacity: 0;
-  animation: fadeCycle 21s infinite;
+  animation: fadeCycle 28s infinite;
 }
 
 .about p {
@@ -110,28 +108,32 @@ main {
 
 .part1 {
   animation-delay: 0s;
-  background: url("images/Remn_bg.png") center/cover no-repeat;
+  background: url("../images/M4fia_bg.png") center/cover no-repeat;
 }
 .part2 {
   animation-delay: 7s;
-  background: url("images/Synd_bg.png") center/cover no-repeat;
+  background: url("../images/Remn_bg.png") center/cover no-repeat;
 }
 .part3 {
   animation-delay: 14s;
-  background: url("images/Null_bg.png") center/cover no-repeat;
+  background: url("../images/Synd_bg.png") center/cover no-repeat;
+}
+.part4 {
+  animation-delay: 21s;
+  background: url("../images/Null_bg.png") center/cover no-repeat;
 }
 
 @keyframes fadeCycle {
   0% {
     opacity: 0;
   }
-  3.33% {
+  3% {
     opacity: 1;
   }
-  33.33% {
+  25% {
     opacity: 1;
   }
-  36.66% {
+  28% {
     opacity: 0;
   }
   100% {
