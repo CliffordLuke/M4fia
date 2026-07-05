@@ -2,11 +2,16 @@ body {
     background: rgb(19, 19, 19);
     background-size: cover;
     margin: 0;
+    width: 100%;
 }
 
 h1, h2, h3 {
   color: rgb(255, 255, 255);
   text-align: center;
+}
+
+main {
+    overflow: hidden
 }
 
 /* HEADER STYLE */
@@ -62,13 +67,16 @@ header a:hover {
     box-sizing: content-box;
     margin-top: 5rem;
     padding: 2rem;
-    background-color: rgb(31, 31, 31);
     height: fit-content;
     text-align: center;
 }
 
 #M4FIA-INFORMATION-TITLE {
-    font-size: 2rem;
+    font-size: 3rem;
+}
+
+#M4FIA-INFORMATION-TITLE.flicker {
+    animation: flicker 2s;
 }
 
 #FOLDER-SECTION {
@@ -79,13 +87,30 @@ header a:hover {
     /* FOLDERS */
     .folder {
         position: relative;
-        height: 85vh;
+        height: 83vh;
         aspect-ratio: 1/1.25;
         margin: 2rem;
         border-radius: 0.7rem;
         box-shadow: 8px 6px 80px 3px rgba(0,0,0,0.5);
-        transition: all 0.25s ease;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(2);
         perspective: 800px;
+        transition: transform 0.5s ease, opacity 0.3s ease;
+    }
+
+    .lore {
+        transition-delay: 0s;
+    }
+
+    .rules {
+        transition-delay: 0.3s;
+    }
+
+    .folder.slam {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
     }
 
     .folder .back {
@@ -106,7 +131,7 @@ header a:hover {
         left: 4%;
         rotate: 3deg;
         z-index: 1;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
     }
 
     .folder .inside-2 {
@@ -119,7 +144,7 @@ header a:hover {
         left: 3%;
         rotate: 1deg;
         z-index: 1;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
     }
     
     .folder .front {
@@ -130,7 +155,7 @@ header a:hover {
         border-radius: inherit;
         z-index: 2;
         transform-origin: left center;
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
     }
 
     .folder .front::after {
@@ -139,8 +164,8 @@ header a:hover {
         position: absolute;
         bottom: 0;
         right: -6.5%;
-        width: 4rem;
-        height: 25rem;
+        width: 25%;
+        height: 50%;
         border-radius: inherit;
         z-index: 2;
 
@@ -159,8 +184,55 @@ header a:hover {
     }
 
     /* FOLDER TEXT */
+    .front {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .front .horizontal-rule {
+        height: 0.5vh;
+        width: 85%;
+        background-color: rgb(0, 0, 0);
+        align-self: center
+    }
+    
+    .front p {
+        color: black;
+        font-weight: bold;
+    }
+
+    .front p:first-of-type {
+        margin: 3rem 1rem 2rem 1rem;
+        font-size: 1.7vw;
+    }
+
+    .front p:nth-of-type(2) {
+        margin: 1rem 0 1rem 0;
+        font-size: large;
+    }
+
+    .front p:last-of-type {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+        bottom: 1%;
+        font-size: small;
+    }
+
+
     .front h3 {
-        font-size: 3rem;
+        position: absolute;
+        font-size: 4.5vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
+        color: rgb(204, 36, 36);
+        border: rgb(204, 36, 36) dashed 5px;
+        box-sizing: content-box;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        rotate:-7deg
     }
 
 
@@ -168,18 +240,19 @@ header a:hover {
     .folder:hover {
         box-shadow: 0px 0px 25px 10px rgba(255,255,255,0.6);
         z-index: 99;
+        cursor: pointer
     }
 
     #FOLDER-RULES {
         rotate: -3deg;
-        left: 10vw;
+        left: 6%;
         z-index: 1;
     }
     
 
     #FOLDER-LORE {
         rotate: 5deg;
-        right: 10vw;
+        right: 6%;
     }
 
 /* CARD CATALOG STYLE */
@@ -243,11 +316,11 @@ header a:hover {
 
 /* ANIMATIONS */
 @keyframes flicker {
-    0%   { opacity: 0; }
-    5%   { opacity: 0.2; }
-    10%  { opacity: 0.9; }
-    15%  { opacity: 0.1; }
-    20%  { opacity: 1; }
-    25%  { opacity: 0.3; }
-    30%  { opacity: 1; }
+    0% { opacity: 0; }
+    5% { opacity: 0.2; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.1; }
+    20% { opacity: 1; }
+    25% { opacity: 0.3; }
+    30% { opacity: 1; }
 }
