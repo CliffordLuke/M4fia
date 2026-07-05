@@ -1,6 +1,10 @@
 body {
-  background-color: black;
+    background: rgb(19, 19, 19);
+    background-size: cover;
+    margin: 0;
+    width: 100%;
 }
+
 header {
   display: flex;
   justify-content: space-between;
@@ -14,6 +18,16 @@ header {
   left: 0;
   width: 100%;
   z-index: 101;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header a:hover {
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 nav ul {
