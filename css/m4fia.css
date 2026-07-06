@@ -188,6 +188,28 @@ main {
 
 
 
+details summary {
+  padding: 6px;
+  width: 100%;
+  background-color: #030303;
+  color: #424242;
+  border-top: 1px #242424 solid;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+details p {
+  background-color: #030303;
+  padding: 6px;
+  color: #424242;
+  margin: 0px;
+  font-size: 20px;
+}
+
+
+
+
+
 .italics {
   font-style: italic;
 }
