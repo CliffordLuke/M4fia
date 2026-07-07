@@ -87,8 +87,8 @@ nav ul {
 }
 
 #FOLDER-SECTION {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
     /* FOLDERS */
@@ -104,20 +104,6 @@ nav ul {
         transform: scale(2);
         perspective: 800px;
         transition: transform 0.5s ease, opacity 0.3s ease;
-    }
-
-    .lore {
-        transition-delay: 0s;
-    }
-
-    .rules {
-        transition-delay: 0.3s;
-    }
-
-    .folder.slam {
-        transform: scale(1);
-        opacity: 1;
-        visibility: visible;
     }
 
     .folder .back {
@@ -194,6 +180,7 @@ nav ul {
     .front {
         display: flex;
         flex-direction: column;
+        text-align: center;
     }
     
     .front .horizontal-rule {
@@ -252,15 +239,137 @@ nav ul {
 
     #FOLDER-RULES {
         rotate: -3deg;
-        left: 6%;
+        left: 35%;
         z-index: 1;
     }
-    
 
     #FOLDER-LORE {
-        rotate: 5deg;
-        right: 6%;
+        left: -10%;
+        rotate: 5deg
     }
+
+    /* FOLDER SCROLL ANIMATION */
+    .lore.slam {
+        transition-delay: 0s;
+    }
+
+    .rules.slam {
+        transition-delay: 0.3s;
+    }
+
+    .folder.slam {
+        transform: scale(1);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* FOLDER OPEN */
+    #FOLDER-OPENED-CONTAINER {
+        width: 100%;
+        height: 100%;
+        z-index: 199;
+        position: fixed;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    #FOLDER-OPEN-RETURN-BTN {
+        all: unset;
+        position: absolute;
+        width: 11vw;
+        aspect-ratio: 3/1;
+        bottom: 3vh;
+        right: 2vw;
+        border-radius: 0.6rem;
+        box-sizing: content-box;
+        opacity: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+
+    #FOLDER-OPEN-RETURN-BTN::before {
+        content: " ";
+        position: absolute;
+        width: 0;
+        height: 0;
+        background-color: rgba(255, 255, 255, 0.5);
+        filter: blur(5px);
+        z-index: -1;
+        border-radius: inherit;
+        transition: outline 0.5s ease;
+    }
+
+     #FOLDER-OPEN-RETURN-BTN::after {
+        content: " ";
+        position: absolute;
+        background: rgb(27, 27, 27);
+        border-radius: inherit;
+        outline: 1px solid rgba(255, 255, 255, 0.5);
+        transition: outline 0.5s ease;
+        inset: 0.1rem;
+     }
+
+    #FOLDER-OPEN-RETURN-BTN p {
+        font-size: 1.3em;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        color: white;
+        margin: 0;
+        z-index: 1
+    }
+
+    #FOLDER-OPEN-RETURN-BTN:hover::after {
+        outline: 1px solid rgba(255, 255, 255, 0.75);
+    }
+
+    #FOLDER-OPEN-RETURN-BTN:hover::before {
+        width: 120%;
+        height: 70%;
+        background-color: rgba(255, 255, 255, 0.75);
+        animation: returnBtnHover 2s linear infinite;
+    }
+
+    #FOLDER-OPEN-RETURN-BTN.show {
+        opacity: 0.5;
+    }
+
+    #FOLDER-OPEN-RETURN-BTN.hide {
+        opacity: 0;
+    }
+
+    #FOLDER-OPEN-RETURN-BTN.show:hover {
+        opacity: 0.75;
+        cursor: pointer;
+        border: none;
+    }
+
+    .rules .front.open,
+    .lore .front.open {
+        animation: openFolder 1s ease forwards;
+    }
+
+    .rules .front.open > *,
+    .lore .front.open > * { 
+        animation: hideOpenFolderFront 0.25s forwards
+    }
+
+    .rules .front.close,
+    .lore .front.close  {
+        animation: closeFolder 1s ease forwards;
+    }
+
+    .rules .front.close > *,
+    .lore .front.close > *{ 
+        animation: showOpenFolderFront 0.4s forwards;
+    }
+    
 
 /* CARD CATALOG STYLE */
 #M4FIA-ROLES-CATALOG {
@@ -330,4 +439,51 @@ nav ul {
     20% { opacity: 1; }
     25% { opacity: 0.3; }
     30% { opacity: 1; }
+}
+
+@keyframes openFolder {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(-180deg);
+    }
+}
+
+@keyframes closeFolder {
+    from {
+        transform: rotateY(-180deg);
+    }
+    to {
+        transform: rotateY(0);
+    }
+}
+
+@keyframes hideOpenFolderFront {
+    from {
+        visibility: visible
+    }
+    to {
+        visibility: hidden
+    }
+}
+
+@keyframes showOpenFolderFront {
+    0%, 99% {
+        visibility: hidden;
+    }
+
+    100% {
+        visibility: visible;
+    }
+}
+
+
+@keyframes returnBtnHover {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
