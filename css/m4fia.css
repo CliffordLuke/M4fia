@@ -37,7 +37,7 @@ header a:hover {
   font-weight: bold;
 }
 
-nav ul {
+header nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
@@ -54,6 +54,40 @@ main {
   display: flex;
   flex-direction: column;
   padding-top: 75px;
+}
+
+
+
+
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #030303;
+  padding: 0px 20px;
+  height: 100px;
+  width: 100%;
+  border-top: #424242 1px solid;
+}
+
+footer a {
+  text-decoration: none;
+  color: #424242;
+}
+
+
+footer a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+footer nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -196,6 +230,7 @@ details summary {
   border-top: 1px #242424 solid;
   cursor: pointer;
   font-size: 25px;
+	padding-inline: 30px;
 }
 
 details p {
@@ -204,7 +239,39 @@ details p {
   color: #424242;
   margin: 0px;
   font-size: 20px;
+	padding-inline: 10px;
 }
+
+.details::details-content {
+	display: block;
+	block-size: 0;
+	overflow: hidden;
+  transition: 0.5s ease-out allow-discrete;
+}
+
+.details[open]::details-content {
+	block-size: calc-size(auto, size);
+}
+
+summary::marker {
+	content: '▶'; 
+  content: none;
+}
+
+summary::before {
+	content: '▶';
+	position: absolute;
+	transition: 0.5s ease-out;
+  margin-left: -21px;
+  transform: translateY(-4px);
+}
+
+.details[open] summary::before {
+	rotate: 90deg;
+  transform: translateY(4px);
+  transform: translateX(-2px);
+}
+
 
 
 
