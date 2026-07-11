@@ -23,6 +23,11 @@ function trackTOC() {
 window.addEventListener("scroll", trackTOC);
 window.addEventListener("load", trackTOC);
 
+
+
+
+
+// Dont mind this lol, I got bored TRYING to look, code, and understand this shiz lmao
 console.log('why are you here?');
 console.log('well, while you are here,');
 console.log('I am going to say...');
