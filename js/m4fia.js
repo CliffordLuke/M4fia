@@ -50,6 +50,28 @@ function nextSlide() {
   showSlide(currentSlide);
 }
 
+function prevSlide() {
+  currentSlide--;
+  if(currentSlide < slides.length) {
+    currentSlide
+  }
+
+  showSlide(currentSlide);
+}
+
+document
+.getElementById("btnUp")
+.addEventListener("click", () => {
+  nextSlide();
+});
+
+document
+.getElementById("btnDown")
+.addEventListener("click", () => {
+  prevSlide();
+});
+
+
 let slideshow = setInterval(nextSlide,7000);
 
 
