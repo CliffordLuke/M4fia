@@ -133,9 +133,15 @@ footer nav ul {
   flex-direction: column;
   justify-content: center;
   inset: 0;
-  opacity: 0;
-  animation: fadeCycle 28s infinite;
   height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.about-slider-part.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .about p {
@@ -144,38 +150,16 @@ footer nav ul {
 }
 
 .part1 {
-  animation-delay: 0s;
   background: url("../images/M4fia_bg.png") center/cover no-repeat;
 }
 .part2 {
-  animation-delay: 7s;
   background: url("../images/Remn_bg.png") center/cover no-repeat;
 }
 .part3 {
-  animation-delay: 14s;
   background: url("../images/Synd_bg.png") center/cover no-repeat;
 }
 .part4 {
-  animation-delay: 21s;
   background: url("../images/Null_bg.png") center/cover no-repeat;
-}
-
-@keyframes fadeCycle {
-  0% {
-    opacity: 0;
-  }
-  3% {
-    opacity: 1;
-  }
-  25% {
-    opacity: 1;
-  }
-  28% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 

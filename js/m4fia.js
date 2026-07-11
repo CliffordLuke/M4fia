@@ -2,19 +2,19 @@ const sections = document.querySelectorAll("section");
 const tocThing = document.querySelectorAll(".toc a");
 
 function trackTOC() {
-  let current = "";
+  let currentTOC = "";
   
   sections.forEach(section => {
     const top = section.offsetTop;
     const height = section.offsetHeight;
     if (window.scrollY >= top - height / 3) {
-      current = section.id;
+      currentTOC = section.id;
     }
   });
 
   tocThing.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === "#" + current) {
+    if (link.getAttribute("href") === "#" + currentTOC) {
       link.classList.add("active");
     }
   });
@@ -22,6 +22,37 @@ function trackTOC() {
 
 window.addEventListener("scroll", trackTOC);
 window.addEventListener("load", trackTOC);
+
+
+
+
+
+
+
+const slides = document.querySelectorAll(".about-slider-part");
+
+let currentSlide = 0;
+
+function showSlide(index) {
+  slides.forEach(slide => {
+    slide.classList.remove("active");
+  });
+
+  slides[index].classList.add("active");
+}
+
+function nextSlide() {
+  currentSlide++;
+  if(currentSlide >= slides.length) {
+    currentSlide = 0;
+  }
+
+  showSlide(currentSlide);
+}
+
+let slideshow = setInterval(nextSlide,7000);
+
+
 
 
 
