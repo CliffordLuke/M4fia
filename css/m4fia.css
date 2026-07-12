@@ -175,13 +175,14 @@ footer nav ul {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  background-color: #030303;
 }
 
 .screen {
   flex: 1;
   overflow: hidden;
   position: relative;
-  background: #030303;
+  background: #424242;
   border-bottom: 2px solid;
 }
 

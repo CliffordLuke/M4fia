@@ -84,6 +84,27 @@ function resetTimer() {
 
 
 
+let tvOn = true;
+const screen = document.querySelector(".screen");
+
+document
+.getElementById("btnPower")
+.addEventListener("click", () => {
+  tvOn = !tvOn;
+
+  if(tvOn) {
+    screen.style.opacity = 1;
+    resetTimer();
+  }
+  else {
+    screen.style.opacity = 0;
+    clearInterval(slideshow);
+  }
+});
+
+
+
+
 
 // Dont mind this lol, I got bored TRYING to look, code, and understand this shiz lmao
 console.log('why are you here?');
