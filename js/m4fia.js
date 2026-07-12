@@ -104,6 +104,23 @@ document
 
 
 
+let tvPlay = true;
+
+document
+.getElementById("btnPause")
+.addEventListener("click", () => {
+  if(tvPlay) {
+    clearInterval(slideshow);
+  }
+  else {
+    resetTimer();
+  }
+
+  tvPlay = !tvPlay;
+});
+
+
+
 
 
 // Dont mind this lol, I got bored TRYING to look, code, and understand this shiz lmao
