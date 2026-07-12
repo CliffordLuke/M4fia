@@ -29,6 +29,8 @@ window.addEventListener("load", trackTOC);
 
 
 
+
+
 const slides = document.querySelectorAll(".about-slider-part");
 
 let currentSlide = 0;
@@ -51,6 +53,8 @@ function nextSlide() {
 }
 
 let slideshow = setInterval(nextSlide, 7000);
+
+
 
 
 
@@ -120,6 +124,13 @@ document
 });
 
 
+
+const bgMusic = document.getElementById("bgMusic");
+const btnMute = document.getElementById("btnMute");
+
+btnMute.addEventListener("click", () => {
+  bgMusic.muted = !bgMusic.muted;
+});
 
 
 
