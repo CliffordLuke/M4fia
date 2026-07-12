@@ -60,8 +60,8 @@ let slideshow = setInterval(nextSlide, 7000);
 
 function prevSlide() {
   currentSlide--;
-  if(currentSlide < slides.length) {
-    currentSlide
+  if(currentSlide < 0) {
+    currentSlide = slides.length - 1;
   }
 
   showSlide(currentSlide);
