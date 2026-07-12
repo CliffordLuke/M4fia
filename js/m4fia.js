@@ -91,17 +91,27 @@ function resetTimer() {
 let tvOn = true;
 const screen = document.querySelector(".screen");
 
+const tvOverlay = document.querySelector(".tv-effect");
+
 document
 .getElementById("btnPower")
 .addEventListener("click", () => {
   tvOn = !tvOn;
 
   if(tvOn) {
+    tvOverlay.classList.remove("turnOff");
+    tvOverlay.classList.add("TurnOn")
+
     screen.style.opacity = 1;
     resetTimer();
   }
   else {
-    screen.style.opacity = 0;
+    tvOverlay.classList.remove("turnOn");
+    tvOverlay.classList.add("turnOff");
+
+    setTimeout(() => {
+      screen.style.opacity = 0;
+    }, 450);
     clearInterval(slideshow);
   }
 });
