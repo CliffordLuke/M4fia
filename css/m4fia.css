@@ -10,7 +10,7 @@ body {
 
 
 
-
+/* Header */
 
 header {
   display: flex;
@@ -51,6 +51,8 @@ header nav ul {
 
 
 
+/* Main Section */
+
 main {
   display: flex;
   flex-direction: column;
@@ -61,40 +63,8 @@ main {
 
 
 
-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #030303;
-  padding: 0px 20px;
-  height: 100px;
-  width: 100%;
-  border-top: #424242 1px solid;
-}
 
-footer a {
-  text-decoration: none;
-  color: #424242;
-}
-
-
-footer a:hover {
-  text-decoration: underline;
-  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
-}
-
-footer nav ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-
-
-
+/* Main Section - Landing Page */
 
 .landing {
   min-height: 100vh;
@@ -112,6 +82,8 @@ footer nav ul {
 
 
 
+
+/* Main Section - About Page */
 
 .about {
   min-height: 100vh;
@@ -164,7 +136,7 @@ footer nav ul {
   background: url("../images/Null_bg.png") center/cover no-repeat;
 }
 
-
+/* Main Page - About Page - TV */
 
 .tv {
   width: 85vw;
@@ -224,6 +196,8 @@ footer nav ul {
 
 
 
+/* Table of Contents / TOC */
+
 .toc {
   position: fixed;
   left: 10px;
@@ -272,6 +246,8 @@ footer nav ul {
 
 
 
+
+/* Main Page - Frequently Asked Question / FAQ */
 
 details summary {
   padding: 6px;
@@ -327,6 +303,46 @@ summary::before {
 
 
 
+
+/* Footer */
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #030303;
+  padding: 0px 20px;
+  height: 100px;
+  width: 100%;
+  border-top: #424242 1px solid;
+}
+
+footer a {
+  text-decoration: none;
+  color: #424242;
+}
+
+
+footer a:hover {
+  text-decoration: underline;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+}
+
+footer nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+
+/* Text */
 
 .italics {
   font-style: italic;
