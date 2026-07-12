@@ -105,6 +105,7 @@ footer nav ul {
   justify-content: center;
   align-items: center;
   text-align: center;
+  border-bottom: #424242 1px solid;
 }
 
 
@@ -119,6 +120,7 @@ footer nav ul {
   align-items: center;
   background: #111111;
   padding: 40px;
+  border-bottom: #424242 1px solid;
 }
 
 .about-slider {
@@ -275,7 +277,7 @@ details summary {
   width: 100%;
   background-color: #030303;
   color: #424242;
-  border-top: 1px #242424 solid;
+  border-top: 1px #101010 solid;
   cursor: pointer;
   font-size: 25px;
 	padding-inline: 30px;
