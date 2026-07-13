@@ -89,7 +89,7 @@ function resetTimer() {
 
 
 let tvOn = true;
-const screen = document.querySelector(".screen");
+const screen = document.querySelector(".about-slider");
 
 const tvOverlay = document.querySelector(".tv-effect");
 
@@ -100,19 +100,20 @@ document
 
   if(tvOn) {
     tvOverlay.classList.remove("turnOff");
-    tvOverlay.classList.add("TurnOn")
+    tvOverlay.classList.add("turnOn");
 
-    screen.style.opacity = 1;
+    setTimeout(() => {
+      screen.style.opacity = 1;
+    }, 450);
+    clearInterval(slideshow);
+
     resetTimer();
   }
   else {
     tvOverlay.classList.remove("turnOn");
     tvOverlay.classList.add("turnOff");
 
-    setTimeout(() => {
-      screen.style.opacity = 0;
-    }, 450);
-    clearInterval(slideshow);
+    screen.style.opacity = 0;
   }
 });
 

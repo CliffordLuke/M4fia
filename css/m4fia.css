@@ -192,6 +192,8 @@ main {
   transform: translateY(1px);
 }
 
+
+
 .tv-effect {
   position: absolute;
   inset: 0;
@@ -233,17 +235,18 @@ main {
 @keyframes tvOn {
   0% {
     opacity: 1;
-    transform: scale(0);
+    transform: scaleX(0) scaleY(0.05);
     background: #ffffff;
   }
   25% {
-    transform: scaleX(0.02) scaleY(0.02);
+    transform: scaleX(0.02) scaleY(0.01);
   }
   55% {
-    transform: scaleX(1) scaleY(0.02);
+    transform: scaleX(1) scaleY(0.01);
+    opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: scaleX(1) scaleY(1);
     opacity: 0;
   }
 }
