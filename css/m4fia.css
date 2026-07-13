@@ -69,17 +69,40 @@ main {
 .landing {
   min-height: 100vh;
   min-width: 100%;
-  background: url("../images/landing-temporary.png") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  position: relative;
+  overflow: hidden;
   border-bottom: #424242 1px solid;
+}
+.landing-bg {
+  position: absolute;
+  inset: 0%;
+  background: url("../images/landing-temporary.png") center/cover no-repeat;
+  background-size: 110%;
+  z-index: -1;
+  will-change: transform;
 }
 
 
 
+/* Transition to About Page */
+
+.wall-thingtop {
+  height: 50px;
+  background: repeating-linear-gradient(160deg, #323232 0 2px, #242424 2px 50px);
+  border-bottom: #323232 2px solid;
+}
+.wall-thingside {
+  height: 30px;
+  background: repeating-linear-gradient(90deg, #242424 0 2px, #161616 2px 146px);
+  margin-left: -130px;
+  box-shadow: 0 20px 12px rgba(0,0,0,.45);
+  z-index: 10;
+}
 
 
 
@@ -93,6 +116,7 @@ main {
   background: #111111;
   padding: 40px;
   border-bottom: #424242 1px solid;
+  border-top: #424242 1px solid;
 }
 
 .about-slider {

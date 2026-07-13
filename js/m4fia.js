@@ -1,3 +1,18 @@
+const landingBg = document.querySelector(".landing-bg");
+const landing = document.querySelector(".landing");
+
+window.addEventListener("scroll", () => {
+    const rect = landing.getBoundingClientRect();
+
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        landingBg.style.transform = `translateY(${window.scrollY * 0.75}px)`;
+    }
+});
+
+
+
+
+
 const sections = document.querySelectorAll("section");
 const tocThing = document.querySelectorAll(".toc a");
 
