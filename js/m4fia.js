@@ -8,7 +8,11 @@ const introMessage = [
   "Which one of you were going to tell me that tea tastes different if you put it in hot water?",
   "Welcome or Welcome back!",
   "Let's trap Timothy in the Basement and make him shake his-",
-  "HDMI 5 connected"
+  "HDMI 5 connected",
+  "Why are you buying clothes in the soup store?!",
+  "So I have materials btw",
+  "Knife",
+  "You should check the console"
 ];
 const introText = document.getElementById("introText");
 
@@ -18,6 +22,21 @@ introText.textContent = introMessage[Math.floor(Math.random() * introMessage.len
 
 
 
+const audioFiles = [
+  "audio/Boundless Box - Apeirophobia Original Soundtrack (Placeholder).mp3",
+  "audio/Kri3tyy Galaxii - Surreal Peace (Placeholder).mp3"
+];
+const audioElements = document.getElementById("musicBG");
+
+function playMusic() {
+  const randomMusic = Math.floor(Math.random() * audioFiles.length);
+
+  audioElements.src = audioFiles[randomMusic];
+  audioElements.onload();
+  audioElements.play();
+}
+
+/* Continue => line 219 */
 
 
 
@@ -198,3 +217,8 @@ setTimeout(() => {console.log('...'); }, 40000);
 setTimeout(() => {console.log('...'); }, 50000); 
 setTimeout(() => {console.log('...nothing.'); }, 60000); 
 setTimeout(() => {console.log('thank you for your wasted time waiting for this.'); }, 63000); 
+
+
+
+playMusic();
+/* for some reason this breaks the following code placed below it, so I placed here in the end */
