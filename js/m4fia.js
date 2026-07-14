@@ -1,3 +1,28 @@
+const introMessage = [
+  "Shuffling role IDs...",
+  "Hiding the dead bodies...",
+  "*Insert Generic Game Loading In Message*",
+  "You wake up and see a burning city",
+  "Wake me up inside~",
+  "Oh no! Its the Gunship!",
+  "Which one of you were going to tell me that tea tastes different if you put it in hot water?",
+  "Welcome or Welcome back!",
+  "Let's trap Timothy in the Basement and make him shake his-",
+  "HDMI 5 connected"
+];
+const introText = document.getElementById("introText");
+
+introText.textContent = introMessage[Math.floor(Math.random() * introMessage.length)];
+
+
+
+
+
+
+
+
+
+
 const landingBg = document.querySelector(".landing-bg");
 const landing = document.querySelector(".landing");
 
@@ -37,7 +62,6 @@ function trackTOC() {
 
 window.addEventListener("scroll", trackTOC);
 window.addEventListener("load", trackTOC);
-
 
 
 
@@ -157,6 +181,9 @@ const btnMute = document.getElementById("btnMute");
 btnMute.addEventListener("click", () => {
   bgMusic.muted = !bgMusic.muted;
 });
+
+
+
 
 
 
