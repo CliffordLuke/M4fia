@@ -294,7 +294,7 @@ main {
 
 .toc {
   position: fixed;
-  left: 10px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   display: flex;
@@ -305,6 +305,7 @@ main {
 
 .toc a {
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 10px;
   text-decoration: none;
@@ -321,7 +322,7 @@ main {
 
 .toc_label {
   opacity: 0;
-  transform: translateX(-10px);
+  transform: translateX(10px);
   transition: 0.3s ease;
   white-space: nowrap;
 }
