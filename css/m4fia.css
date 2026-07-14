@@ -86,6 +86,20 @@ main {
   z-index: -1;
   will-change: transform;
 }
+.landing-text {
+  animation: textOut linear both;
+  animation-timeline: scroll(root);
+  
+  animation-range: entry 0% exit 35%;
+}
+@keyframes textOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
 
 
