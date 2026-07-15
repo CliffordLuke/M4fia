@@ -8,37 +8,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Get short SHA
-      run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
-  
-    - name: Send Discord notification
-      env:
-        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-        ACTOR: ${{ github.actor }}
-        AVATAR: ${{ github.event.sender.avatar_url }}
-        REPO: ${{ github.repository }}
-        REF_NAME: ${{ github.ref_name }}
-        COMMIT_MSG: ${{ github.event.head_commit.message }}
-        COMMIT_URL: ${{ github.event.head_commit.url }}
-        COMMITS_COUNT: ${{ github.event.commits && github.event.commits.length || 1 }}
-      run: |
-        cat > payload.json <<EOF
-        {
-          "embeds": [
-            {
-              "author": {
-                "name": "${ACTOR}",
-                "icon_url": "${AVATAR}"
-              },
-              "title": "${REPO}:${REF_NAME}",
-              "description": "**${SHORT_SHA}** - ${COMMIT_MSG}",
-              "url": "${COMMIT_URL}",
-              "footer": {
-                "text": "${COMMITS_COUNT} new commit(s)"
-              }
-            }
-          ]
-        }
-        EOF
+      - name: Get short SHA
+        run: echo "SHORT_SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-        curl -H "Content-Type: application/json" -X POST -d @payload.json "$WEBHOOK_URL"
+      - name: Send Discord notification
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          ACTOR: ${{ github.actor }}
+          AVATAR: ${{ github.event.sender.avatar_url }}
+          REPO: ${{ github.repository }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          # Number of commits in this push
+          COMMITS_COUNT=$(jq '.commits | length' "$GITHUB_EVENT_PATH")
+
+          # Build a markdown list of commits
+          COMMITS_LIST=$(jq -r '
+            .commits[] |
+            "- [`\(.id[0:7])`](\(.url)) \(.message)"
+          ' "$GITHUB_EVENT_PATH")
+
+          cat > payload.json <<EOF
+          {
+            "embeds": [
+              {
+                "author": {
+                  "name": "${ACTOR}",
+                  "icon_url": "${AVATAR}"
+                },
+                "title": "${REPO}:${REF_NAME}",
+                "description": "${COMMITS_LIST}",
+                "footer": {
+                  "text": "${COMMITS_COUNT} new commit(s)"
+                }
+              }
+            ]
+          }
+          EOF
+
+          curl \
+            -H "Content-Type: application/json" \
+            -X POST \
+            -d @payload.json \
+            "$WEBHOOK_URL"
