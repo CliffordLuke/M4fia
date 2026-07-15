@@ -32,13 +32,13 @@ function playMusic() {
   const randomMusic = Math.floor(Math.random() * audioFiles.length);
 
   audioElements.src = audioFiles[randomMusic];
-  audioElements.onload();
+  audioElements.setAttribute('id', 'bgMusic');
   audioElements.play();
 }
 
-/* Continue => line 219 */
+  playMusic();
 
-
+  
 
 
 
@@ -220,5 +220,4 @@ setTimeout(() => {console.log('thank you for your wasted time waiting for this.'
 
 
 
-playMusic();
 /* for some reason this breaks the following code placed below it, so I placed here in the end */
