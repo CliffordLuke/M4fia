@@ -203,16 +203,22 @@ main {
 }
 
 .part1 {
-  background: url("../images/M4fia_bg.png") center/cover no-repeat;
+  background: url("../images/Slides/Slide1.png") center/cover no-repeat;
 }
 .part2 {
-  background: url("../images/Remn_bg.png") center/cover no-repeat;
+  background: url("../images/Slides/Slide2.png") center/cover no-repeat;
 }
 .part3 {
-  background: url("../images/Synd_bg.png") center/cover no-repeat;
+  background: url("../images/Slides/Slide3.png") center/cover no-repeat;
 }
 .part4 {
-  background: url("../images/Null_bg.png") center/cover no-repeat;
+  background: url("../images/Slides/Slide4.png") center/cover no-repeat;
+}
+.part5 {
+  background: url("../images/Slides/Slide5.png") center/cover no-repeat;
+}
+.part6 {
+  background: url("../images/Slides/Slide6.png") center/cover no-repeat;
 }
 
 /* Main Page - About Page - TV */
@@ -440,6 +446,10 @@ summary::before {
 
 
 
+
+
+
+
 /* Footer */
 
 footer {
@@ -489,18 +499,24 @@ footer nav ul {
   color: white;
 }
 
-.main-text {
-  font-size: 125px;
-  color: white;
-}
-
 .subtitle-text {
   font-size: 25px;
   color: #adadad;
 }
 
-.sub-text {
-  font-size: 25px;
-  color: #dadada;
+.main-text {
+  font-size: 6rem;
+  color: white;
+  padding: 0%;
+  margin: 0%;
 }
-  
+
+.text1 {
+  font-size: 3rem;
+  color: #d6d6d6;
+}
+
+.text2 {
+  font-size: 2rem;
+  color: #979797;
+}

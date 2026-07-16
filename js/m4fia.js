@@ -12,7 +12,8 @@ const introMessage = [
   "Why are you buying clothes in the soup store?!",
   "So I have materials btw",
   "Knife",
-  "You should check the console"
+  "You should check the console",
+  "Theres a spy at base"
 ];
 const introText = document.getElementById("introText");
 
@@ -38,7 +39,7 @@ function playMusic() {
 
   playMusic();
 
-  
+
 
 
 
