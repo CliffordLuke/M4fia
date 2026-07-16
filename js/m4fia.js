@@ -127,16 +127,16 @@ function prevSlide() {
 }
 
 document
-.getElementById("btnUp")
+.getElementById("btnLeft")
 .addEventListener("click", () => {
-  nextSlide();
+  prevSlide();
   resetTimer();
 });
 
 document
-.getElementById("btnDown")
+.getElementById("btnRight")
 .addEventListener("click", () => {
-  prevSlide();
+  nextSlide();
   resetTimer();
 });
 
