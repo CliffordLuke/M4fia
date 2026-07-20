@@ -445,10 +445,78 @@ summary::before {
 
 
 
+/* More Pages Thing */
+.post-title {
+  font-size: 4rem;
+}
 
+.post-text {
+  font-size: 2rem;
+  line-height: 13;
+}
 
+.pages {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: #424242 1px solid;
+  background: #111111;
+}
 
+.poster {
+  position: absolute;
+  width: 480px;
+  aspect-ratio: 2/3;
+  padding: 1rem;
+  border: #f3f0e8 8px solid;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  color: #000000;
+  text-decoration: none;
+}
 
+.post1 {
+  transform: translateX(-100%) translateY(-70px) rotate(-8deg);
+  z-index: 4;
+  background: #869fa0;
+}
+.post2 {
+  transform: translateX(0%) translateY(60px) rotate(3deg);
+  z-index: 5;
+  background: #917491;
+}
+.post3 {
+  transform: translateX(100%) translateY(-50px) rotate(18deg);
+  z-index: 6;
+  background: #7a6e61;
+}
+
+.post1:hover {
+  transform: translateX(-100%) translateY(-70px) rotate(0deg) scale(1.2);
+  z-index: 8;
+}
+.post2:hover {
+  transform: translateX(0%) translateY(60px) rotate(0deg) scale(1.2);
+  z-index: 8;
+}
+.post3:hover {
+  transform: translateX(100%) translateY(-50px) rotate(0deg) scale(1.2);
+  z-index: 8;
+}
+
+.poster:hover {
+  box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.6);
+}
 
 
 
