@@ -144,7 +144,7 @@ main {
 
 
 
-/* Transition to About Page */
+/* Wall things */
 
 .wall-thingtop {
   height: 50px;
@@ -158,6 +158,7 @@ main {
   box-shadow: 0 20px 12px rgba(0,0,0,.45);
   z-index: 10;
 }
+
 
 
 
@@ -446,14 +447,64 @@ summary::before {
 
 
 /* More Pages Thing */
-.post-title {
-  font-size: 4rem;
+.post-title1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.post-text1 {
+  font-size: 1.5rem;
 }
 
-.post-text {
-  font-size: 2rem;
-  line-height: 13;
+.post-div1A {
+  position: absolute;
+  transform: translateY(-200px);
 }
+.post-div1B {
+  position: absolute;
+  transform: translateY(160px);
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+
+.post-title2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.post-text2 {
+  font-size: 2rem;
+}
+
+.post-div2A {
+  position: absolute;
+  transform: translateY(-160px);
+}
+.post-div2B {
+  position: absolute;
+  transform: translateY(160px);
+}
+
+
+
+.post-title3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.post-text3 {
+  font-size: 2rem;
+}
+
+.post-div3A {
+  position: absolute;
+  transform: translateX(-70px) translateY(-210px) rotate(-30deg);
+}
+.post-div3B {
+  position: absolute;
+  transform: translateX(70px) translateY(190px) rotate(-30deg);
+}
+
+
 
 .pages {
   height: 100vh;
@@ -471,7 +522,7 @@ summary::before {
 
 .poster {
   position: absolute;
-  width: 480px;
+  width: 380px;
   aspect-ratio: 2/3;
   padding: 1rem;
   border: #f3f0e8 8px solid;
@@ -562,6 +613,10 @@ footer nav ul {
 
 .italics {
   font-style: italic;
+}
+
+.justify {
+  text-align: justify;
 }
 
 .title-text {

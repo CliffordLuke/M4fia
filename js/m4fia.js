@@ -207,7 +207,6 @@ btnMute.addEventListener("click", () => {
 
 
 
-// Dont mind this lol, I got bored TRYING to look, code, and understand this shiz lmao
 console.log('why are you here?');
 console.log('well, while you are here,');
 console.log('I am going to say...');
@@ -218,7 +217,3 @@ setTimeout(() => {console.log('...'); }, 40000);
 setTimeout(() => {console.log('...'); }, 50000); 
 setTimeout(() => {console.log('...nothing.'); }, 60000); 
 setTimeout(() => {console.log('thank you for your wasted time waiting for this.'); }, 63000); 
-
-
-
-/* for some reason this breaks the following code placed below it, so I placed here in the end */
