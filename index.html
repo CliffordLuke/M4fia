@@ -14,14 +14,19 @@
     <!-- May change in order to properly make the UI responsive-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-
     <!-- To be Updated/Changed-->
     <title> M4FIA Website </title>
 
     <link rel="stylesheet" href="./css/m4fia.css">
+    <script src="js/m4fia.js" defer></script>
   </head>
   
   <body>
+    <div class="intro-overlay">
+      <p id="introText" class="intro-text">
+      </p>
+    </div>
+
     <nav class="toc">
       <a href="#landing">
         <span class="toc_dot"></span>
@@ -31,6 +36,11 @@
       <a href="#about">
         <span class="toc_dot"></span>
         <span class="toc_label">About</span>
+      </a>
+
+      <a href="#pages">
+        <span class="toc_dot"></span>
+        <span class="toc_label"></span>
       </a>
 
       <a href="#faq">
@@ -43,7 +53,6 @@
         <span class="toc_label">Footer</span>
       </a>
     </nav>
-
 
     <header>
       <a href="index.html">
@@ -60,36 +69,163 @@
 
     <main>
       <section id="landing" class="landing">
-        <p><span class="title-text">M4FIA</span></p>
-        <p><span class="subtitle-text">Clif's expansion of the classic social deduction game <span class="italics">'mafia'</span></span></p>
-        <p><span class="italics subtitle-text">"Speak wisely, Act carefully, Trust rarely"</span></p>
+        <div class="landing-bg">
+        </div>
+
+        <div class="landing-text">
+          <p><span class="title-text">M4FIA</span></p>
+          <p><span class="subtitle-text">Clif's expansion of the classic social deduction game <span class="italics">'mafia'</span></span></p>
+          <p><span class="italics subtitle-text">"Speak wisely, Act carefully, Trust rarely"</span></p>
+        </div>
       </section>
 
+      <div class="wall-thingtop">
+      </div>
+      <div class="wall-thingside">
+      </div>
+
       <section id="about" class="about">
-        <div class="about-slider">
-          <div class="about-slider-part part1">
-            <p><span class="main-text">M4FIA</span></p>
-            <p><span class="sub-text">M4FIA takes place in a modern town whose governemtn is on the brink of collapse. The people have fled and only the officials, enforcers, and 'special' individuals remain, each driven by their own motives, bound together by distrust and desperation.</span></p>
+        <div class="tv">
+          <div class="screen">
+            <div class="tv-effect">
+            </div>
+
+            <div class="about-slider">
+              <div class="about-slider-part part1 active">
+                <p><span class="main-text">M4FIA</span></p>
+                <p><span class="text1">
+                  <br>
+                </span></p>
+                <p><span class="text2">An expansion or a new version of the classic social deduction game.
+                  <br> <br>
+                More roles. New faction. More strategy.
+                </span></p>
+              </div>
+
+              <div class="about-slider-part part2">
+                <p><span class="main-text">UNIQUE ROLES</span></p>
+                <p><span class="text1">
+
+                </span></p>
+                <p><span class="text2">
+                  10 Remnants <br>
+                  5 Syndicate <br>
+                  2 Null
+                </span></p>
+              </div>
+
+              <div class="about-slider-part part3">
+                <p><span class="main-text">THREE FACTIONS</span></p>
+                <p><span class="text1">
+                  <br>
+                </span></p>
+                <p><span class="text2">
+                  (This is not the French flag I swear!)
+                </span></p>
+              </div>
+
+              <div class="about-slider-part part4">
+                <p><span class="main-text">THREE FACTIONS</span></p>
+                <p><span class="text1">
+                  1. Remnants
+                </span></p>
+                <p><span class="text2">
+                  Restore the Order
+                </span></p>
+              </div>
+
+              <div class="about-slider-part part5">
+                <p><span class="main-text">THREE FACTIONS</span></p>
+                <p><span class="text1">
+                  2. Null
+                </span></p>
+                <p><span class="text2">
+                  No Allegiance
+                </span></p>
+              </div>
+
+              <div class="about-slider-part part6">
+                <p><span class="main-text">THREE FACTIONS</span></p>
+                <p><span class="text1">
+                  3. Syndicate
+                </span></p>
+                <p><span class="text2">
+                  Build your own Order
+                </span></p>
+              </div>
+
+
+            </div>
           </div>
-          <div class="about-slider-part part2">
-            <p><span class="main-text">REMNANTS</span></p>
-            <p><span class="sub-text">The last loyalists of a dying government. Though the system is flawed and riddled with corruption, they believe it can still be saved. By uncovering the truth, rooting out conspirators, and restoring trust, they seek to rebuild order before the town falls into complete ruin.</span></p>
-          </div>
-          <div class="about-slider-part part3">
-            <p><span class="main-text">SYNDICATE</span></p>
-            <p><span class="sub-text">A hidden network of corrupt officials, profiteers, and power-hungry opportunists. They believe the current system is beyond saving and intend to accelerate its collapse. If they succeed, they intend to forge a new order built to serve their interests alone.</span></p>
-          </div>
-          <div class="about-slider-part part4">
-            <p><span class="main-text">NULL</span></p>
-            <p><span class="sub-text">Neither loyalists nor conspirators. These individuals answer only to themselves. Some seek revenge for old wounds, others thrive in chaos, and some simply wish to entertain themselves in the drama.</span></p>
+
+          <div class="tv-controls">
+            <div class="tv-logo">
+              SAGNSUMG
+            </div>
+            <div class="controls">
+              <button id="btnMute">M</button>
+              <button id="btnPause">||</button>
+              <button id="btnLeft">◄</button>
+              <button id="btnRight">►</button>
+              <button id="btnPower">⏻</button>              
+            </div>
           </div>
         </div>
+      </section>
+
+      <section id="pages" class="pages">
+        <a href="pages/wiki.html" class="poster post1">
+          <div class="post-div1A">
+            <p><span class="post-title1">
+              WIKI
+            </span></p>
+          </div>
+          <div class="post-div1B">
+            <p class="justify"><span class="post-text1">
+              Very long description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque harum molestiae explicabo, aliquid ipsa odio molestias, dolor eos fugit perferendis distinctio.
+            </span></p>
+          </div>
+        </a>
+
+        <a href="pages/game-tracker.html" class="poster post2">
+          <div class="post-div2A">
+            <p><span class="post-text2">
+              Want to host a game?
+              <br>
+              Use the
+            </span></p>
+          </div>
+
+          <div class="post-div2B">
+            <p><span class="post-title2">
+              GAME TRACKER
+            </span></p> 
+          </div>
+        </a>
+
+        <a href="pages/suggestions.html" class="poster post3">
+          <div class="post-div3A">
+            <p><span class="post-text3">
+              Have any
+              <br>
+            </span>
+            <span class="post-title3">
+              SUGGESTIONS?
+            </span></p>
+          </div>
+          <div class="post-div3B">
+            <p><span class="post-text3">
+              Help us
+              <br>
+              expand M4FIA
+            </span></p>
+          </div>
+        </a>
       </section>
 
       <section id="faq" class="faq">
         <details class="details">
           <summary>What is M4FIA?</summary>
-          <div class="faq-content">
           <p>✦ M4FIA is an expansion or a new take of the original Mafia something something</p>
         </details>
         <details class="details">
@@ -109,6 +245,9 @@
           <p>✦ Yes. You can head to the Suggestions page to anonymously (or ononymously) suggest new features to the game/website, or even new roles.</p>
         </details>
       </section>
+
+      <audio autoplay loop id="musicBG">
+      </audio>
     </main>
 
     <footer id="footer">
@@ -116,7 +255,7 @@
         <h1>M4FIA</h1>
       </a>
       <nav>
-        <ul>s
+        <ul>
           <li><a href="pages/wiki.html">Wiki</a></li>
           <li><a href="pages/game-tracker.html">Game Tracker</a></li>
           <li><a href="pages/suggestions.html">Suggestions</a></li>
