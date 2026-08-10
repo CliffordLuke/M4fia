@@ -55,10 +55,6 @@ main {
   flex-direction: column;
 }
 
-
-
-
-
 #GTmain {
   height: 100vh;
   width: 100%;
@@ -72,6 +68,10 @@ main {
   background: #111111;
 }
 
+
+
+
+/* Top Text */
 
 .div1 {
   display: flex;
@@ -111,7 +111,7 @@ main {
 
 
 
-
+/* Hologram */
 
 #options {
   width: 100%;
@@ -122,7 +122,6 @@ main {
   text-align: center;
   position: relative;
 }
-
 
 .holo-title {
   font-size: 3rem;
@@ -137,6 +136,9 @@ main {
   position: relative;
   z-index: 2;
 }
+
+
+
 
 
 .hologram {
@@ -155,6 +157,25 @@ main {
   animation: holo-flicker 4s infinite;
   position: relative;
   overflow: hidden;
+}
+
+.hologram::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0, 150, 225, 0.1) 0px, rgba(0, 150, 225, 0.1) 1px, transparent 1px, transparent 5px);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: scanlines 0.25s linear infinite;
+}
+
+.hologram::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(180deg, transparent 35%, rgba(0, 150, 225, 0.1) 50%, transparent 65%);
+  pointer-events: none;
+  animation: holosweep 10s linear infinite;
 }
 
 @keyframes holo-flicker {
@@ -179,28 +200,9 @@ main {
   65% {opacity: 0.85;}
 }
 
-.hologram::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(rgba(0, 150, 225, 0.1) 0px, rgba(0, 150, 225, 0.1) 1px, transparent 1px, transparent 5px);
-  pointer-events: none;
-  opacity: 0.5;
-  animation: scanlines 0.25s linear infinite;
-}
-
 @keyframes scanlines {
   from {transform: translateY(0);}
   to {transform: translateY(5px);}
-}
-
-.hologram::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: linear-gradient(180deg, transparent 35%, rgba(0, 150, 225, 0.1) 50%, transparent 65%);
-  pointer-events: none;
-  animation: holosweep 10s linear infinite;
 }
 
 @keyframes holosweep {
@@ -208,6 +210,9 @@ main {
   40% {transform: translateY(60%);}
   100% {transform: translateY(60%);}
 }
+
+
+
 
 .PlayerHolo, .HostHolo {
   background: linear-gradient(180deg, rgba(0, 150, 225, 0.08), rgba(0, 150, 225, 0.02));
