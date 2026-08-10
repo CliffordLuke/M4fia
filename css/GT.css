@@ -10,16 +10,7 @@ body {
 
 
 
-
-
-main {
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-
+/* Header */
 
 header {
   display: flex;
@@ -56,6 +47,13 @@ header nav ul {
 }
 
 
+
+/* Main Section */
+
+main {
+  display: flex;
+  flex-direction: column;
+}
 
 
 
@@ -111,19 +109,6 @@ header nav ul {
 
 
 
-.holo-title {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #0090e4;
-}
-.holo-div1 {
-  position: absolute;
-  transform: translateY(220px);
-}
-.holo-div2 {
-  position: absolute;
-  transform: translateY(220px);
-}
 
 
 
@@ -138,35 +123,105 @@ header nav ul {
   position: relative;
 }
 
+
+.holo-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #0090e4;
+  text-shadow: 0 0 15px rgba(0, 150, 225, 0.8), 0 0 15px rgba(0, 150, 225, 0.5);
+  position: relative;
+  z-index: 2;
+  opacity: 0.75;
+}
+.holo-div1, .holo-div2 {
+  position: relative;
+  z-index: 2;
+}
+
+
 .hologram {
   width: 450px;
   aspect-ratio: 3/4;
   padding: 1rem;
-  border: #0090e4 1px dashed;
-  box-shadow: 0px 0px 10px 0px rgba(0, 119, 255, 0.4);
+  border: 1px solid rgba(0, 150, 225, 0.3);
+  box-shadow: 0 0 15px rgba(0, 150, 225, 0.4), inset 0 0 30px rgba(0, 150, 225, 0.4);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: 0.3s ease;
-  color: #000000;
+  color: #0090e4;
   text-decoration: none;
+  animation: holo-flicker 4s infinite;
+  position: relative;
+  overflow: hidden;
 }
 
-.PlayerHolo {
-  background: transparent;
-}
-.HostHolo {
-  background: transparent;
+@keyframes holo-flicker {
+  0%,
+  10%,
+  18%,
+  22%,
+  30%,
+  40%,
+  50%,
+  58%,
+  62%,
+  63%,
+  67%,
+  70%,
+  80%,
+  90%,
+  100% {opacity: 1;} 
+  
+  20%,
+  60%,
+  65% {opacity: 0.85;}
 }
 
-.PlayerHolo:hover {
-  transform: scale(1.2);
-}
-.HostHolo:hover {
-  transform: scale(1.2);
+.hologram::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0, 150, 225, 0.1) 0px, rgba(0, 150, 225, 0.1) 1px, transparent 1px, transparent 5px);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: scanlines 0.25s linear infinite;
 }
 
-.hologram:hover {
-  box-shadow: 0px 0px 30px 0px rgba(0, 119, 255, 0.6);
+@keyframes scanlines {
+  from {transform: translateY(0);}
+  to {transform: translateY(5px);}
+}
+
+.hologram::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(180deg, transparent 35%, rgba(0, 150, 225, 0.1) 50%, transparent 65%);
+  pointer-events: none;
+  animation: holosweep 10s linear infinite;
+}
+
+@keyframes holosweep {
+  0% {transform: translateY(-60%);}
+  40% {transform: translateY(60%);}
+  100% {transform: translateY(60%);}
+}
+
+.PlayerHolo, .HostHolo {
+  background: linear-gradient(180deg, rgba(0, 150, 225, 0.08), rgba(0, 150, 225, 0.02));
+  transition: 0.5s ease;
+}
+
+.PlayerHolo:hover, .HostHolo:hover {
+  transform: scale(1.05);
+  border: 1px solid rgba(0, 150, 225, 0.3);
+  box-shadow: 0 0 15px rgba(0, 150, 225, 0.6), inset 0 0 30px rgba(0, 150, 225, 0.6);
+  background: linear-gradient(180deg, rgba(0, 150, 225, 0.15), rgba(0, 150, 225, 0.05));
+}
+
+.PlayerHolo:hover::before, .HostHolo:hover::before {
+  opacity: 0.8;
+  animation-duration: 0.075s;
 }
