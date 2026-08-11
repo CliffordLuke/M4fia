@@ -2,6 +2,27 @@ const playerInput = document.getElementById("PlayNumInput");
 const confirmButton = document.getElementById("PlayNumConfirm");
 const PlayerList = document.getElementById("PlayerList");
 
+const roleIcons = {
+  "Unknown": "/images/RoleIcons/Unknown.png",
+  "Field Doctor": "/images/RoleIcons/FieldDoctor.png",
+  "Detective": "/images/RoleIcons/Detector.png",
+  "Sheriff": "/images/RoleIcons/Sheriff.png",
+  "Lifevessel": "/images/RoleIcons/Lifevessel.png",
+  "Martyr": "/images/RoleIcons/Martyr.png",
+  "Operative": "/images/RoleIcons/Operative.png",
+  "Journalist": "/images/RoleIcons/Journalist.png",
+  "Apothecary": "/images/RoleIcons/Apothecary.png",
+  "Medium": "/images/RoleIcons/Medium.png",
+  "Civilian": "/images/RoleIcons/Civilian.png",
+  "Mafioso": "/images/RoleIcons/Mafioso.png",
+  "Silencer": "/images/RoleIcons/Silencer.png",
+  "Godfather": "/images/RoleIcons/Godfather",
+  "Suppressor": "/images/RoleIcons/Suppressor.png",
+  "Larkin": "/images/RoleIcons/Larkin.png",
+  "Jester": "/images/RoleIcons/Jester.png",
+  "Mimic": "/images/RoleIcons/Mimic.png"
+}
+
 confirmButton.addEventListener("click", function() {
   const playerCount = playerInput.value;
 
@@ -41,15 +62,36 @@ confirmButton.addEventListener("click", function() {
 
 
     /* 4 Suspected Player Role */
-    const playerRole = document.createElement("select");
+    const roleSelection = document.createElement("div");
+    roleSelection.classList.add("role-selection");
 
+    const roleIcon = document.createElement("img");
+    roleIcon.classList.add("role-icon");
+    roleIcon.src = "/images/RoleIcons/Unknown.png";
+
+    const playerRole = document.createElement("select");
     playerRole.classList.add("player-role");
-    
+  
 
     const roles = [
       "Unknown",
       "Field Doctor",
-      "Detective"
+      "Detective",
+      "Sheriff",
+      "Lifevessel",
+      "Martyr",
+      "Operative",
+      "Journalist",
+      "Apothecary",
+      "Medium",
+      "Civilian",
+      "Mafioso",
+      "Silencer",
+      "Godfather",
+      "Suppressor",
+      "Larkin",
+      "Jester",
+      "Mimic"
     ];
 
     for (let role of roles) {
@@ -59,6 +101,14 @@ confirmButton.addEventListener("click", function() {
       playerRole.appendChild(roleOption);
     }
 
+    playerRole.addEventListener("change", function() {
+      const selectedRole = playerRole.value;
+
+      roleIcon.src = roleIcons[selectedRole];
+    });
+
+    roleSelection.appendChild(roleIcon);
+    roleSelection.appendChild(playerRole);
 
 
     /* 5 Player Notes */
@@ -72,9 +122,9 @@ confirmButton.addEventListener("click", function() {
     /* Heiracrchy */
     playerCard.appendChild(playerName);
     playerCard.appendChild(playerStatus);
-    playerCard.appendChild(playerRole);
+    playerCard.appendChild(roleSelection);
     playerCard.appendChild(playerNotes);
-    PlayerList.appendChild(playerCard);
 
+    PlayerList.appendChild(playerCard);
   }
 });
