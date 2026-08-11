@@ -1,0 +1,92 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(88, 88, 88);
+}
+
+
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0px 20px;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 101;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header a:hover {
+  text-decoration: underline;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+}
+
+header nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Main */
+
+main {
+  margin-top: 75px;
+}
+
+
+
+/* Player List */
+
+#PlayerList {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+
+
+/* Player Cards */
+
+.player-card {
+  width: 300px;
+  aspect-ratio: 3/4;
+  padding: 1rem;
+  border: 1px solid #feffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-name {
+  width: 90%;
+  background: transparent;
+  border: none;
+  text-align: center;
+  font-size: 1rem;
+}
+.player-name:focus {
+  outline: 1px solid #feffff;
+}

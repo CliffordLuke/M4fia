@@ -1,9 +1,49 @@
 <!DOCTYPE html>
 <html lang="eng">
   <head>
+    <meta charset="UTF-8"/>
+    <meta property="og:type" content="website"/>
+    <!-- Might add more Open Graph properties -->
+
+    <!-- May edit content in the future-->
+    <meta content="M4FIA" property="og:title"/>
+
+    <!-- Add the M4FIA Website Description in content attribute-->
+    <meta name="description" content="TBA"/>
+
+    <!-- May change in order to properly make the UI responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- To be Updated/Changed-->
+    <title> M4FIA Game Tracker </title>
+
+    <link rel="stylesheet" href="/css/GTP.css">
+    <script src="/js/GTP.js" defer></script>
   </head>
 
   <body>
-    <p>Blank</p>
+    <header>
+      <a href="/index.html">
+        <h1>M4FIA</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="/pages/wiki.html">Wiki</a></li>
+          <li><a href="/pages/game-tracker.html">Game Tracker</a></li>
+          <li><a href="/pages/suggestions.html">Suggestions</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="PlayerInput">
+        <input type="number" id="PlayNumInput">
+        <button id="PlayNumConfirm">Confirm</button>
+      </section>
+
+      <section id="PlayerList">
+        
+      </section>
+    </main>
   </body>
 </html>
