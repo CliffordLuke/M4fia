@@ -75,7 +75,8 @@ main {
   width: 300px;
   aspect-ratio: 3/4;
   padding: 1rem;
-  border: 1px solid #feffff;
+  background: #ffcebb;
+  border: 1px solid #ffbfa6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,15 +93,15 @@ main {
   width: 100%;
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   text-align: center;
   font-size: 1.5rem;
   padding: 0.4rem;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 .player-name:focus {
-  outline: 1px solid #feffff;
+  outline: 1px solid #0f0f0f;
 }
 
 
@@ -110,9 +111,9 @@ main {
 .player-status {
   width: 50%;
   height: 10%;
-  background: transparent;
-  border: 1px solid #feffff;
-  color: white;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid #0f0f0f;
+  color: black;
   cursor: pointer;
   font-weight: bold;
   font-size: 1.2rem;
@@ -125,9 +126,9 @@ main {
 .player-role {
   width: 140px;
   padding: 0.5rem;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: white;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  color: black;
 }
 
 .role-selection {
@@ -151,11 +152,12 @@ main {
   flex: 1;
   resize: none;
   background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: black;
   padding: 0.75;
+  font-size: 1rem;
 }
 .player-notes:focus {
   outline: none;
-  border-color: #feffff ;
+  border-color: #0f0f0f ;
 }

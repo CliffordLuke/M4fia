@@ -5,7 +5,7 @@ const PlayerList = document.getElementById("PlayerList");
 const roleIcons = {
   "Unknown": "/images/RoleIcons/Unknown.png",
   "Field Doctor": "/images/RoleIcons/FieldDoctor.png",
-  "Detective": "/images/RoleIcons/Detector.png",
+  "Detective": "/images/RoleIcons/Detective.png",
   "Sheriff": "/images/RoleIcons/Sheriff.png",
   "Lifevessel": "/images/RoleIcons/Lifevessel.png",
   "Martyr": "/images/RoleIcons/Martyr.png",
@@ -16,7 +16,7 @@ const roleIcons = {
   "Civilian": "/images/RoleIcons/Civilian.png",
   "Mafioso": "/images/RoleIcons/Mafioso.png",
   "Silencer": "/images/RoleIcons/Silencer.png",
-  "Godfather": "/images/RoleIcons/Godfather",
+  "Godfather": "/images/RoleIcons/Godfather.png",
   "Suppressor": "/images/RoleIcons/Suppressor.png",
   "Larkin": "/images/RoleIcons/Larkin.png",
   "Jester": "/images/RoleIcons/Jester.png",
