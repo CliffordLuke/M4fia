@@ -8,6 +8,14 @@ const rulesFolder = document.querySelector(".rules");
 const loreFolder = document.querySelector(".lore");
 const returnBtn = document.querySelector("#FOLDER-OPEN-RETURN-BTN");
 
+const firstPageR = rulesFolder.children[2];
+const secondPageR = rulesFolder.children[1];
+const paperContainer = document.querySelector("#PAPER-CONTAINER");
+
+const tempCont = document.querySelector("#TEMPLATE-CONT");
+const tempChildren = Array.from(tempCont.content.children)
+let temp = 0
+
 // FOLDER FUNCTIONALITY
 rulesFolder.addEventListener("click", async (event) => {
     folderOpenContainer.style.pointerEvents = "all";
@@ -40,20 +48,23 @@ rulesFolder.addEventListener("click", async (event) => {
         easing: 'ease',
     });
 
-    folderOpenContainer.animate([
-        {backgroundColor: 'rgba(0, 0, 0, 0)'}, 
-        {backgroundColor: 'rgba(0, 0, 0, 0.7)'}
-    ],{
-        duration: 1000,
-        easing: 'ease',
-        fill: 'forwards'
-    })
-
-    rulesFolder.style.pointerEvents = 'none';
+    folderOpenContainer.classList.add("opened");
 
     await initialAnim.finished;
     initialAnim.commitStyles();
     initialAnim.cancel();
+
+    
+    const pageTemp = document.importNode(tempChildren[temp].content, true);
+    firstPageR.appendChild(pageTemp);
+
+    const page = firstPageR.lastElementChild;
+
+    page.offsetHeight
+
+    requestAnimationFrame(() => {
+        page.classList.add("visible")
+    })
 
     rulesFolder.children[0].classList.add("open");
 });
@@ -89,16 +100,7 @@ loreFolder.addEventListener("click", async (event) => {
         easing: 'ease',
     });
 
-    folderOpenContainer.animate([
-        {backgroundColor: 'rgba(0, 0, 0, 0)'}, 
-        {backgroundColor: 'rgba(0, 0, 0, 0.7)'}
-    ],{
-        duration: 1000,
-        easing: 'ease',
-        fill: 'forwards'
-    })
-
-    loreFolder.style.pointerEvents = 'none';
+    folderOpenContainer.classList.add("opened");
 
     await initialAnim.finished;
     initialAnim.commitStyles();
@@ -114,38 +116,35 @@ returnBtn.addEventListener("click", (event) => {
      });
     returnBtn.style.pointerEvents = "none";
 
-    if (folderOpenContainer.children[1] === rulesFolder) {
+    if (folderOpenContainer.children[3] === rulesFolder) {
         rulesFolder.children[0].classList.remove("open");
 
         requestAnimationFrame(() => {
             rulesFolder.children[0].classList.add("close");
         });
 
-        folderOpenContainer.animate([
-            {backgroundColor: 'rgba(0, 0, 0, 0.7)'}, 
-            {backgroundColor: 'rgba(0, 0, 0, 0)'}
-        ],{
-            duration: 1000,
-            easing: 'ease',
-            fill: 'forwards'
-        });
-    } else if (folderOpenContainer.children[1] === loreFolder) {
+        folderOpenContainer.classList.remove("opened");
+
+        const page = firstPageR.lastElementChild;
+        page.classList.remove("visible");
+
+        page.addEventListener("transitionend", (event) => {
+            if (event.propertyName === "opacity") {
+                page.remove()
+            }
+        })
+
+    } else if (folderOpenContainer.children[3] === loreFolder) {
         loreFolder.children[0].classList.remove("open");
 
         requestAnimationFrame(() => {
             loreFolder.children[0].classList.add("close");
         });
 
-        folderOpenContainer.animate([
-            {backgroundColor: 'rgba(0, 0, 0, 0.7)'}, 
-            {backgroundColor: 'rgba(0, 0, 0, 0)'}
-        ],{
-            duration: 1000,
-            easing: 'ease',
-            fill: 'forwards'
-        });
+        folderOpenContainer.classList.remove("opened");
     }
 });
+
 
 rulesFolder.children[0].addEventListener("animationend", async (event) => {
     if (event.animationName === "closeFolder") {
@@ -166,7 +165,7 @@ rulesFolder.children[0].addEventListener("animationend", async (event) => {
                 scale(1.1)
             `
         }, {
-            transformOrigin: 'top left',
+            transformOrigin: 'center center',
             transform:  `
                 translate(0, 0)
                 scale(1)
@@ -186,7 +185,7 @@ rulesFolder.children[0].addEventListener("animationend", async (event) => {
     } else if (event.animationName === "openFolder") {
         returnBtn.classList.remove("hide");
         returnBtn.classList.add("show");
-        returnBtn.style.pointerEvents = "all"
+        returnBtn.style.pointerEvents = "all";
     };
 });
 
@@ -217,7 +216,7 @@ loreFolder.children[0].addEventListener("animationend", async (event) => {
             rotate: '5deg'
         }], {
             duration: 1000,
-            easing: 'ease',
+            easing: "ease",
         });
 
         await returnAnim.finished;

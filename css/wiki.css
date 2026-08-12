@@ -5,13 +5,34 @@ body {
     width: 100%;
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
 h1, h2, h3 {
   color: rgb(255, 255, 255);
   text-align: center;
 }
 
 main {
-    overflow: hidden
+    overflow: hidden;
+    transition: all ease-in-out 0.3s
+}
+
+body:has(#FOLDER-OPENED-CONTAINER.opened) header,
+body:has(#FOLDER-OPENED-CONTAINER.opened) main,
+body:has(#FOLDER-OPENED-CONTAINER.opened) footer {
+    filter: brightness(0.4);
+}
+
+body:has(#FOLDER-OPENED-CONTAINER.opened) {
+    overflow: hidden;
 }
 
 /* HEADER STYLE */
@@ -21,6 +42,7 @@ header {
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 0px 20px;
+  transition: all ease-in-out 0.3s
 }
 
 nav ul {
@@ -112,7 +134,8 @@ header a:hover {
         background-color: rgb(255, 255, 255);
         box-shadow: 8px 6px 21px 3px rgba(0,0,0,0.3);
         width: 95%;
-        height: 95%;
+        height: auto;
+        aspect-ratio: 1/1.25;
         top: 2%;
         left: 4%;
         rotate: 3deg;
@@ -122,10 +145,11 @@ header a:hover {
 
     .folder .inside-2 {
         position: absolute;
-        background-color: rgb(255, 255, 255);
+        background-color: white;
         box-shadow: 8px 6px 21px 3px rgba(0,0,0,0.3);
         width: 95%;
-        height: 95%;
+        height: auto;
+        aspect-ratio: 1 / 1.25;
         top: 2%;
         left: 3%;
         rotate: 1deg;
@@ -142,6 +166,11 @@ header a:hover {
         z-index: 2;
         transform-origin: left center;
         transition: all 0.3s ease;
+        transform-style: preserve-3d;
+    }
+
+    .front > * {
+        backface-visibility: hidden;
     }
 
     .folder .front::after {
@@ -154,18 +183,17 @@ header a:hover {
         height: 50%;
         border-radius: inherit;
         z-index: 2;
-
     }
     
-    .folder:hover .inside-2{
+    body:not(:has(#FOLDER-OPENED-CONTAINER.opened)) .folder:hover .inside-2{
         transform: translateX(3%) translateY(2%) rotate(2deg);
     }
 
-    .folder:hover .inside-1 {
+    body:not(:has(#FOLDER-OPENED-CONTAINER.opened)) .folder:hover .inside-1 {
         transform: translateX(4.5%) translateY(2.3%) rotate(5deg);
     }
 
-    .folder:hover .front {
+    body:not(:has(#FOLDER-OPENED-CONTAINER.opened)) .folder:hover .front {
         transform: rotateY(-5deg);
     }
 
@@ -224,7 +252,7 @@ header a:hover {
 
 
     /* INDIVUDAL FOLDERS */
-    .folder:hover {
+    body:not(:has(#FOLDER-OPENED-CONTAINER.opened)) .folder:hover {
         box-shadow: 0px 0px 25px 10px rgba(255,255,255,0.6);
         z-index: 99;
         cursor: pointer
@@ -258,14 +286,13 @@ header a:hover {
 
     /* FOLDER OPEN */
     #FOLDER-OPENED-CONTAINER {
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         z-index: 199;
         position: fixed;
         pointer-events: none;
         display: flex;
         justify-content: center;
-        background-color: rgba(0, 0, 0, 0);
     }
 
     #FOLDER-OPEN-RETURN-BTN {
@@ -285,6 +312,42 @@ header a:hover {
         overflow: hidden;
         pointer-events: none;
         transition: opacity 0.5s ease;
+    }
+
+    #NEXT-PAGE, #PREV-PAGE {
+        all: unset;
+        position: absolute;
+        background-color: white;
+        align-self: center;
+        font-size: 4rem;
+        padding: 0.2rem 0.5rem;
+        aspect-ratio: 1/1;
+        border-radius: 99rem;
+        z-index: 99;
+    }
+
+    #NEXT-PAGE {
+        right: 15%;
+    }
+
+    #PREV-PAGE {
+        left: 15%;
+    }
+
+    .page {
+        box-sizing: border-box;
+        padding: 0 1rem 0 1rem;
+        width: 100%;
+        aspect-ratio: 1/1.25;
+        background-color: white;
+        text-align: justify;
+        overflow-y: auto;
+        opacity: 0;
+        transition: opacity 0.7s ease-in-out
+    }
+
+    .page.visible {
+        opacity: 1;
     }
 
     #FOLDER-OPEN-RETURN-BTN::before {
@@ -348,21 +411,14 @@ header a:hover {
         animation: openFolder 1s ease forwards;
     }
 
-    .rules .front.open > *,
-    .lore .front.open > * { 
-        animation: hideOpenFolderFront 0.25s forwards
-    }
-
     .rules .front.close,
     .lore .front.close  {
         animation: closeFolder 1s ease forwards;
     }
 
-    .rules .front.close > *,
-    .lore .front.close > *{ 
-        animation: showOpenFolderFront 0.4s forwards;
+    .rules .front.open > .inside-1:hover {
+        scale: 2
     }
-    
 
 /* CARD CATALOG STYLE */
 #M4FIA-ROLES-CATALOG {
@@ -451,26 +507,6 @@ header a:hover {
         transform: rotateY(0);
     }
 }
-
-@keyframes hideOpenFolderFront {
-    from {
-        visibility: visible
-    }
-    to {
-        visibility: hidden
-    }
-}
-
-@keyframes showOpenFolderFront {
-    0%, 99% {
-        visibility: hidden;
-    }
-
-    100% {
-        visibility: visible;
-    }
-}
-
 
 @keyframes returnBtnHover {
     from {
