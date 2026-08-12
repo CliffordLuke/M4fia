@@ -107,7 +107,7 @@ main {
   text-align: center;
 }
 
-#PlayNumInput::-webkit-inner-spin-button, #PlayNuminput::-webkit-outer-spin-button {
+#PlayNumInput::-webkit-inner-spin-button, #PlayNumInput::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

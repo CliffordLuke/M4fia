@@ -26,6 +26,18 @@ PlayPlus.addEventListener("click", function () {
   }
 });
 
+playerInput.addEventListener("change", function() {
+  let count = Number(playerInput.value);
+  let min = Number(playerInput.min);
+  let max = Number(playerInput.max);
+
+  if (count < min) {
+    playerInput.value = min;
+  }
+  if (count > max) {
+    playerInput.value = max;
+  }
+});
 
 const roleIcons = {
   "Unknown": "/images/RoleIcons/Unknown.png",
