@@ -5,6 +5,28 @@ const PlayerInputSection = document.getElementById("PlayerInput");
 
 PlayerList.style.display = "none";
 
+
+const PlayMinus = document.getElementById("PlayMinus");
+const PlayPlus = document.getElementById("PlayPlus");
+
+
+PlayMinus.addEventListener("click", function() {
+  let count = Number(playerInput.value);
+
+  if (count > 6) {
+    playerInput.value = count - 1;
+  }
+});
+
+PlayPlus.addEventListener("click", function () {
+  let count = Number(playerInput.value);
+
+  if (count < 20) {
+    playerInput.value = count + 1;
+  }
+});
+
+
 const roleIcons = {
   "Unknown": "/images/RoleIcons/Unknown.png",
   "Field Doctor": "/images/RoleIcons/FieldDoctor.png",

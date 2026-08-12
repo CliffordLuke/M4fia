@@ -40,7 +40,12 @@
         <div id="PlayerInputBox">
           <p><span class="PlayInputText">How many players are there?</span></p>
 
-          <input type="number" id="PlayNumInput">
+          <div id="PlayNumControl">
+            <button id="PlayMinus">-</button>
+            <input type="number" id="PlayNumInput" min="6" value="6">
+            <button id="PlayPlus">+</button>
+          </div>
+
           <button id="PlayNumConfirm">Confirm</button>
         </div>
       </section>
