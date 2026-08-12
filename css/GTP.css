@@ -52,8 +52,49 @@ header nav ul {
 
 main {
   margin-top: 75px;
+  width: 100%;
+  height: calc(100vh - 75px);
 }
 
+
+
+/* Player input */
+
+#PlayerInput {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100%;
+}
+
+#PlayerInputBox {
+  width: 500px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.PlayInputText {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#PlayNumInput {
+  width: 50%;
+  height: 20%;
+}
+
+#PlayNumConfirm {
+  width: 75%;
+  height: 10%;
+}
 
 
 /* Player List */
@@ -154,7 +195,7 @@ main {
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(0, 0, 0, 0.3);
   color: black;
-  padding: 0.75;
+  padding: 0.75rem;
   font-size: 1rem;
 }
 .player-notes:focus {

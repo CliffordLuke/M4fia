@@ -1,6 +1,9 @@
 const playerInput = document.getElementById("PlayNumInput");
 const confirmButton = document.getElementById("PlayNumConfirm");
 const PlayerList = document.getElementById("PlayerList");
+const PlayerInputSection = document.getElementById("PlayerInput");
+
+PlayerList.style.display = "none";
 
 const roleIcons = {
   "Unknown": "/images/RoleIcons/Unknown.png",
@@ -25,6 +28,9 @@ const roleIcons = {
 
 confirmButton.addEventListener("click", function() {
   const playerCount = playerInput.value;
+
+  PlayerInputSection.style.display = "none";
+  PlayerList.style.display = "grid";
 
   for (let i=1; i <= playerCount; i++) {
     
