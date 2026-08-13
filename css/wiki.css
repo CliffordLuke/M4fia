@@ -316,13 +316,17 @@ header a:hover {
     #NEXT-PAGE, #PREV-PAGE {
         all: unset;
         position: absolute;
-        background-color: white;
+        background: rgb(27, 27, 27);
+        color: white;
         align-self: center;
         font-size: 4rem;
         padding: 0.2rem 0.5rem;
         aspect-ratio: 1/1;
         border-radius: 99rem;
         z-index: 99;
+        outline: 1px solid rgba(255, 255, 255, 0.5);
+        pointer-events: none;
+        transition: opacity 0.5s ease-in-out;
     }
 
     #NEXT-PAGE {
@@ -344,6 +348,23 @@ header a:hover {
         opacity: 0;
         color: black;
         transition: opacity 0.7s ease-in-out
+    }
+
+    #NEXT-PAGE.hide,
+    #PREV-PAGE.hide {
+        opacity: 0;
+    }
+
+    #NEXT-PAGE.show,
+    #PREV-PAGE.show {
+        opacity: 0.5;
+    }
+
+    #NEXT-PAGE:hover,
+    #PREV-PAGE:hover {
+        outline: 1px solid rgba(255, 255, 255, 0.75);
+        opacity: 0.7;
+        cursor: pointer
     }
 
     .page.visible {

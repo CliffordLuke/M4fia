@@ -16,6 +16,8 @@ const rulesTempCont = document.querySelector("#RULES-TEMPLATE-CONT");
 const loreTempCont = document.querySelector("#LORE-TEMPLATE-CONT");
 const rulesTempChildren = Array.from(rulesTempCont.content.children);
 const loreTempChildren = Array.from(loreTempCont.content.children);
+const nextPage = document.querySelector("#NEXT-PAGE");
+const prevPage = document.querySelector("#PREV-PAGE");
 let temp = 0;
 
 let folderOpened = false;
@@ -38,11 +40,11 @@ let folderOpened = false;
 
     //FOLDER CLOSE
     rulesFolder.children[0].addEventListener("animationend", (event) => {
-        folderClose(rulesFolder, event, 0, '-3deg')
+        folderClose(rulesFolder, event, 0, '-3deg', firstPageR)
     });
 
     loreFolder.children[0].addEventListener("animationend", (event) => {
-        folderClose(loreFolder, event, 1, '5deg')
+        folderClose(loreFolder, event, 1, '5deg', firstPageL)
     });
 
     //RETURN
@@ -55,10 +57,49 @@ let folderOpened = false;
 
         returnBtn.style.pointerEvents = "none";
 
+        prevPage.style.pointerEvents = "none";
+        nextPage.style.pointerEvents = "none";
+        
+        if (temp === 0) {
+            nextPage.classList.add("hide");
+            nextPage.classList.remove("show");
+        } else if ((temp === loreTempChildren.length - 1) || (temp === rulesTempChildren.length - 1)) {
+            prevPage.classList.add("hide");
+            prevPage.classList.remove("show");
+        } else {
+            nextPage.classList.add("hide");
+            nextPage.classList.remove("show");
+            prevPage.classList.add("hide");
+            prevPage.classList.remove("show");
+        }
+
         if (folderOpenContainer.children[3] === rulesFolder) {
-            folderReturn(rulesFolder, firstPageR)
+            folderReturn(rulesFolder, firstPageR);
+            hidePage(firstPageR);
         } else if (folderOpenContainer.children[3] === loreFolder) {
             folderReturn(loreFolder, firstPageL)
+            hidePage(firstPageL);
+        }
+    });
+
+    // PAGE BUTTON FUNCTION
+    nextPage.addEventListener("click", () => {
+        prevPage.style.pointerEvents = "none";
+        nextPage.style.pointerEvents = "none";
+        if (folderOpenContainer.children[3] === rulesFolder) {
+            nextPageFunc(firstPageR, rulesTempChildren)
+        } else if (folderOpenContainer.children[3] === loreFolder) {
+            nextPageFunc(firstPageL, loreTempChildren)
+        }
+    });
+
+    prevPage.addEventListener("click", () => {
+        prevPage.style.pointerEvents = "none";
+        nextPage.style.pointerEvents = "none";
+        if (folderOpenContainer.children[3] === rulesFolder) {
+            prevPageFunc(firstPageR, rulesTempChildren)
+        } else if (folderOpenContainer.children[3] === loreFolder) {
+            prevPageFunc(firstPageL, loreTempChildren)
         }
     });
 
@@ -102,6 +143,9 @@ async function folderOpen(folder, folderPage, transOrig, tempChildren) {
     initialAnim.commitStyles();
     initialAnim.cancel();
 
+    folder.children[0].classList.add("open");
+    nextPage.classList.add("show");
+    nextPage.style.pointerEvents = "all";
     
     const pageTemp = document.importNode(tempChildren[temp].content, true);
     folderPage.appendChild(pageTemp);
@@ -113,8 +157,6 @@ async function folderOpen(folder, folderPage, transOrig, tempChildren) {
     requestAnimationFrame(() => {
         page.classList.add("visible")
     })
-
-    folder.children[0].classList.add("open");
 }
 
 async function folderClose(folder, event, folderContIndex, rotation) {
@@ -154,7 +196,7 @@ async function folderClose(folder, event, folderContIndex, rotation) {
         returnAnim.commitStyles();
         returnAnim.cancel();
         folderOpened = false;
-        folderOpenContainer.classList.remove("open")
+        folderOpenContainer.classList.remove("open");
     } else if (event.animationName === "openFolder") {
         returnBtn.classList.remove("hide");
         returnBtn.classList.add("show");
@@ -170,17 +212,91 @@ function folderReturn(folder, folderPage) {
     });
 
     folderOpenContainer.classList.remove("opened");
-
-    const page = folderPage.lastElementChild;
-    page.classList.remove("visible");
-
-    page.addEventListener("transitionend", (event) => {
-        if (event.propertyName === "opacity") {
-            page.remove()
-        }
-    });
 }
 
+    // FOLDER PAGE FUNCTIONS
+    function nextPageFunc(folderPage, tempChildren) {
+        prevPage.classList.remove("hide");
+        prevPage.classList.add("show");
+
+        if (!(temp === tempChildren.length - 1)) {
+            temp += 1;
+
+            if (temp === tempChildren.length - 1) {
+                nextPage.classList.remove("show");
+                nextPage.classList.add("hide");
+                nextPage.style.pointerEvents = "none";
+            }
+        };
+
+        pageChange(folderPage, tempChildren);
+    }
+
+    function prevPageFunc(folderPage, tempChildren) {
+        nextPage.classList.remove("hide");
+        nextPage.classList.add("show");
+
+        if (!(temp === 0)) {
+            temp -= 1;
+
+            if (temp === 0) {
+                prevPage.classList.remove("show");
+                prevPage.classList.add("hide");
+            }
+        }
+
+        pageChange(folderPage, tempChildren);
+    }
+
+    function pageChange(folderPage, tempChildren) {
+        page = folderPage.lastElementChild;
+        page.classList.remove("visible");
+
+        page.addEventListener("transitionend", (event) => {
+            if (event.propertyName === "opacity") {
+                page.remove();
+
+                const pageTemp = document.importNode(tempChildren[temp].content, true);
+                folderPage.appendChild(pageTemp);   
+
+                
+                const newPage = folderPage.lastElementChild;
+
+                newPage.offsetHeight
+
+                requestAnimationFrame(() => {
+                    newPage.classList.add("visible")
+                });
+
+                newPage.addEventListener("transitionend", (event) => {
+                    if (event.propertyName === "opacity") {
+                        if (temp === 0) {
+                            nextPage.style.pointerEvents = "all";
+                            prevPage.style.pointerEvents = "none";
+                        } else if (temp === tempChildren.length -1) {
+                            prevPage.style.pointerEvents = "all";
+                            nextPage.style.pointerEvents = "none";
+                        } else {
+                            prevPage.style.pointerEvents = "all";
+                            nextPage.style.pointerEvents = "all";
+                        }
+                    }
+                });
+            };
+        });
+    };
+
+    function hidePage(folderPage) {
+        page = folderPage.lastElementChild;
+        page.classList.remove("visible");
+
+        page.addEventListener("transitionend", (event) => {
+            if (event.propertyName === "opacity") {
+                page.remove();
+                temp = 0
+            }
+        });
+    }
 
 // SCROLL ANIMATIONS
 const infoTextObserver = new IntersectionObserver((entry)=>{
