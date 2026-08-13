@@ -459,6 +459,97 @@ nav ul {
     text-align: center;
 }
 
+#HOLO-CONT {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-self: center;
+    width: 100%;
+    position: relative;
+}
+
+.faction-holo {
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    aspect-ratio: 1/1;
+    perspective: 45em;
+}
+
+.faction-img {
+    width: 90%;
+    aspect-ratio: 1/1;
+    transform-style: preserve-3d;
+    animation: rotate 5s infinite linear;
+}
+
+#FACT-IMG-2 {
+    animation-delay: 0.2s;
+}
+
+#FACT-IMG-3 {
+    animation-delay: 0.4s;
+}
+
+.faction-img:hover {
+    animation-play-state: paused;
+}
+
+
+.holo-base {
+    background-color: darkgrey;
+    width: 30%;
+    height: 100px;
+    bottom: 0;
+    justify-self: center;
+    position: absolute;
+    border-radius: 10rem;
+    transform: rotateX(80deg);
+    box-shadow: 0px 20px 25px 5px #000000;
+}
+
+.holo-tri-cont {
+    position: relative;
+    background-color: cyan;
+    width: 20px;
+    aspect-ratio: 1/1;
+    justify-self: center;
+}
+
+.holo-tri {
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    background: linear-gradient(
+        to bottom,
+        #10d3ff,
+        #2afbff00
+    );
+    clip-path: polygon(
+        50% 0%,
+        100% 100%,
+        0% 100%
+    );
+    transform-origin: top center;
+    top: -10px;
+    left: -11px;
+    z-index: -1;
+}
+
+.holo-tri:nth-child(1) { transform: rotate(-150deg); }
+.holo-tri:nth-child(2) { transform: rotate(150deg); }
+.holo-tri:nth-child(3) { transform: rotate(-170deg); }
+.holo-tri:nth-child(4) { transform: rotate(180deg); }
+.holo-tri:nth-child(5) { transform: rotate(-190deg); }
+.holo-tri:nth-child(6) { transform: rotate(200deg); }
+.holo-tri:nth-child(7) { transform: rotate(160deg); }
+.holo-tri:nth-child(8) { transform: rotate(-155deg); }
+.holo-tri:nth-child(9) { transform: rotate(155deg); }
+.holo-tri:nth-child(10) { transform: rotate(-175deg); }
+.holo-tri:nth-child(11) { transform: rotate(-185deg); }
+.holo-tri:nth-child(12) { transform: rotate(-195deg); }
+.holo-tri:nth-child(13) { transform: rotate(195deg); }
+
+
 /* ANIMATIONS */
 @keyframes flicker {
     0% { opacity: 0; }
@@ -494,5 +585,14 @@ nav ul {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
     }
 }
