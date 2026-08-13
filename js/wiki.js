@@ -13,100 +13,110 @@ const secondPageR = rulesFolder.children[1];
 const paperContainer = document.querySelector("#PAPER-CONTAINER");
 
 const tempCont = document.querySelector("#TEMPLATE-CONT");
-const tempChildren = Array.from(tempCont.content.children)
-let temp = 0
+const tempChildren = Array.from(tempCont.content.children);
+let temp = 0;
+
+let folderOpened = false;
 
 // FOLDER FUNCTIONALITY
 rulesFolder.addEventListener("click", async (event) => {
-    folderOpenContainer.style.pointerEvents = "all";
+    if (folderOpened === false) {
+        folderOpened = true
+        folderOpenContainer.style.pointerEvents = "all";
 
-    const firstR = rulesFolder.getBoundingClientRect();
-    folderOpenContainer.appendChild(rulesFolder);
-    rulesFolder.style.position = 'static';
-    const lastR = rulesFolder.getBoundingClientRect();
+        const firstR = rulesFolder.getBoundingClientRect();
+        folderOpenContainer.appendChild(rulesFolder);
+        rulesFolder.style.position = 'static';
+        const lastR = rulesFolder.getBoundingClientRect();
 
-    const deltaXR = firstR.left - lastR.left;
-    const deltaYR = firstR.top - lastR.top;
-    const deltaWR = firstR.width / lastR.width;
-    const deltaHR = firstR.height / lastR.height;
+        const deltaXR = firstR.left - lastR.left;
+        const deltaYR = firstR.top - lastR.top;
+        const deltaWR = firstR.width / lastR.width;
+        const deltaHR = firstR.height / lastR.height;
 
-    const initialAnim = rulesFolder.animate([{
-        transformOrigin: 'top left',
-        transform: `
-            translate(${deltaXR}px, ${deltaYR}px)
-            scale(${deltaWR}, ${deltaHR})
-        `
-    }, {
-        transformOrigin: 'top left',
-        transform:  `
-            translate(0, 0)
-            scale(1.1)
-        `,
-        rotate: '0deg'
-    }], {
-        duration: 1000,
-        easing: 'ease',
-    });
+        const initialAnim = rulesFolder.animate([{
+            transformOrigin: 'top left',
+            transform: `
+                translate(${deltaXR}px, ${deltaYR}px)
+                scale(${deltaWR}, ${deltaHR})
+            `
+        }, {
+            transformOrigin: 'top left',
+            transform:  `
+                translate(0, 0)
+                scale(1.1)
+            `,
+            rotate: '0deg'
+        }], {
+            duration: 1000,
+            easing: 'ease',
+        });
 
-    folderOpenContainer.classList.add("opened");
+        folderOpenContainer.classList.add("opened");
+        folderOpenContainer.classList.add("open")
 
-    await initialAnim.finished;
-    initialAnim.commitStyles();
-    initialAnim.cancel();
+        await initialAnim.finished;
+        initialAnim.commitStyles();
+        initialAnim.cancel();
 
-    
-    const pageTemp = document.importNode(tempChildren[temp].content, true);
-    firstPageR.appendChild(pageTemp);
+        
+        const pageTemp = document.importNode(tempChildren[temp].content, true);
+        firstPageR.appendChild(pageTemp);
 
-    const page = firstPageR.lastElementChild;
+        const page = firstPageR.lastElementChild;
 
-    page.offsetHeight
+        page.offsetHeight
 
-    requestAnimationFrame(() => {
-        page.classList.add("visible")
-    })
+        requestAnimationFrame(() => {
+            page.classList.add("visible")
+        })
 
-    rulesFolder.children[0].classList.add("open");
+        rulesFolder.children[0].classList.add("open");
+    }
 });
 
 loreFolder.addEventListener("click", async (event) => {
-    folderOpenContainer.style.pointerEvents = "all";
-    
-    const firstR = loreFolder.getBoundingClientRect();
-    folderOpenContainer.appendChild(loreFolder);
-    loreFolder.style.position = 'static';
-    const lastR = loreFolder.getBoundingClientRect();
+    if (folderOpened === false) {
+        folderOpened = true
+        folderOpenContainer.style.pointerEvents = "all";
+        
+        const firstR = loreFolder.getBoundingClientRect();
+        folderOpenContainer.appendChild(loreFolder);
+        loreFolder.style.position = 'static';
+        const lastR = loreFolder.getBoundingClientRect();
 
-    const deltaXR = firstR.left - lastR.left;
-    const deltaYR = firstR.top - lastR.top;
-    const deltaWR = firstR.width / lastR.width;
-    const deltaHR = firstR.height / lastR.height;
+        const deltaXR = firstR.left - lastR.left;
+        const deltaYR = firstR.top - lastR.top;
+        const deltaWR = firstR.width / lastR.width;
+        const deltaHR = firstR.height / lastR.height;
 
-    const initialAnim = loreFolder.animate([{
-        transformOrigin: 'center right',
-        transform: `
-            translate(${deltaXR}px, ${deltaYR}px)
-            scale(${deltaWR}, ${deltaHR})
-        `
-    }, {
-        transformOrigin: 'top left',
-        transform:  `
-            translate(0, 0)
-            scale(1.1)
-        `,
-        rotate: '0deg'
-    }], {
-        duration: 1000,
-        easing: 'ease',
-    });
+        const initialAnim = loreFolder.animate([{
+            transformOrigin: 'center right',
+            transform: `
+                translate(${deltaXR}px, ${deltaYR}px)
+                scale(${deltaWR}, ${deltaHR})
+            `
+        }, {
+            transformOrigin: 'top left',
+            transform:  `
+                translate(0, 0)
+                scale(1.1)
+            `,
+            rotate: '0deg'
+        }], {
+            duration: 1000,
+            easing: 'ease',
+        });
 
-    folderOpenContainer.classList.add("opened");
+        folderOpenContainer.classList.add("opened");
+        folderOpenContainer.classList.add("open")
 
-    await initialAnim.finished;
-    initialAnim.commitStyles();
-    initialAnim.cancel();
+        await initialAnim.finished;
+        initialAnim.commitStyles();
+        initialAnim.cancel();
 
-    loreFolder.children[0].classList.add("open");
+        loreFolder.children[0].classList.add("open");
+    }
 });
 
 returnBtn.addEventListener("click", (event) => {
@@ -182,6 +192,8 @@ rulesFolder.children[0].addEventListener("animationend", async (event) => {
         rulesFolder.style.pointerEvents = "all";
         returnAnim.commitStyles();
         returnAnim.cancel();
+        folderOpened = false;
+        folderOpenContainer.classList.remove("open")
     } else if (event.animationName === "openFolder") {
         returnBtn.classList.remove("hide");
         returnBtn.classList.add("show");
@@ -225,6 +237,8 @@ loreFolder.children[0].addEventListener("animationend", async (event) => {
         loreFolder.style.pointerEvents = "all";
         returnAnim.commitStyles();
         returnAnim.cancel();
+        folderOpened = false;
+        folderOpenContainer.classList.remove("open")
     } else if (event.animationName === "openFolder") {
         returnBtn.classList.remove("hide");
         returnBtn.classList.add("show");
