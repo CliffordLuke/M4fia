@@ -1,4 +1,4 @@
-// CONSTANTS
+// VARIABLES
 const infoText = document.querySelector("#M4FIA-INFORMATION-TITLE");
 const folders = document.querySelectorAll(".folder");
 
@@ -8,22 +8,118 @@ const rulesFolder = document.querySelector(".rules");
 const loreFolder = document.querySelector(".lore");
 const returnBtn = document.querySelector("#FOLDER-OPEN-RETURN-BTN");
 
+const firstPageR = rulesFolder.children[2];
+const firstPageL = loreFolder.children[2];
+const paperContainer = document.querySelector("#PAPER-CONTAINER");
+
+const rulesTempCont = document.querySelector("#RULES-TEMPLATE-CONT");
+const loreTempCont = document.querySelector("#LORE-TEMPLATE-CONT");
+const rulesTempChildren = Array.from(rulesTempCont.content.children);
+const loreTempChildren = Array.from(loreTempCont.content.children);
+const nextPage = document.querySelector("#NEXT-PAGE");
+const prevPage = document.querySelector("#PREV-PAGE");
+let temp = 0;
+
+let folderOpened = false;
+
 // FOLDER FUNCTIONALITY
-rulesFolder.addEventListener("click", async (event) => {
+    //FOLDER OPEN
+    rulesFolder.addEventListener("click", () => {
+        if (folderOpened === false) {
+            folderOpened = true
+            folderOpen(rulesFolder, firstPageR, 'top left', rulesTempChildren)
+        }
+    });
+
+    loreFolder.addEventListener("click", () => {
+        if (folderOpened === false) {
+            folderOpened = true
+            folderOpen(loreFolder, firstPageL, 'center right', loreTempChildren)
+        }
+    });
+
+    //FOLDER CLOSE
+    rulesFolder.children[0].addEventListener("animationend", (event) => {
+        folderClose(rulesFolder, event, 0, '-3deg', firstPageR)
+    });
+
+    loreFolder.children[0].addEventListener("animationend", (event) => {
+        folderClose(loreFolder, event, 1, '5deg', firstPageL)
+    });
+
+    //RETURN
+    returnBtn.addEventListener("click", () => {
+        returnBtn.classList.remove("show");
+
+        requestAnimationFrame(() => {
+            returnBtn.classList.add("hide");
+        });
+
+        returnBtn.style.pointerEvents = "none";
+
+        prevPage.style.pointerEvents = "none";
+        nextPage.style.pointerEvents = "none";
+        
+        if (temp === 0) {
+            nextPage.classList.add("hide");
+            nextPage.classList.remove("show");
+        } else if ((temp === loreTempChildren.length - 1) || (temp === rulesTempChildren.length - 1)) {
+            prevPage.classList.add("hide");
+            prevPage.classList.remove("show");
+        } else {
+            nextPage.classList.add("hide");
+            nextPage.classList.remove("show");
+            prevPage.classList.add("hide");
+            prevPage.classList.remove("show");
+        }
+
+        if (folderOpenContainer.children[3] === rulesFolder) {
+            folderReturn(rulesFolder, firstPageR);
+            hidePage(firstPageR);
+        } else if (folderOpenContainer.children[3] === loreFolder) {
+            folderReturn(loreFolder, firstPageL)
+            hidePage(firstPageL);
+        }
+    });
+
+    // PAGE BUTTON FUNCTION
+    nextPage.addEventListener("click", () => {
+        prevPage.style.pointerEvents = "none";
+        nextPage.style.pointerEvents = "none";
+        if (folderOpenContainer.children[3] === rulesFolder) {
+            nextPageFunc(firstPageR, rulesTempChildren)
+        } else if (folderOpenContainer.children[3] === loreFolder) {
+            nextPageFunc(firstPageL, loreTempChildren)
+        }
+    });
+
+    prevPage.addEventListener("click", () => {
+        prevPage.style.pointerEvents = "none";
+        nextPage.style.pointerEvents = "none";
+        if (folderOpenContainer.children[3] === rulesFolder) {
+            prevPageFunc(firstPageR, rulesTempChildren)
+        } else if (folderOpenContainer.children[3] === loreFolder) {
+            prevPageFunc(firstPageL, loreTempChildren)
+        }
+    });
+
+
+// FOLDER FUNCTIONS
+async function folderOpen(folder, folderPage, transOrig, tempChildren) {
     folderOpenContainer.style.pointerEvents = "all";
 
-    const firstR = rulesFolder.getBoundingClientRect();
-    folderOpenContainer.appendChild(rulesFolder);
-    rulesFolder.style.position = 'static';
-    const lastR = rulesFolder.getBoundingClientRect();
+    const firstR = folder.getBoundingClientRect();
+    folderOpenContainer.appendChild(folder);
+    folder.style.position = 'static';
+    const lastR = folder.getBoundingClientRect();
 
     const deltaXR = firstR.left - lastR.left;
     const deltaYR = firstR.top - lastR.top;
     const deltaWR = firstR.width / lastR.width;
     const deltaHR = firstR.height / lastR.height;
 
-    const initialAnim = rulesFolder.animate([{
-        transformOrigin: 'top left',
+    const initialAnim = folder.animate([{
+        transformOrigin: transOrig,
         transform: `
             translate(${deltaXR}px, ${deltaYR}px)
             scale(${deltaWR}, ${deltaHR})
@@ -40,169 +136,42 @@ rulesFolder.addEventListener("click", async (event) => {
         easing: 'ease',
     });
 
-    folderOpenContainer.animate([
-        {backgroundColor: 'rgba(0, 0, 0, 0)'}, 
-        {backgroundColor: 'rgba(0, 0, 0, 0.7)'}
-    ],{
-        duration: 1000,
-        easing: 'ease',
-        fill: 'forwards'
-    })
-
-    rulesFolder.style.pointerEvents = 'none';
+    folderOpenContainer.classList.add("opened");
+    folderOpenContainer.classList.add("open")
 
     await initialAnim.finished;
     initialAnim.commitStyles();
     initialAnim.cancel();
 
-    rulesFolder.children[0].classList.add("open");
-});
-
-loreFolder.addEventListener("click", async (event) => {
-    folderOpenContainer.style.pointerEvents = "all";
+    folder.children[0].classList.add("open");
+    nextPage.classList.add("show");
+    nextPage.style.pointerEvents = "all";
     
-    const firstR = loreFolder.getBoundingClientRect();
-    folderOpenContainer.appendChild(loreFolder);
-    loreFolder.style.position = 'static';
-    const lastR = loreFolder.getBoundingClientRect();
+    const pageTemp = document.importNode(tempChildren[temp].content, true);
+    folderPage.appendChild(pageTemp);
 
-    const deltaXR = firstR.left - lastR.left;
-    const deltaYR = firstR.top - lastR.top;
-    const deltaWR = firstR.width / lastR.width;
-    const deltaHR = firstR.height / lastR.height;
+    const page = folderPage.lastElementChild;
 
-    const initialAnim = loreFolder.animate([{
-        transformOrigin: 'center right',
-        transform: `
-            translate(${deltaXR}px, ${deltaYR}px)
-            scale(${deltaWR}, ${deltaHR})
-        `
-    }, {
-        transformOrigin: 'top left',
-        transform:  `
-            translate(0, 0)
-            scale(1.1)
-        `,
-        rotate: '0deg'
-    }], {
-        duration: 1000,
-        easing: 'ease',
-    });
+    page.offsetHeight
 
-    folderOpenContainer.animate([
-        {backgroundColor: 'rgba(0, 0, 0, 0)'}, 
-        {backgroundColor: 'rgba(0, 0, 0, 0.7)'}
-    ],{
-        duration: 1000,
-        easing: 'ease',
-        fill: 'forwards'
-    })
-
-    loreFolder.style.pointerEvents = 'none';
-
-    await initialAnim.finished;
-    initialAnim.commitStyles();
-    initialAnim.cancel();
-
-    loreFolder.children[0].classList.add("open");
-});
-
-returnBtn.addEventListener("click", (event) => {
-    returnBtn.classList.remove("show");
     requestAnimationFrame(() => {
-        returnBtn.classList.add("hide");
-     });
-    returnBtn.style.pointerEvents = "none";
+        page.classList.add("visible")
+    })
+}
 
-    if (folderOpenContainer.children[1] === rulesFolder) {
-        rulesFolder.children[0].classList.remove("open");
-
-        requestAnimationFrame(() => {
-            rulesFolder.children[0].classList.add("close");
-        });
-
-        folderOpenContainer.animate([
-            {backgroundColor: 'rgba(0, 0, 0, 0.7)'}, 
-            {backgroundColor: 'rgba(0, 0, 0, 0)'}
-        ],{
-            duration: 1000,
-            easing: 'ease',
-            fill: 'forwards'
-        });
-    } else if (folderOpenContainer.children[1] === loreFolder) {
-        loreFolder.children[0].classList.remove("open");
-
-        requestAnimationFrame(() => {
-            loreFolder.children[0].classList.add("close");
-        });
-
-        folderOpenContainer.animate([
-            {backgroundColor: 'rgba(0, 0, 0, 0.7)'}, 
-            {backgroundColor: 'rgba(0, 0, 0, 0)'}
-        ],{
-            duration: 1000,
-            easing: 'ease',
-            fill: 'forwards'
-        });
-    }
-});
-
-rulesFolder.children[0].addEventListener("animationend", async (event) => {
+async function folderClose(folder, event, folderContIndex, rotation) {
     if (event.animationName === "closeFolder") {
-        rulesFolder.children[0].classList.remove("close");
+        folder.children[0].classList.remove("close");
 
-        const firstR = rulesFolder.getBoundingClientRect();
-        folderContainer.children[0].appendChild(rulesFolder);
-        rulesFolder.style.position = "relative";
-        const lastR = rulesFolder.getBoundingClientRect();
+        const firstR = folder.getBoundingClientRect();
+        folderContainer.children[folderContIndex].appendChild(folder);
+        folder.style.position = "relative";
+        const lastR = folder.getBoundingClientRect();
 
         const deltaX = firstR.left - lastR.left;
         const deltaY = firstR.top - lastR.top;
 
-        const returnAnim = rulesFolder.animate([{
-            transformOrigin: 'top left',
-            transform: `
-                translate(${deltaX}px, ${deltaY}px)
-                scale(1.1)
-            `
-        }, {
-            transformOrigin: 'top left',
-            transform:  `
-                translate(0, 0)
-                scale(1)
-            `,
-            rotate: '-3deg'
-        }], {
-            duration: 1000,
-            easing: 'ease',
-        });
-
-        await returnAnim.finished;
-        
-        folderOpenContainer.style.pointerEvents = "none";
-        rulesFolder.style.pointerEvents = "all";
-        returnAnim.commitStyles();
-        returnAnim.cancel();
-    } else if (event.animationName === "openFolder") {
-        returnBtn.classList.remove("hide");
-        returnBtn.classList.add("show");
-        returnBtn.style.pointerEvents = "all"
-    };
-});
-
-loreFolder.children[0].addEventListener("animationend", async (event) => {
-    if (event.animationName === "closeFolder") {
-        loreFolder.children[0].classList.remove("close");
-
-        const firstL = loreFolder.getBoundingClientRect();
-        folderContainer.children[1].appendChild(loreFolder);
-        loreFolder.style.position = "relative";
-        const lastL = loreFolder.getBoundingClientRect();
-
-        const deltaX = firstL.left - lastL.left;
-        const deltaY = firstL.top - lastL.top;
-
-        const returnAnim = loreFolder.animate([{
+        const returnAnim = folder.animate([{
             transformOrigin: 'top left',
             transform: `
                 translate(${deltaX}px, ${deltaY}px)
@@ -214,7 +183,7 @@ loreFolder.children[0].addEventListener("animationend", async (event) => {
                 translate(0, 0)
                 scale(1)
             `,
-            rotate: '5deg'
+            rotate: rotation
         }], {
             duration: 1000,
             easing: 'ease',
@@ -223,15 +192,111 @@ loreFolder.children[0].addEventListener("animationend", async (event) => {
         await returnAnim.finished;
         
         folderOpenContainer.style.pointerEvents = "none";
-        loreFolder.style.pointerEvents = "all";
+        folder.style.pointerEvents = "all";
         returnAnim.commitStyles();
         returnAnim.cancel();
+        folderOpened = false;
+        folderOpenContainer.classList.remove("open");
     } else if (event.animationName === "openFolder") {
         returnBtn.classList.remove("hide");
         returnBtn.classList.add("show");
-        returnBtn.style.pointerEvents = "all"
+        returnBtn.style.pointerEvents = "all";
     };
-});
+}
+
+function folderReturn(folder, folderPage) {
+    folder.children[0].classList.remove("open");
+
+    requestAnimationFrame(() => {
+        folder.children[0].classList.add("close");
+    });
+
+    folderOpenContainer.classList.remove("opened");
+}
+
+    // FOLDER PAGE FUNCTIONS
+    function nextPageFunc(folderPage, tempChildren) {
+        prevPage.classList.remove("hide");
+        prevPage.classList.add("show");
+
+        if (!(temp === tempChildren.length - 1)) {
+            temp += 1;
+
+            if (temp === tempChildren.length - 1) {
+                nextPage.classList.remove("show");
+                nextPage.classList.add("hide");
+                nextPage.style.pointerEvents = "none";
+            }
+        };
+
+        pageChange(folderPage, tempChildren);
+    }
+
+    function prevPageFunc(folderPage, tempChildren) {
+        nextPage.classList.remove("hide");
+        nextPage.classList.add("show");
+
+        if (!(temp === 0)) {
+            temp -= 1;
+
+            if (temp === 0) {
+                prevPage.classList.remove("show");
+                prevPage.classList.add("hide");
+            }
+        }
+
+        pageChange(folderPage, tempChildren);
+    }
+
+    function pageChange(folderPage, tempChildren) {
+        page = folderPage.lastElementChild;
+        page.classList.remove("visible");
+
+        page.addEventListener("transitionend", (event) => {
+            if (event.propertyName === "opacity") {
+                page.remove();
+
+                const pageTemp = document.importNode(tempChildren[temp].content, true);
+                folderPage.appendChild(pageTemp);   
+
+                
+                const newPage = folderPage.lastElementChild;
+
+                newPage.offsetHeight
+
+                requestAnimationFrame(() => {
+                    newPage.classList.add("visible")
+                });
+
+                newPage.addEventListener("transitionend", (event) => {
+                    if (event.propertyName === "opacity") {
+                        if (temp === 0) {
+                            nextPage.style.pointerEvents = "all";
+                            prevPage.style.pointerEvents = "none";
+                        } else if (temp === tempChildren.length -1) {
+                            prevPage.style.pointerEvents = "all";
+                            nextPage.style.pointerEvents = "none";
+                        } else {
+                            prevPage.style.pointerEvents = "all";
+                            nextPage.style.pointerEvents = "all";
+                        }
+                    }
+                });
+            };
+        });
+    };
+
+    function hidePage(folderPage) {
+        page = folderPage.lastElementChild;
+        page.classList.remove("visible");
+
+        page.addEventListener("transitionend", (event) => {
+            if (event.propertyName === "opacity") {
+                page.remove();
+                temp = 0
+            }
+        });
+    }
 
 // SCROLL ANIMATIONS
 const infoTextObserver = new IntersectionObserver((entry)=>{
