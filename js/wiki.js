@@ -25,14 +25,14 @@ let folderOpened = false;
     rulesFolder.addEventListener("click", () => {
         if (folderOpened === false) {
             folderOpened = true
-            folderOpen(rulesFolder, firstPageR, rulesTempChildren)
+            folderOpen(rulesFolder, firstPageR, 'top left', rulesTempChildren)
         }
     });
 
     loreFolder.addEventListener("click", () => {
         if (folderOpened === false) {
             folderOpened = true
-            folderOpen(loreFolder, firstPageL, loreTempChildren)
+            folderOpen(loreFolder, firstPageL, 'center right', loreTempChildren)
         }
     });
 
@@ -64,7 +64,7 @@ let folderOpened = false;
 
 
 // FOLDER FUNCTIONS
-async function folderOpen(folder, folderPage, tempChildren) {
+async function folderOpen(folder, folderPage, transOrig, tempChildren) {
     folderOpenContainer.style.pointerEvents = "all";
 
     const firstR = folder.getBoundingClientRect();
@@ -78,7 +78,7 @@ async function folderOpen(folder, folderPage, tempChildren) {
     const deltaHR = firstR.height / lastR.height;
 
     const initialAnim = folder.animate([{
-        transformOrigin: 'top left',
+        transformOrigin: transOrig,
         transform: `
             translate(${deltaXR}px, ${deltaYR}px)
             scale(${deltaWR}, ${deltaHR})
