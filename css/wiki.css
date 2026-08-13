@@ -459,53 +459,6 @@ nav ul {
     text-align: center;
 }
 
-#M4FIA-ROLES-CATALOG .card {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(106, 106, 106);
-    padding: 10px;
-    height: 90%;
-}
-
-.card:hover {
-    box-shadow: 0px 0px 20px white;
-}
-
-#M4FIA-ROLES-CATALOG .card.image {
-    pointer-events: none;
-    background-color: rgb(255, 0, 0);
-    width: 90%;
-    margin: auto;
-}
-
-#M4FIA-ROLES-CATALOG .card.title {
-    pointer-events: none;
-    background-color: rgb(195, 0, 255);
-    width: 90%;
-    margin: auto;
-    font-size: 25px;
-}
-
-#M4FIA-ROLES-CATALOG .card.ability-title {
-    pointer-events: none;
-    background-color: rgb(0, 132, 255);
-    width: 90%;
-    margin: auto;
-}
-
-#M4FIA-ROLES-CATALOG .card.ability-description {
-    pointer-events: none;
-    background-color: rgb(156, 143, 5);
-    width: 90%;
-    margin: auto;
-}
-
-#remnants, #syndicate, #null {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 15px;
-}
-
 /* ANIMATIONS */
 @keyframes flicker {
     0% { opacity: 0; }
