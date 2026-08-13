@@ -366,7 +366,7 @@ main {
 
 
 
-.me-player-card {
+#MePlayerCard {
   width: 300px;
   aspect-ratio: 5/3;
   padding: 1rem;
@@ -382,7 +382,7 @@ main {
 
 
 
-.me-player-name {
+#MePlayerName {
   width: 100%;
   background: transparent;
   border: none;
@@ -393,13 +393,13 @@ main {
   font-weight: bold;
   color: black;
 }
-.me-player-name:focus {
+#MePlayerName:focus {
   outline: 1px solid #0f0f0f;
 }
 
 
 
-.me-player-status {
+#MePlayerStatus {
   width: 50%;
   height: 20%;
   background: rgba(100, 100, 100, 0.4);
@@ -412,7 +412,7 @@ main {
 
 
 
-.me-player-role {
+#MePlayerRole {
   width: 140px;
   padding: 0.5rem;
   background: rgba(100, 100, 100, 0.4);
@@ -420,7 +420,7 @@ main {
   color: black;
 }
 
-.me-role-selection {
+#MeRoleSelection {
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -428,7 +428,7 @@ main {
   align-items: center;
 }
 
-.me-role-icon {
+#MeRoleIcon {
   width: 50px;
   height: 50px;
 }

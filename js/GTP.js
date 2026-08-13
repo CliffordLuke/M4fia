@@ -17,7 +17,7 @@ const PlayPlus = document.getElementById("PlayPlus");
 PlayMinus.addEventListener("click", function() {
   let count = Number(playerInput.value);
 
-  if (count > 6) {
+  if (count > 4) {
     playerInput.value = count - 1;
   }
 });
@@ -181,49 +181,32 @@ confirmButton.addEventListener("click", function() {
 
     PlayerList.appendChild(playerCard);
   }
+});
+
+
 
 
   /* 1 Own Player Card */
-  const mePlayerCard = document.createElement("div");
-
-  mePlayerCard.classList.add("me-player-card");
-
-
+  const mePlayerCard = document.getElementById("MePlayerCard");
 
   /* 2 Own Player Name */
-  const mePlayerName = document.createElement("input");
-
-  mePlayerName.classList.add("me-player-name");
-  mePlayerName.value = "Me";
-
-
+  const mePlayerName = document.getElementById("MePlayerName");
 
   /* 3 Own Player Status */
-  const mePlayerStatus = document.createElement("button");
-
-  mePlayerStatus.classList.add("me-player-status");
-  mePlayerStatus.textContent = "ALIVE";
+  const mePlayerStatus = document.getElementById("MePlayerStatus");
 
   mePlayerStatus.addEventListener("click", function() {
-    if (mePlayerStatus.textContent == "ALIVE") {
+    if (mePlayerStatus.textContent === "ALIVE") {
       mePlayerStatus.textContent = "DEAD";
     } else {
       mePlayerStatus.textContent = "ALIVE";
     }
   });
 
-
-
   /* 4 Own Player Role */
-  const meRoleSelection = document.createElement("div");
-  meRoleSelection.classList.add("me-role-selection");
-
-  const meRoleIcon = document.createElement("img");
-  meRoleIcon.classList.add("me-role-icon");
-  meRoleIcon.src = "/images/RoleIcons/Unknown.png";
-
-  const mePlayerRole = document.createElement("Select");
-  mePlayerRole.classList.add("me-player-role");
+  const meRoleSelection = document.getElementById("MeRoleSelection");
+  const meRoleIcon = document.getElementById("MeRoleIcon");
+  const mePlayerRole = document.getElementById("MePlayerRole");
 
   for (let role of roles) {
     const meRoleOption = document.createElement("option");
@@ -238,19 +221,8 @@ confirmButton.addEventListener("click", function() {
     meRoleIcon.src = roleIcons[selectedRole];
   });
 
-  meRoleSelection.appendChild(meRoleIcon);
-  meRoleSelection.appendChild(mePlayerRole);
 
 
-
-  /* Heiracrchy */
-  mePlayerCard.appendChild(mePlayerName);
-  mePlayerCard.appendChild(mePlayerStatus);
-  mePlayerCard.appendChild(meRoleSelection);
-
-  MePlayerList.appendChild(mePlayerCard);
-
-});
 
 
 
