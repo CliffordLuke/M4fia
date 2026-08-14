@@ -1,3 +1,7 @@
+:root { 
+    interpolate-size: allow-keywords; 
+}
+
 body {
     background: rgb(19, 19, 19);
     background-size: cover;
@@ -468,11 +472,27 @@ nav ul {
 }
 
 .faction-holo {
+    all: unset;
+    display: block;
     width: 100%;
     justify-self: center;
     align-self: center;
     aspect-ratio: 1/1;
     perspective: 45em;
+    position: relative;
+}
+
+.faction-holo:hover {
+    cursor: pointer
+}
+
+.faction-holo-link {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .faction-img {
@@ -526,7 +546,7 @@ nav ul {
     aspect-ratio: 1/1;
     justify-self: center;
     align-self: center;
-    transform: translateY(-20px);
+    transform: translateY(-30px);
     border-radius: 100rem;
     opacity: 0;
 }
@@ -628,6 +648,51 @@ nav ul {
 
 .holo-tri-cont:has(.holo-tri.flicker) {
     animation: flicker 2s forwards;
+}
+
+/* CARDS CONTAINERS */
+.card-cont {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+.inner-card-cont {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    background-color: rgb(221, 221, 221);
+}
+
+.role-card {
+    width: 100%;
+    aspect-ratio: sqrt(2)/1;
+}
+
+#REMNANTS-RADIO,
+#SYNDICATE-RADIO,
+#NULL-RADIO {
+    opacity: 0;
+    position: absolute
+}
+
+#REMNANTS-CARDS,
+#SYNDICATE-CARDS,
+#NULL-CARDS {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+
+#M4FIA-ROLES-CATALOG:has(#REMNANTS-RADIO:checked) > #REMNANTS-CARDS,
+#M4FIA-ROLES-CATALOG:has(#SYNDICATE-RADIO:checked) > #SYNDICATE-CARDS,
+#M4FIA-ROLES-CATALOG:has(#NULL-RADIO:checked) > #NULL-CARDS {
+    display: flex;
+    max-height: fit-content;
+    opacity: 1;
+    padding: 1rem;
 }
 
 
