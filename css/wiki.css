@@ -454,6 +454,7 @@ nav ul {
 /* CARD CATALOG STYLE */
 #M4FIA-ROLES-CATALOG {
     background-color: rgb(43, 43, 43);
+    position: relative;
     border-radius: 10px;
     width: 95vw;
     padding: 10px;
@@ -461,11 +462,16 @@ nav ul {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    transition: all 0.5s ease-in-out;
 }
+
+#M4FIA-ROLES-CATALOG:has(#REMNANTS-CARDS.opened) {  border: 5px #10d3ff dashed; background-color: rgb(31, 64, 71); box-shadow: 0px 0px 29px 7px #10d3ff;}
+#M4FIA-ROLES-CATALOG:has(#SYNDICATE-CARDS.opened) {  border: 5px red dashed; background-color: rgb(89, 46, 46); box-shadow: 0px 0px 29px 7px red;}
+#M4FIA-ROLES-CATALOG:has(#NULL-CARDS.opened) {  border: 5px white dashed; background-color: rgb(50, 50, 50); box-shadow: 0px 0px 29px 7px white;}
 
 #HOLO-CONT {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     justify-self: center;
     width: 100%;
     position: relative;
@@ -636,6 +642,7 @@ nav ul {
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 .card-cont h3 {
@@ -646,7 +653,6 @@ nav ul {
     display: flex;
     height: 70%;
     width: 100%;
-    overflow-x: clip;
     scrollbar-width: none;
 }
 
@@ -678,21 +684,34 @@ nav ul {
     scroll-behavior: smooth;
 }
 
-#NULL-CARDS .carousel {
-    animation: spin 15s infinite linear;
+#NULL-CARDS .inner-card-cont {
+    animation: spin 19s infinite linear;
 }
 
-#SYNDICATE-CARDS .carousel {
-    animation: spin 25s infinite linear;
+#SYNDICATE-CARDS .inner-card-cont {
+    animation: spin 23s infinite linear;
 }
 
-#REMNANTS-CARDS .carousel {
-    animation: spin 40s infinite linear;
+#REMNANTS-CARDS .inner-card-cont {
+    animation: spin 23s infinite linear;
 }
 
 .card {
     position: relative;
     width: 30vw;
+    transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 19px 4px #000000;
+    z-index: 300;
+}
+
+#NULL-CARDS:has(.card:hover) .inner-card-cont,
+#SYNDICATE-CARDS:has(.card:hover) .inner-card-cont,
+#REMNANTS-CARDS:has(.card:hover) .inner-card-cont {
+    animation-play-state: paused;
 }
 
 #NULL-GROUP .card-overlay {
@@ -724,14 +743,72 @@ nav ul {
     );
 }
 
-#NULL-GROUP .card-overlay h4, 
-#NULL-GROUP .card-overlay p {
+#REMNANTS-GROUP .card-overlay {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to top, 
+        rgb(12, 170, 255) 3%, 
+        rgba(12, 170, 255, 0.9) 5%,
+        rgba(12, 170, 255, 0.8) 10%,
+        rgba(12, 170, 255, 0.7) 15%,
+        rgba(12, 170, 255, 0.6) 20%,
+        rgba(12, 170, 255, 0.5) 25%,
+        rgba(12, 170, 255, 0.4) 30%,
+        rgba(12, 170, 255, 0.3) 35%,
+        rgba(12, 170, 255, 0.2) 40%,
+        rgba(12, 170, 255, 0.1) 50%,
+        rgba(12, 170, 255, 0) 60%
+    );
+}
+
+#SYNDICATE-GROUP .card-overlay {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to top, 
+        rgb(255, 0, 0) 3%, 
+        rgba(255, 0, 0, 0.9) 5%,
+        rgba(255, 0, 0, 0.8) 10%,
+        rgba(255, 0, 0, 0.7) 15%,
+        rgba(255, 0, 0, 0.6) 20%,
+        rgba(255, 0, 0, 0.5) 25%,
+        rgba(255, 0, 0, 0.4) 30%,
+        rgba(255, 0, 0, 0.3) 35%,
+        rgba(255, 0, 0, 0.2) 40%,
+        rgba(255, 0, 0, 0.1) 50%,
+        rgba(255, 0, 0, 0) 60%
+    );
+}
+
+.card-overlay h4, 
+.card-overlay p {
     margin: 0;
     text-align: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#NULL-GROUP .card-overlay h4 {
+.card-overlay h4 {
     font-size: 2rem
 }
 
