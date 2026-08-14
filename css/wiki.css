@@ -617,38 +617,17 @@ nav ul {
 .faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
 
 /* HOLO SCROLL ANIMATIONS */
-.faction-holo:nth-child(1) .faction-img.popup {
-    transition-delay: 0.2s;
-}
+.faction-holo:nth-child(1) .faction-img.popup { transition-delay: 0.2s; }
+.faction-holo:nth-child(2) .faction-img.popup { transition-delay: 0.5s; }
+.faction-holo:nth-child(3) .faction-img.popup { transition-delay: 0.8s; }
 
-.faction-holo:nth-child(2) .faction-img.popup {
-    transition-delay: 0.5s;
-}
+.faction-img.popup { opacity: 1; }
 
-.faction-holo:nth-child(3) .faction-img.popup {
-    transition-delay: 0.8s;
-}
+.faction-holo:nth-child(1) .holo-tri-cont:has(.holo-tri.flicker) { animation-delay: 0s; }
+.faction-holo:nth-child(2) .holo-tri-cont:has(.holo-tri.flicker) { animation-delay: 0.3s; }
+.faction-holo:nth-child(3) .holo-tri-cont:has(.holo-tri.flicker) { animation-delay: 0.6s; }
 
-.faction-img.popup {
-    opacity: 1;
-}
-
-
-.faction-holo:nth-child(1) .holo-tri-cont:has(.holo-tri.flicker) {
-    animation-delay: 0s;
-}
-
-.faction-holo:nth-child(2) .holo-tri-cont:has(.holo-tri.flicker) {
-    animation-delay: 0.3s;
-}
-
-.faction-holo:nth-child(3) .holo-tri-cont:has(.holo-tri.flicker) {
-    animation-delay: 0.6s;
-}
-
-.holo-tri-cont:has(.holo-tri.flicker) {
-    animation: flicker 2s forwards;
-}
+.holo-tri-cont:has(.holo-tri.flicker) { animation: flicker 2s forwards; }
 
 /* CARDS CONTAINERS */
 .card-cont {
@@ -671,28 +650,18 @@ nav ul {
     aspect-ratio: sqrt(2)/1;
 }
 
-#REMNANTS-RADIO,
-#SYNDICATE-RADIO,
-#NULL-RADIO {
-    opacity: 0;
-    position: absolute
-}
-
 #REMNANTS-CARDS,
 #SYNDICATE-CARDS,
 #NULL-CARDS {
     max-height: 0;
     overflow: hidden;
-    transition: all 1s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
 }
 
-#M4FIA-ROLES-CATALOG:has(#REMNANTS-RADIO:checked) > #REMNANTS-CARDS,
-#M4FIA-ROLES-CATALOG:has(#SYNDICATE-RADIO:checked) > #SYNDICATE-CARDS,
-#M4FIA-ROLES-CATALOG:has(#NULL-RADIO:checked) > #NULL-CARDS {
-    display: flex;
+#REMNANTS-CARDS.opened,
+#SYNDICATE-CARDS.opened,
+#NULL-CARDS.opened {
     max-height: fit-content;
-    opacity: 1;
-    padding: 1rem;
 }
 
 

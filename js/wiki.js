@@ -22,6 +22,13 @@ const nextPage = document.querySelector("#NEXT-PAGE");
 const prevPage = document.querySelector("#PREV-PAGE");
 let temp = 0;
 
+const remnantsCards = document.querySelector("#REMNANTS-CARDS");
+const syndicateCards = document.querySelector("#SYNDICATE-CARDS");
+const nullCards = document.querySelector("#NULL-CARDS");
+const remHolo = document.querySelector("#REMNANTS-HOLO");
+const synHolo = document.querySelector("#SYNDICATE-HOLO");
+const nullHolo = document.querySelector("#NULL-HOLO");
+
 let folderOpened = false;
 
 // FOLDER FUNCTIONALITY
@@ -159,7 +166,7 @@ async function folderOpen(folder, folderPage, transOrig, tempChildren) {
     requestAnimationFrame(() => {
         page.classList.add("visible")
     })
-}
+};
 
 async function folderClose(folder, event, folderContIndex, rotation) {
     if (event.animationName === "closeFolder") {
@@ -204,7 +211,7 @@ async function folderClose(folder, event, folderContIndex, rotation) {
         returnBtn.classList.add("show");
         returnBtn.style.pointerEvents = "all";
     };
-}
+};
 
 function folderReturn(folder, folderPage) {
     folder.children[0].classList.remove("open");
@@ -214,7 +221,7 @@ function folderReturn(folder, folderPage) {
     });
 
     folderOpenContainer.classList.remove("opened");
-}
+};
 
     // FOLDER PAGE FUNCTIONS
     function nextPageFunc(folderPage, tempChildren) {
@@ -232,7 +239,7 @@ function folderReturn(folder, folderPage) {
         };
 
         pageChange(folderPage, tempChildren);
-    }
+    };
 
     function prevPageFunc(folderPage, tempChildren) {
         nextPage.classList.remove("hide");
@@ -248,7 +255,7 @@ function folderReturn(folder, folderPage) {
         }
 
         pageChange(folderPage, tempChildren);
-    }
+    };
 
     function pageChange(folderPage, tempChildren) {
         page = folderPage.lastElementChild;
@@ -298,7 +305,42 @@ function folderReturn(folder, folderPage) {
                 temp = 0
             }
         });
-    }
+    };
+
+
+// HOLOGRAM FUNCTIONALITY
+remHolo.addEventListener("click", () => {
+    cardContToggle(remnantsCards, syndicateCards, nullCards);
+})
+
+synHolo.addEventListener("click", () => {
+    cardContToggle(syndicateCards, remnantsCards, nullCards);
+})
+
+nullHolo.addEventListener("click", () => {
+    cardContToggle(nullCards, remnantsCards, syndicateCards);
+})
+
+function cardContToggle(targetCard, otherCard1, otherCard2) {
+    remHolo.style.pointerEvents = "none";
+    synHolo.style.pointerEvents = "none";
+    nullHolo.style.pointerEvents = "none";
+
+    otherCard1.classList.remove("opened");
+    otherCard2.classList.remove("opened");
+
+    targetCard.classList.toggle("opened");
+
+    targetCard.addEventListener("transitionend", (event) => {
+        if (event.propertyName === "max-height") {
+            remHolo.style.pointerEvents = "all";
+            synHolo.style.pointerEvents = "all";
+            nullHolo.style.pointerEvents = "all";
+        };
+    });
+
+}
+
 
 // SCROLL ANIMATIONS
 const infoTextObserver = new IntersectionObserver((entry)=>{
