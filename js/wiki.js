@@ -1,6 +1,8 @@
 // VARIABLES
 const infoText = document.querySelector("#M4FIA-INFORMATION-TITLE");
 const folders = document.querySelectorAll(".folder");
+const factionIcons = document.querySelectorAll(".faction-img")
+const factionHolo = document.querySelectorAll(".holo-tri")
 
 const folderOpenContainer = document.querySelector("#FOLDER-OPENED-CONTAINER");
 const folderContainer = document.querySelector("#FOLDER-SECTION");
@@ -20,7 +22,33 @@ const nextPage = document.querySelector("#NEXT-PAGE");
 const prevPage = document.querySelector("#PREV-PAGE");
 let temp = 0;
 
+const remnantsCards = document.querySelector("#REMNANTS-CARDS");
+const syndicateCards = document.querySelector("#SYNDICATE-CARDS");
+const nullCards = document.querySelector("#NULL-CARDS");
+const remHolo = document.querySelector("#REMNANTS-HOLO");
+const synHolo = document.querySelector("#SYNDICATE-HOLO");
+const nullHolo = document.querySelector("#NULL-HOLO");
+
+const remGrp = document.querySelector("#REMNANTS-GROUP");
+const synGrp = document.querySelector("#SYNDICATE-GROUP");
+const nullGrp = document.querySelector("#NULL-GROUP");
+
 let folderOpened = false;
+
+function copyCards() {
+    const rg = remGrp.cloneNode(true);
+    const sg = synGrp.cloneNode(true);
+    const ng = nullGrp.cloneNode(true);
+
+    remGrp.parentElement.appendChild(rg);
+    synGrp.parentElement.appendChild(sg);
+    nullGrp.parentElement.appendChild(ng);
+
+    const ng2 = nullGrp.cloneNode(true);
+    nullGrp.parentElement.appendChild(ng2);
+}
+
+copyCards()
 
 // FOLDER FUNCTIONALITY
     //FOLDER OPEN
@@ -39,13 +67,9 @@ let folderOpened = false;
     });
 
     //FOLDER CLOSE
-    rulesFolder.children[0].addEventListener("animationend", (event) => {
-        folderClose(rulesFolder, event, 0, '-3deg', firstPageR)
-    });
+    rulesFolder.children[0].addEventListener("animationend", (event) => { folderClose(rulesFolder, event, 0, '-3deg', firstPageR) });
 
-    loreFolder.children[0].addEventListener("animationend", (event) => {
-        folderClose(loreFolder, event, 1, '5deg', firstPageL)
-    });
+    loreFolder.children[0].addEventListener("animationend", (event) => { folderClose(loreFolder, event, 1, '5deg', firstPageL) });
 
     //RETURN
     returnBtn.addEventListener("click", () => {
@@ -157,7 +181,7 @@ async function folderOpen(folder, folderPage, transOrig, tempChildren) {
     requestAnimationFrame(() => {
         page.classList.add("visible")
     })
-}
+};
 
 async function folderClose(folder, event, folderContIndex, rotation) {
     if (event.animationName === "closeFolder") {
@@ -202,7 +226,7 @@ async function folderClose(folder, event, folderContIndex, rotation) {
         returnBtn.classList.add("show");
         returnBtn.style.pointerEvents = "all";
     };
-}
+};
 
 function folderReturn(folder, folderPage) {
     folder.children[0].classList.remove("open");
@@ -212,7 +236,7 @@ function folderReturn(folder, folderPage) {
     });
 
     folderOpenContainer.classList.remove("opened");
-}
+};
 
     // FOLDER PAGE FUNCTIONS
     function nextPageFunc(folderPage, tempChildren) {
@@ -230,7 +254,7 @@ function folderReturn(folder, folderPage) {
         };
 
         pageChange(folderPage, tempChildren);
-    }
+    };
 
     function prevPageFunc(folderPage, tempChildren) {
         nextPage.classList.remove("hide");
@@ -246,7 +270,7 @@ function folderReturn(folder, folderPage) {
         }
 
         pageChange(folderPage, tempChildren);
-    }
+    };
 
     function pageChange(folderPage, tempChildren) {
         page = folderPage.lastElementChild;
@@ -296,7 +320,33 @@ function folderReturn(folder, folderPage) {
                 temp = 0
             }
         });
-    }
+    };
+
+
+// HOLOGRAM FUNCTIONALITY
+remHolo.addEventListener("click", () => { cardContToggle(remnantsCards, syndicateCards, nullCards); })
+synHolo.addEventListener("click", () => { cardContToggle(syndicateCards, remnantsCards, nullCards); })
+nullHolo.addEventListener("click", () => { cardContToggle(nullCards, remnantsCards, syndicateCards); })
+
+function cardContToggle(targetCard, otherCard1, otherCard2) {
+    remHolo.style.pointerEvents = "none";
+    synHolo.style.pointerEvents = "none";
+    nullHolo.style.pointerEvents = "none";
+
+    otherCard1.classList.remove("opened");
+    otherCard2.classList.remove("opened");
+
+    targetCard.classList.toggle("opened");
+
+    targetCard.addEventListener("transitionend", (event) => {
+        if (event.propertyName === "max-height") {
+            remHolo.style.pointerEvents = "all";
+            synHolo.style.pointerEvents = "all";
+            nullHolo.style.pointerEvents = "all";
+        };
+    });
+
+}
 
 // SCROLL ANIMATIONS
 const infoTextObserver = new IntersectionObserver((entry)=>{
@@ -318,3 +368,27 @@ const folderObserver = new IntersectionObserver((entries)=>{
 });
 
 folders.forEach((folder)=>folderObserver.observe(folder));
+
+const holoImgObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if (entry.isIntersecting){
+            entry.target.classList.add("popup");
+        }
+    })
+}, {
+    threshold: 0.5
+});
+
+factionIcons.forEach((icon)=>holoImgObserver.observe(icon));
+
+const holoObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if (entry.isIntersecting){
+            entry.target.classList.add("flicker");
+        }
+    })
+}, {
+    threshold: 0.3
+});
+
+factionHolo.forEach((holo)=>holoObserver.observe(holo));

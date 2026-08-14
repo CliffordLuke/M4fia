@@ -1,3 +1,7 @@
+:root { 
+    interpolate-size: allow-keywords; 
+}
+
 body {
     background: rgb(19, 19, 19);
     background-size: cover;
@@ -450,6 +454,7 @@ nav ul {
 /* CARD CATALOG STYLE */
 #M4FIA-ROLES-CATALOG {
     background-color: rgb(43, 43, 43);
+    position: relative;
     border-radius: 10px;
     width: 95vw;
     padding: 10px;
@@ -457,54 +462,356 @@ nav ul {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    transition: all 0.5s ease-in-out;
 }
 
-#M4FIA-ROLES-CATALOG .card {
+#M4FIA-ROLES-CATALOG:has(#REMNANTS-CARDS.opened) {  border: 5px #10d3ff dashed; background-color: rgb(31, 64, 71); box-shadow: 0px 0px 29px 7px #10d3ff;}
+#M4FIA-ROLES-CATALOG:has(#SYNDICATE-CARDS.opened) {  border: 5px red dashed; background-color: rgb(89, 46, 46); box-shadow: 0px 0px 29px 7px red;}
+#M4FIA-ROLES-CATALOG:has(#NULL-CARDS.opened) {  border: 5px white dashed; background-color: rgb(50, 50, 50); box-shadow: 0px 0px 29px 7px white;}
+
+#HOLO-CONT {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-self: center;
+    width: 100%;
+    position: relative;
+}
+
+.faction-holo {
+    all: unset;
+    display: block;
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    aspect-ratio: 1/1;
+    perspective: 45em;
+    position: relative;
+}
+
+.faction-holo:hover {
+    cursor: pointer
+}
+
+.faction-holo-link {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.faction-img {
+    position: relative;
+    width: 90%;
+    aspect-ratio: 1/1;
+    transform-style: preserve-3d;
+    animation: rotate 5s infinite linear;
+    z-index: 10;
+    user-select: none;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+#FACT-IMG-2 {
+    animation-delay: 0.2s;
+}
+
+#FACT-IMG-3 {
+    animation-delay: 0.4s;
+}
+
+.holo-base {
+    background-color: rgb(109, 109, 109);
+    width: 30%;
+    height: 100px;
+    bottom: 0;
+    justify-self: center;
+    position: absolute;
+    border-radius: 10rem;
+    transform: rotateX(80deg);
+    box-shadow: 0px 20px 25px 5px #000000;
+    z-index: -1;
+}
+
+.holo-base::after {
+    content: "";
+    display: block;
+    background-color: rgb(155, 155, 155);
+    width: 90%;
+    height: 80%;
+    bottom: 0;
+    position: relative;
+    justify-self: center;
+    border-radius: 10rem;
+}
+
+.holo-tri-cont {
+    position: relative;
+    width: 20px;
+    aspect-ratio: 1/1;
+    justify-self: center;
+    align-self: center;
+    transform: translateY(-30px);
+    border-radius: 100rem;
+    opacity: 0;
+}
+
+.faction-holo:nth-child(1) .holo-tri-cont { 
+    background-color: rgb(0, 221, 255);
+    box-shadow: 0px -2px 10px 10px rgb(0, 221, 255);
+}
+.faction-holo:nth-child(2) .holo-tri-cont { 
+    background-color: #ff1010;
+    box-shadow: 0px -2px 10px 10px #ff1010;
+}
+.faction-holo:nth-child(3) .holo-tri-cont {
+    background-color: #ffffff; 
+    box-shadow: 0px -2px 10px 10px #ffffff;
+}
+
+.holo-tri {
+    position: absolute;
+    width: 40px;
+    height: 400px;
+    clip-path: polygon(
+        50% 0%,
+        100% 100%,
+        0% 100%
+    );
+    transform-origin: top center;
+    top: 20px;
+    left: -11px;
+    z-index: -1;
+}
+
+.faction-holo:nth-child(1) .holo-tri { background: linear-gradient(to bottom, #10d3ff, #2afbff00) }
+.faction-holo:nth-child(2) .holo-tri { background: linear-gradient(to bottom, #ff1010, #2afbff00) }
+.faction-holo:nth-child(3) .holo-tri { background: linear-gradient(to bottom, #ffffff, #2afbff00) }
+
+.holo-tri:nth-child(1) { transform: rotate(-150deg); }
+.holo-tri:nth-child(2) { transform: rotate(150deg); }
+.holo-tri:nth-child(3) { transform: rotate(-170deg); }
+.holo-tri:nth-child(4) { transform: rotate(180deg); }
+.holo-tri:nth-child(5) { transform: rotate(-190deg); }
+.holo-tri:nth-child(6) { transform: rotate(200deg); }
+.holo-tri:nth-child(7) { transform: rotate(160deg); }
+.holo-tri:nth-child(8) { transform: rotate(-155deg); }
+.holo-tri:nth-child(9) { transform: rotate(155deg); }
+.holo-tri:nth-child(10) { transform: rotate(-175deg); }
+.holo-tri:nth-child(11) { transform: rotate(-185deg); }
+.holo-tri:nth-child(12) { transform: rotate(-195deg); }
+.holo-tri:nth-child(13) { transform: rotate(195deg); }
+
+.holo-title {
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3rem;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    justify-self: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.faction-holo:nth-child(1) .holo-title { color: #10d3ff; text-shadow: #53e0ff 0px 0px 15px; }
+.faction-holo:nth-child(2) .holo-title { color: #ff1010; text-shadow: #ff3b3b 0px 0px 15px; }
+.faction-holo:nth-child(3) .holo-title { color: white; text-shadow: #ffffff 0px 0px 15px; }
+
+.faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+.faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+.faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+
+/* HOLO SCROLL ANIMATIONS */
+.faction-holo:nth-child(1) .faction-img.popup { transition-delay: 0.2s; }
+.faction-holo:nth-child(2) .faction-img.popup { transition-delay: 0.5s; }
+.faction-holo:nth-child(3) .faction-img.popup { transition-delay: 0.8s; }
+
+.faction-img.popup { opacity: 1; }
+
+.faction-holo:nth-child(1) .holo-tri-cont:has(.holo-tri.flicker) { animation-delay: 0s; }
+.faction-holo:nth-child(2) .holo-tri-cont:has(.holo-tri.flicker) { animation-delay: 0.3s; }
+.faction-holo:nth-child(3) .holo-tri-cont:has(.holo-tri.flicker) { animation-delay: 0.6s; }
+
+.holo-tri-cont:has(.holo-tri.flicker) { animation: flicker 2s forwards; }
+
+/* CARDS CONTAINERS */
+.card-cont {
+    width: 100%;
+    height: fit-content;
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
-    background-color: rgb(106, 106, 106);
-    padding: 10px;
-    height: 90%;
+    overflow-y: auto;
+}
+
+.card-cont h3 {
+    color: white
+}
+
+.inner-card-cont {
+    display: flex;
+    height: 70%;
+    width: 100%;
+    scrollbar-width: none;
+}
+
+.role-card {
+    width: 100%;
+    aspect-ratio: sqrt(2)/1;
+}
+
+#REMNANTS-CARDS,
+#SYNDICATE-CARDS,
+#NULL-CARDS {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+#REMNANTS-CARDS.opened,
+#SYNDICATE-CARDS.opened,
+#NULL-CARDS.opened {
+    max-height: fit-content;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 1rem 1rem 0;
+    scroll-behavior: smooth;
+}
+
+#NULL-CARDS .inner-card-cont {
+    animation: nullSpin 12s infinite linear;
+}
+
+#SYNDICATE-CARDS .inner-card-cont {
+    animation: syndicateSpin 25s infinite linear;
+}
+
+#REMNANTS-CARDS .inner-card-cont {
+    animation: remnantsSpin 40s infinite linear;
+}
+
+.card {
+    position: relative;
+    width: 30vw;
+    transition: all 0.2s ease-in-out;
 }
 
 .card:hover {
-    box-shadow: 0px 0px 20px white;
+    transform: scale(1.05);
+    box-shadow: 0px 5px 19px 4px #000000;
+    z-index: 300;
 }
 
-#M4FIA-ROLES-CATALOG .card.image {
-    pointer-events: none;
-    background-color: rgb(255, 0, 0);
-    width: 90%;
-    margin: auto;
+#NULL-CARDS:has(.card:hover) .inner-card-cont,
+#SYNDICATE-CARDS:has(.card:hover) .inner-card-cont,
+#REMNANTS-CARDS:has(.card:hover) .inner-card-cont {
+    animation-play-state: paused;
 }
 
-#M4FIA-ROLES-CATALOG .card.title {
-    pointer-events: none;
-    background-color: rgb(195, 0, 255);
-    width: 90%;
-    margin: auto;
-    font-size: 25px;
+#NULL-GROUP .card-overlay {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to top, 
+        white 3%, 
+        rgba(255, 255, 255, 0.9) 5%,
+        rgba(255, 255, 255, 0.8) 10%,
+        rgba(255, 255, 255, 0.7) 15%,
+        rgba(255, 255, 255, 0.6) 20%,
+        rgba(255, 255, 255, 0.5) 25%,
+        rgba(255, 255, 255, 0.4) 30%,
+        rgba(255, 255, 255, 0.3) 35%,
+        rgba(255, 255, 255, 0.2) 40%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 60%
+    );
 }
 
-#M4FIA-ROLES-CATALOG .card.ability-title {
-    pointer-events: none;
-    background-color: rgb(0, 132, 255);
-    width: 90%;
-    margin: auto;
+#REMNANTS-GROUP .card-overlay {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to top, 
+        rgb(12, 170, 255) 3%, 
+        rgba(12, 170, 255, 0.9) 5%,
+        rgba(12, 170, 255, 0.8) 10%,
+        rgba(12, 170, 255, 0.7) 15%,
+        rgba(12, 170, 255, 0.6) 20%,
+        rgba(12, 170, 255, 0.5) 25%,
+        rgba(12, 170, 255, 0.4) 30%,
+        rgba(12, 170, 255, 0.3) 35%,
+        rgba(12, 170, 255, 0.2) 40%,
+        rgba(12, 170, 255, 0.1) 50%,
+        rgba(12, 170, 255, 0) 60%
+    );
 }
 
-#M4FIA-ROLES-CATALOG .card.ability-description {
-    pointer-events: none;
-    background-color: rgb(156, 143, 5);
-    width: 90%;
-    margin: auto;
+#SYNDICATE-GROUP .card-overlay {
+    all: unset;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    z-index: 20;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to top, 
+        rgb(255, 0, 0) 3%, 
+        rgba(255, 0, 0, 0.9) 5%,
+        rgba(255, 0, 0, 0.8) 10%,
+        rgba(255, 0, 0, 0.7) 15%,
+        rgba(255, 0, 0, 0.6) 20%,
+        rgba(255, 0, 0, 0.5) 25%,
+        rgba(255, 0, 0, 0.4) 30%,
+        rgba(255, 0, 0, 0.3) 35%,
+        rgba(255, 0, 0, 0.2) 40%,
+        rgba(255, 0, 0, 0.1) 50%,
+        rgba(255, 0, 0, 0) 60%
+    );
 }
 
-#remnants, #syndicate, #null {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 15px;
+.card-overlay h4, 
+.card-overlay p {
+    margin: 0;
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.card-overlay h4 {
+    font-size: 2rem
+}
+
 
 /* ANIMATIONS */
 @keyframes flicker {
@@ -515,6 +822,7 @@ nav ul {
     20% { opacity: 1; }
     25% { opacity: 0.3; }
     30% { opacity: 1; }
+    100% { opacity: 1 }
 }
 
 @keyframes openFolder {
@@ -541,5 +849,41 @@ nav ul {
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes syndicateSpin {
+    from {
+        translate: 0;
+    }
+    to {
+        translate: -164%;
+    }
+}
+
+@keyframes remnantsSpin {
+    from {
+        translate: 0;
+    }
+    to {
+        translate: -329%;
+    }
+}
+
+@keyframes nullSpin {
+    from {
+        translate: 0;
+    }
+    to {
+        translate: -66%;
     }
 }
