@@ -685,15 +685,15 @@ nav ul {
 }
 
 #NULL-CARDS .inner-card-cont {
-    animation: spin 19s infinite linear;
+    animation: nullSpin 12s infinite linear;
 }
 
 #SYNDICATE-CARDS .inner-card-cont {
-    animation: spin 23s infinite linear;
+    animation: syndicateSpin 25s infinite linear;
 }
 
 #REMNANTS-CARDS .inner-card-cont {
-    animation: spin 23s infinite linear;
+    animation: remnantsSpin 40s infinite linear;
 }
 
 .card {
@@ -861,12 +861,29 @@ nav ul {
     }
 }
 
-
-@keyframes spin {
+@keyframes syndicateSpin {
     from {
         translate: 0;
     }
     to {
-        translate: -100%;
+        translate: -164%;
+    }
+}
+
+@keyframes remnantsSpin {
+    from {
+        translate: 0;
+    }
+    to {
+        translate: -329%;
+    }
+}
+
+@keyframes nullSpin {
+    from {
+        translate: 0;
+    }
+    to {
+        translate: -66%;
     }
 }
