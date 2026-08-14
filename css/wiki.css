@@ -482,6 +482,9 @@ nav ul {
     transform-style: preserve-3d;
     animation: rotate 5s infinite linear;
     z-index: 10;
+    user-select: none;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
 }
 
 #FACT-IMG-2 {
@@ -525,6 +528,7 @@ nav ul {
     align-self: center;
     transform: translateY(-20px);
     border-radius: 100rem;
+    opacity: 0;
 }
 
 .faction-holo:nth-child(1) .holo-tri-cont { 
@@ -539,7 +543,6 @@ nav ul {
     background-color: #ffffff; 
     box-shadow: 0px -2px 10px 10px #ffffff;
 }
-
 
 .holo-tri {
     position: absolute;
@@ -574,6 +577,59 @@ nav ul {
 .holo-tri:nth-child(12) { transform: rotate(-195deg); }
 .holo-tri:nth-child(13) { transform: rotate(195deg); }
 
+.holo-title {
+    display: block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3rem;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    justify-self: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.faction-holo:nth-child(1) .holo-title { color: #10d3ff; text-shadow: #53e0ff 0px 0px 15px; }
+.faction-holo:nth-child(2) .holo-title { color: #ff1010; text-shadow: #ff3b3b 0px 0px 15px; }
+.faction-holo:nth-child(3) .holo-title { color: white; text-shadow: #ffffff 0px 0px 15px; }
+
+.faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+.faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+.faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+
+/* HOLO SCROLL ANIMATIONS */
+.faction-holo:nth-child(1) .faction-img.popup {
+    transition-delay: 0.2s;
+}
+
+.faction-holo:nth-child(2) .faction-img.popup {
+    transition-delay: 0.5s;
+}
+
+.faction-holo:nth-child(3) .faction-img.popup {
+    transition-delay: 0.8s;
+}
+
+.faction-img.popup {
+    opacity: 1;
+}
+
+
+.faction-holo:nth-child(1) .holo-tri-cont:has(.holo-tri.flicker) {
+    animation-delay: 0s;
+}
+
+.faction-holo:nth-child(2) .holo-tri-cont:has(.holo-tri.flicker) {
+    animation-delay: 0.3s;
+}
+
+.faction-holo:nth-child(3) .holo-tri-cont:has(.holo-tri.flicker) {
+    animation-delay: 0.6s;
+}
+
+.holo-tri-cont:has(.holo-tri.flicker) {
+    animation: flicker 2s forwards;
+}
+
 
 /* ANIMATIONS */
 @keyframes flicker {
@@ -584,6 +640,7 @@ nav ul {
     20% { opacity: 1; }
     25% { opacity: 0.3; }
     30% { opacity: 1; }
+    100% { opacity: 1 }
 }
 
 @keyframes openFolder {

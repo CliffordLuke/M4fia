@@ -1,6 +1,8 @@
 // VARIABLES
 const infoText = document.querySelector("#M4FIA-INFORMATION-TITLE");
 const folders = document.querySelectorAll(".folder");
+const factionIcons = document.querySelectorAll(".faction-img")
+const factionHolo = document.querySelectorAll(".holo-tri")
 
 const folderOpenContainer = document.querySelector("#FOLDER-OPENED-CONTAINER");
 const folderContainer = document.querySelector("#FOLDER-SECTION");
@@ -318,3 +320,27 @@ const folderObserver = new IntersectionObserver((entries)=>{
 });
 
 folders.forEach((folder)=>folderObserver.observe(folder));
+
+const holoImgObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if (entry.isIntersecting){
+            entry.target.classList.add("popup");
+        }
+    })
+}, {
+    threshold: 0.5
+});
+
+factionIcons.forEach((icon)=>holoImgObserver.observe(icon));
+
+const holoObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if (entry.isIntersecting){
+            entry.target.classList.add("flicker");
+        }
+    })
+}, {
+    threshold: 0.3
+});
+
+factionHolo.forEach((holo)=>holoObserver.observe(holo));
