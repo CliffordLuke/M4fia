@@ -29,7 +29,26 @@ const remHolo = document.querySelector("#REMNANTS-HOLO");
 const synHolo = document.querySelector("#SYNDICATE-HOLO");
 const nullHolo = document.querySelector("#NULL-HOLO");
 
+const remGrp = document.querySelector("#REMNANTS-GROUP");
+const synGrp = document.querySelector("#SYNDICATE-GROUP");
+const nullGrp = document.querySelector("#NULL-GROUP");
+
 let folderOpened = false;
+
+function copyCards() {
+    const rg = remGrp.cloneNode(true);
+    const sg = synGrp.cloneNode(true);
+    const ng = nullGrp.cloneNode(true);
+
+    remGrp.parentElement.appendChild(rg);
+    synGrp.parentElement.appendChild(sg);
+    nullGrp.parentElement.appendChild(ng);
+
+    const ng2 = nullGrp.cloneNode(true);
+    nullGrp.parentElement.appendChild(ng2);
+}
+
+copyCards()
 
 // FOLDER FUNCTIONALITY
     //FOLDER OPEN
@@ -48,13 +67,9 @@ let folderOpened = false;
     });
 
     //FOLDER CLOSE
-    rulesFolder.children[0].addEventListener("animationend", (event) => {
-        folderClose(rulesFolder, event, 0, '-3deg', firstPageR)
-    });
+    rulesFolder.children[0].addEventListener("animationend", (event) => { folderClose(rulesFolder, event, 0, '-3deg', firstPageR) });
 
-    loreFolder.children[0].addEventListener("animationend", (event) => {
-        folderClose(loreFolder, event, 1, '5deg', firstPageL)
-    });
+    loreFolder.children[0].addEventListener("animationend", (event) => { folderClose(loreFolder, event, 1, '5deg', firstPageL) });
 
     //RETURN
     returnBtn.addEventListener("click", () => {
@@ -309,17 +324,9 @@ function folderReturn(folder, folderPage) {
 
 
 // HOLOGRAM FUNCTIONALITY
-remHolo.addEventListener("click", () => {
-    cardContToggle(remnantsCards, syndicateCards, nullCards);
-})
-
-synHolo.addEventListener("click", () => {
-    cardContToggle(syndicateCards, remnantsCards, nullCards);
-})
-
-nullHolo.addEventListener("click", () => {
-    cardContToggle(nullCards, remnantsCards, syndicateCards);
-})
+remHolo.addEventListener("click", () => { cardContToggle(remnantsCards, syndicateCards, nullCards); })
+synHolo.addEventListener("click", () => { cardContToggle(syndicateCards, remnantsCards, nullCards); })
+nullHolo.addEventListener("click", () => { cardContToggle(nullCards, remnantsCards, syndicateCards); })
 
 function cardContToggle(targetCard, otherCard1, otherCard2) {
     remHolo.style.pointerEvents = "none";
@@ -340,7 +347,6 @@ function cardContToggle(targetCard, otherCard1, otherCard2) {
     });
 
 }
-
 
 // SCROLL ANIMATIONS
 const infoTextObserver = new IntersectionObserver((entry)=>{
