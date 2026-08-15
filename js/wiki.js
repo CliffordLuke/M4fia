@@ -21,6 +21,7 @@ const loreTempChildren = Array.from(loreTempCont.content.children);
 const nextPage = document.querySelector("#NEXT-PAGE");
 const prevPage = document.querySelector("#PREV-PAGE");
 let temp = 0;
+let isReturning = false;
 
 const remnantsCards = document.querySelector("#REMNANTS-CARDS");
 const syndicateCards = document.querySelector("#SYNDICATE-CARDS");
@@ -73,29 +74,21 @@ copyCards()
 
     //RETURN
     returnBtn.addEventListener("click", () => {
+        isReturning = true;
+
         returnBtn.classList.remove("show");
+        nextPage.classList.remove("show");
+        prevPage.classList.remove("show");
+        
+        returnBtn.style.pointerEvents = "none";
+        prevPage.style.pointerEvents = "none";
+        nextPage.style.pointerEvents = "none";
 
         requestAnimationFrame(() => {
             returnBtn.classList.add("hide");
+            prevPage.classList.add("hide");
+            nextPage.classList.add("hide");
         });
-
-        returnBtn.style.pointerEvents = "none";
-
-        prevPage.style.pointerEvents = "none";
-        nextPage.style.pointerEvents = "none";
-        
-        if (temp === 0) {
-            nextPage.classList.add("hide");
-            nextPage.classList.remove("show");
-        } else if ((temp === loreTempChildren.length - 1) || (temp === rulesTempChildren.length - 1)) {
-            prevPage.classList.add("hide");
-            prevPage.classList.remove("show");
-        } else {
-            nextPage.classList.add("hide");
-            nextPage.classList.remove("show");
-            prevPage.classList.add("hide");
-            prevPage.classList.remove("show");
-        }
 
         if (folderOpenContainer.children[3] === rulesFolder) {
             folderReturn(rulesFolder, firstPageR);
@@ -110,6 +103,9 @@ copyCards()
     nextPage.addEventListener("click", () => {
         prevPage.style.pointerEvents = "none";
         nextPage.style.pointerEvents = "none";
+        returnBtn.style.pointerEvents = "none";
+        returnBtn.classList.remove("show");
+
         if (folderOpenContainer.children[3] === rulesFolder) {
             nextPageFunc(firstPageR, rulesTempChildren)
         } else if (folderOpenContainer.children[3] === loreFolder) {
@@ -120,6 +116,9 @@ copyCards()
     prevPage.addEventListener("click", () => {
         prevPage.style.pointerEvents = "none";
         nextPage.style.pointerEvents = "none";
+        returnBtn.style.pointerEvents = "none";
+        returnBtn.classList.remove("show");
+        
         if (folderOpenContainer.children[3] === rulesFolder) {
             prevPageFunc(firstPageR, rulesTempChildren)
         } else if (folderOpenContainer.children[3] === loreFolder) {
@@ -130,6 +129,7 @@ copyCards()
 
 // FOLDER FUNCTIONS
 async function folderOpen(folder, folderPage, transOrig, tempChildren) {
+    isReturning = false;
     folderOpenContainer.style.pointerEvents = "all";
 
     const firstR = folder.getBoundingClientRect();
@@ -294,6 +294,13 @@ function folderReturn(folder, folderPage) {
 
                 newPage.addEventListener("transitionend", (event) => {
                     if (event.propertyName === "opacity") {
+                        if (isReturning) {
+                            return;
+                        }
+
+                        returnBtn.style.pointerEvents = "all";
+                        returnBtn.classList.add("show");
+
                         if (temp === 0) {
                             nextPage.style.pointerEvents = "all";
                             prevPage.style.pointerEvents = "none";
