@@ -1,8 +1,7 @@
 body {
-    background: rgb(19, 19, 19);
-    background-size: cover;
-    margin: 0;
-    width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
 }
 
 header {
@@ -38,7 +37,26 @@ nav ul {
   padding: 0;
 }
 
- #forms {
+ #landing {
   margin: 100px;
   color: #79fa4e;
 }
+
+#comp {
+  width: 100%;
+}
+
+input[type=text], type[input=text]:focus {
+  width: 80%;
+  background-color: transparent;
+  caret-shape: underscore;
+  border: none;
+  outline: none;
+}
+
+label, input[type=text] {
+  color:#79fa4e;
+  font-family: monospace;
+}
+
+
