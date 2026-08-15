@@ -74,6 +74,12 @@ header nav ul {
 }
 
 /* SEARCH INPUT */
+#SEARCH {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .search-input {
     all: unset;
     padding: 1rem;
@@ -83,6 +89,53 @@ header nav ul {
     background-color: rgb(75, 75, 75);
     color: white
 }
+
+/* FILTERS */
+#FILTERS-CONT {
+    all: unset;
+    width: fit-content;
+    margin: 1rem auto 0 auto;
+    justify-self: center;
+    display: flex;
+    gap: 1rem;
+}
+
+#FILTERS-CONT li {
+    all: unset;
+}
+
+.filter-label {
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 50vw;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.filter-label:hover {
+    cursor: pointer
+}
+
+#REMCB-LABEL { background-color: #0cd2ff37; border: #10d3ff 3px solid; }
+#REMCB-LABEL:hover { background-color: #0cd2ff78 }
+#FILTERS-CONT:has(#REMNANTS-FILTER-CHECKBOX:checked) #REMCB-LABEL { background-color: #0cd2ffae }
+
+#SYNCB-LABEL { background-color: #ff0c0c37; border: #e62828 3px solid; }
+#SYNCB-LABEL:hover { background-color: #ff0c0c78 }
+#FILTERS-CONT:has(#SYNDICATE-FILTER-CHECKBOX:checked) #SYNCB-LABEL { background-color: #ff0c0cae }
+
+#NULLCB-LABEL { background-color: #e7e7e737; border: #ffffff 3px solid; }
+#NULLCB-LABEL:hover { background-color: #e7e7e778 }
+#FILTERS-CONT:has(#NULL-FILTER-CHECKBOX:checked) #NULLCB-LABEL { background-color: #e7e7e7d8 }
+
+input[type="checkbox"] { display: none; }
+
+main:has(input[type="checkbox"]:checked) .faction-section { display: none }
+
+main:has(#REMNANTS-FILTER-CHECKBOX:checked) #REMNANTS-SECTION { display: block;}
+main:has(#SYNDICATE-FILTER-CHECKBOX:checked) #SYNDICATE-SECTION { display: block;}
+main:has(#NULL-FILTER-CHECKBOX:checked) #NULL-SECTION { display: block;}
 
 /* Card Containers */
 #REMNANTS-SECTION,

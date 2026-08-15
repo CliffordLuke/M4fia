@@ -38,16 +38,31 @@
     <main>
         <h2> M4FIA CARDS DATABASE </h2>
 
-        <search>
+        <search id="SEARCH">
             <input
                 type="search"
                 id="searchBar"
                 placeholder="Search Cards..."
                 class="search-input"
             />
+
+            <ul id="FILTERS-CONT">
+                <li>
+                    <input type="checkbox" id="REMNANTS-FILTER-CHECKBOX">
+                    <label for="REMNANTS-FILTER-CHECKBOX" class="filter-label" id="REMCB-LABEL"> REMNANTS </label>
+                </li>
+                <li>
+                    <input type="checkbox" id="SYNDICATE-FILTER-CHECKBOX">
+                    <label for="SYNDICATE-FILTER-CHECKBOX" class="filter-label" id="SYNCB-LABEL"> SYNDICATE </label>
+                </li>
+                <li>
+                    <input type="checkbox" id="NULL-FILTER-CHECKBOX">
+                    <label for="NULL-FILTER-CHECKBOX" class="filter-label" id="NULLCB-LABEL"> NULL </label>
+                </li>
+            </ul>
         </search>
 
-        <section id="REMNANTS-SECTION">
+        <section id="REMNANTS-SECTION" class="faction-section">
             <h3> REMNANTS </h3>
             <div class="card-cont">
                 <article class="card">
@@ -232,7 +247,7 @@
                 </article>
             </div>
         </section>
-        <section id="SYNDICATE-SECTION">
+        <section id="SYNDICATE-SECTION" class="faction-section">
             <h3> SYNDICATE </h3>
             <div class="card-cont">
                 <article class="card">
@@ -327,7 +342,7 @@
                 </article>
             </div>
         </section>
-        <section id="NULL-SECTION">
+        <section id="NULL-SECTION" class="faction-section">
             <h3> NULL </h3>
 
             <div class="card-cont">
