@@ -642,7 +642,6 @@ nav ul {
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    overflow-y: auto;
 }
 
 .card-cont h3 {
@@ -699,18 +698,40 @@ nav ul {
 .card {
     position: relative;
     width: 30vw;
-    transition: all 0.2s ease-in-out;
+    perspective: 1000px;
+    transition: all 0.3s ease-in-out;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 5px 19px 4px #000000;
-    z-index: 300;
+    z-index: 100;
+    transform: scale(1.10);
 }
 
-#NULL-CARDS:has(.card:hover) .inner-card-cont,
+.card-contents {
+    transform-style: preserve-3d;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .rolefront {
+    backface-visibility: hidden;
+}
+
+.card .roleback {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.card:hover .card-contents {
+    transform: rotateY(180deg);
+    box-shadow: 0px 5px 19px 4px #000000;
+}
+
+#REMNANTS-CARDS:has(.card:hover) .inner-card-cont,
 #SYNDICATE-CARDS:has(.card:hover) .inner-card-cont,
-#REMNANTS-CARDS:has(.card:hover) .inner-card-cont {
+#NULL-CARDS:has(.card:hover) .inner-card-cont {
     animation-play-state: paused;
 }
 
@@ -801,8 +822,8 @@ nav ul {
     );
 }
 
-.card-overlay h4, 
-.card-overlay p {
+.card h4, 
+.card p {
     margin: 0;
     text-align: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
