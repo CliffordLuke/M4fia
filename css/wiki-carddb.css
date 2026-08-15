@@ -141,13 +141,22 @@ header nav ul {
     #FILTERS-CONT:has(#NULL-FILTER-CHECKBOX:checked) #NULLCB-LABEL { background-color: #e7e7e7d8 }
 
     main:has(input[type="checkbox"]:checked) .faction-section,
+    main:has(input[type="checkbox"]:checked) #SEARCH-RESULTS-SECTION .card,
     input[type="checkbox"] { display: none }
 
     main:has(#REMNANTS-FILTER-CHECKBOX:checked) #REMNANTS-SECTION { display: block;}
     main:has(#SYNDICATE-FILTER-CHECKBOX:checked) #SYNDICATE-SECTION { display: block;}
     main:has(#NULL-FILTER-CHECKBOX:checked) #NULL-SECTION { display: block;}
 
+    main:has(#REMNANTS-FILTER-CHECKBOX:checked) #SEARCH-RESULTS-SECTION .card.remnant { display: block }
+    main:has(#SYNDICATE-FILTER-CHECKBOX:checked) #SEARCH-RESULTS-SECTION .card.syndicate { display: block }
+    main:has(#NULL-FILTER-CHECKBOX:checked) #SEARCH-RESULTS-SECTION .card.null { display: block }
+
     /* SEARCH RESULTS */
+    #SEARCH-RESULTS-SECTION {
+        position: relative;
+    }
+    
     main:has(#SEARCH:not(:placeholder-shown)) #SEARCH-RESULTS-SECTION { 
         display: block;
         width: 95vw;
@@ -172,6 +181,20 @@ header nav ul {
         box-sizing: border-box;
         top: 0;
         left: 0;
+    }
+
+    #NO-MATCHING-SEARCH {
+        text-align: center;
+        justify-self: center;
+        margin: 0;
+        padding: 0;
+        display: none;
+        position: absolute;
+        top: -0.5rem
+    }
+
+    #NO-MATCHING-SEARCH.show {
+        display: block;
     }
 
     #SEARCH-RESULTS-SECTION .card.remnant .card-overlay {
@@ -261,7 +284,7 @@ section > h3 {
 }
 
 .card-cont {
-    width: 95%;
+    width: 100%;
     box-sizing: border-box;
     justify-self: center;
     justify-content: center;

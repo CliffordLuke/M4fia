@@ -3,6 +3,7 @@ const cards = document.querySelectorAll(".card");
 const srcc = document.querySelector("#SEARCH-RESULTS-CARD-CONT");
 const tags = document.querySelectorAll(".filter-label");
 const title = document.querySelector("#LANDING-TITLE");
+const noResult = document.querySelector("#NO-MATCHING-SEARCH");
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 //INTRO ANIM
@@ -52,7 +53,7 @@ function randomBase64Char() {
 
 //SEARCH FUNCTIONALITY
 searchBar.addEventListener("input", (inp) => {
-    const children = Array.from(srcc.children)
+    let children = Array.from(srcc.children)
 
     if (children.length > 0) {
         children.forEach((child) => {
@@ -68,6 +69,8 @@ searchBar.addEventListener("input", (inp) => {
                 child.remove()
             })
         }
+
+        noResult.classList.remove("show")
     } else {
         cards.forEach((el) => {
             const cardTitle = el.querySelector("h4");
@@ -89,6 +92,17 @@ searchBar.addEventListener("input", (inp) => {
                 srcc.appendChild(card);
             };
         });
+
+        
+        children = Array.from(srcc.children)
+
+        console.log(children.length)
+
+        if (children.length === 0) {
+            noResult.classList.add("show");
+        } else {
+            noResult.classList.remove("show");
+        }
     }
 
 });
