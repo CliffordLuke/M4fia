@@ -2,6 +2,10 @@
     interpolate-size: allow-keywords; 
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
     background: rgb(19, 19, 19);
     background-size: cover;
@@ -44,6 +48,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 0px 20px;
   height: 75px;
@@ -61,10 +66,10 @@ header a {
 
 header a:hover {
   text-decoration: underline;
-  font-weight: bold;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
 }
 
-nav ul {
+header nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
