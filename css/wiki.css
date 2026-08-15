@@ -2,6 +2,10 @@
     interpolate-size: allow-keywords; 
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
     background: rgb(19, 19, 19);
     background-size: cover;
@@ -24,6 +28,7 @@ header > h1, section > h2 {
 }
 
 main {
+    margin-top: 5rem;
     overflow: hidden;
     transition: all ease-in-out 0.3s
 }
@@ -44,6 +49,7 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   padding: 0px 20px;
   height: 75px;
@@ -61,10 +67,10 @@ header a {
 
 header a:hover {
   text-decoration: underline;
-  font-weight: bold;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
 }
 
-nav ul {
+header nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
@@ -462,6 +468,7 @@ nav ul {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    opacity: 0;
     transition: all 0.5s ease-in-out;
 }
 
@@ -642,7 +649,6 @@ nav ul {
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    overflow-y: auto;
 }
 
 .card-cont h3 {
@@ -699,18 +705,40 @@ nav ul {
 .card {
     position: relative;
     width: 30vw;
-    transition: all 0.2s ease-in-out;
+    perspective: 1000px;
+    transition: all 0.3s ease-in-out;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 5px 19px 4px #000000;
-    z-index: 300;
+    z-index: 100;
+    transform: scale(1.10);
 }
 
-#NULL-CARDS:has(.card:hover) .inner-card-cont,
+.card-contents {
+    transform-style: preserve-3d;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .rolefront {
+    backface-visibility: hidden;
+}
+
+.card .roleback {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+}
+
+.card:hover .card-contents {
+    transform: rotateY(180deg);
+    box-shadow: 0px 5px 19px 4px #000000;
+}
+
+#REMNANTS-CARDS:has(.card:hover) .inner-card-cont,
 #SYNDICATE-CARDS:has(.card:hover) .inner-card-cont,
-#REMNANTS-CARDS:has(.card:hover) .inner-card-cont {
+#NULL-CARDS:has(.card:hover) .inner-card-cont {
     animation-play-state: paused;
 }
 
@@ -801,8 +829,8 @@ nav ul {
     );
 }
 
-.card-overlay h4, 
-.card-overlay p {
+.card h4, 
+.card p {
     margin: 0;
     text-align: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -811,6 +839,31 @@ nav ul {
 .card-overlay h4 {
     font-size: 2rem
 }
+
+#CARD-DB-LINK {
+    all: unset;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 2vw;
+    display: inline-block;
+    margin: 2rem 0;
+    box-sizing: border-box;
+    background-color: rgb(96, 96, 96);
+    padding: 1rem;
+    border-radius: 1vw;
+    box-shadow: 0px 3px 10px 1px #000000;
+    transition: all 0.1s ease-in-out
+}
+
+#CARD-DB-LINK:hover {
+    background-color: rgb(64, 64, 64);
+    cursor: pointer
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
 
 
 /* ANIMATIONS */
@@ -885,5 +938,14 @@ nav ul {
     }
     to {
         translate: -66%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
     }
 }
