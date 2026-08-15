@@ -88,6 +88,7 @@ header nav ul {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        opacity: 1;
     }
 
     .search-input {
@@ -97,7 +98,7 @@ header nav ul {
         margin: 0;
         border-radius: 1rem;
         background-color: rgb(75, 75, 75);
-        color: white
+        color: white;
     }
 
     /* FILTERS */
@@ -277,7 +278,9 @@ section > h3 {
     justify-self: center;
     transition: all 0.3s ease-in-out;
     flex: 0 2 425px; 
+    opacity: 0
 }
+
 .card:hover {
     z-index: 100;
     transform: scale(1.10);
@@ -405,4 +408,18 @@ section > h3 {
 
 .card-overlay h4 {
     font-size: 2rem
+}
+
+/* ANIMATIONS */
+.fade-in:not(.searched) {
+    animation: fadeIn 0.3s ease-in-out forwards
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
 }

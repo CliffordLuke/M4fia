@@ -468,6 +468,7 @@ header nav ul {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+    opacity: 0;
     transition: all 0.5s ease-in-out;
 }
 
@@ -859,7 +860,9 @@ header nav ul {
     cursor: pointer
 }
 
-
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
 
 
 
@@ -935,5 +938,14 @@ header nav ul {
     }
     to {
         translate: -66%;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
     }
 }

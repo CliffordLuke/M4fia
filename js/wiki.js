@@ -3,6 +3,7 @@ const infoText = document.querySelector("#M4FIA-INFORMATION-TITLE");
 const folders = document.querySelectorAll(".folder");
 const factionIcons = document.querySelectorAll(".faction-img")
 const factionHolo = document.querySelectorAll(".holo-tri")
+const roleCatalog = document.querySelector("#M4FIA-ROLES-CATALOG")
 
 const folderOpenContainer = document.querySelector("#FOLDER-OPENED-CONTAINER");
 const folderContainer = document.querySelector("#FOLDER-SECTION");
@@ -399,3 +400,11 @@ const holoObserver = new IntersectionObserver((entries)=>{
 });
 
 factionHolo.forEach((holo)=>holoObserver.observe(holo));
+
+const catalogObserver = new IntersectionObserver((entry)=>{
+    if (entry[0].isIntersecting){
+        entry[0].target.classList.add("fade-in");
+    }
+}, {});
+
+catalogObserver.observe(roleCatalog);

@@ -1,6 +1,7 @@
 const searchBar = document.querySelector("#SEARCH-BAR");
 const cards = document.querySelectorAll(".card");
-const srcc = document.querySelector("#SEARCH-RESULTS-CARD-CONT")
+const srcc = document.querySelector("#SEARCH-RESULTS-CARD-CONT");
+const tags = document.querySelectorAll(".filter-label");
 
 searchBar.addEventListener("input", (inp) => {
     const children = Array.from(srcc.children)
@@ -28,16 +29,29 @@ searchBar.addEventListener("input", (inp) => {
                 const parent = el.parentElement.parentElement.id;
 
                 if (parent === "REMNANTS-SECTION") {
-                    card.classList.add("remnant")
+                    card.classList.add("remnant");
                 } else if (parent === "SYNDICATE-SECTION") {
-                    card.classList.add("syndicate")
+                    card.classList.add("syndicate");
                 } else if ( parent === "NULL-SECTION") {
-                    card.classList.add("null")
-                }
+                    card.classList.add("null");
+                };
 
-                srcc.appendChild(card)
+                card.classList.add("searched");
+                card.style.opacity = "1";
+                srcc.appendChild(card);
             };
         });
     }
 
 });
+
+// SCROLL ANIMMATIONS
+const cardObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if (entry.isIntersecting){
+            entry.target.classList.add("fade-in");
+        }
+    })
+}, {});
+
+cards.forEach((card)=>cardObserver.observe(card));
