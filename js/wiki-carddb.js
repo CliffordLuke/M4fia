@@ -25,6 +25,16 @@ searchBar.addEventListener("input", (inp) => {
 
             if (cardTitle.textContent.toLowerCase().includes(searchValue)) {
                 const card = el.cloneNode(true);
+                const parent = el.parentElement.parentElement.id;
+
+                if (parent === "REMNANTS-SECTION") {
+                    card.classList.add("remnant")
+                } else if (parent === "SYNDICATE-SECTION") {
+                    card.classList.add("syndicate")
+                } else if ( parent === "NULL-SECTION") {
+                    card.classList.add("null")
+                }
+
                 srcc.appendChild(card)
             };
         });
