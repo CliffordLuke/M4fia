@@ -35,6 +35,9 @@ const remGrp = document.querySelector("#REMNANTS-GROUP");
 const synGrp = document.querySelector("#SYNDICATE-GROUP");
 const nullGrp = document.querySelector("#NULL-GROUP");
 
+// AUDIO
+const pageFlip = document.querySelector("#SFX-PAGE-FLIP");
+
 let folderOpened = false;
 
 function copyCards() {
@@ -55,6 +58,7 @@ copyCards()
 // FOLDER FUNCTIONALITY
     //FOLDER OPEN
     rulesFolder.addEventListener("click", () => {
+        //add sfx for folder open here soon idk
         if (folderOpened === false) {
             folderOpened = true
             folderOpen(rulesFolder, firstPageR, 'top left', rulesTempChildren)
@@ -62,6 +66,7 @@ copyCards()
     });
 
     loreFolder.addEventListener("click", () => {
+        //add sfx for folder open here soon idk
         if (folderOpened === false) {
             folderOpened = true
             folderOpen(loreFolder, firstPageL, 'center right', loreTempChildren)
@@ -102,29 +107,35 @@ copyCards()
 
     // PAGE BUTTON FUNCTION
     nextPage.addEventListener("click", () => {
+        pageFlip.pause();
+        pageFlip.currentTime = 0;
+        pageFlip.play();
         prevPage.style.pointerEvents = "none";
         nextPage.style.pointerEvents = "none";
         returnBtn.style.pointerEvents = "none";
         returnBtn.classList.remove("show");
 
         if (folderOpenContainer.children[3] === rulesFolder) {
-            nextPageFunc(firstPageR, rulesTempChildren)
+            nextPageFunc(firstPageR, rulesTempChildren);
         } else if (folderOpenContainer.children[3] === loreFolder) {
-            nextPageFunc(firstPageL, loreTempChildren)
-        }
+            nextPageFunc(firstPageL, loreTempChildren);
+        };
     });
 
     prevPage.addEventListener("click", () => {
+        pageFlip.pause();
+        pageFlip.currentTime = 0;
+        pageFlip.play();
         prevPage.style.pointerEvents = "none";
         nextPage.style.pointerEvents = "none";
         returnBtn.style.pointerEvents = "none";
         returnBtn.classList.remove("show");
         
         if (folderOpenContainer.children[3] === rulesFolder) {
-            prevPageFunc(firstPageR, rulesTempChildren)
+            prevPageFunc(firstPageR, rulesTempChildren);
         } else if (folderOpenContainer.children[3] === loreFolder) {
-            prevPageFunc(firstPageL, loreTempChildren)
-        }
+            prevPageFunc(firstPageL, loreTempChildren);
+        };
     });
 
 
