@@ -17,6 +17,7 @@
     <meta property="og:type" content="website"/>
 
     <!-- External Links -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/wiki.css"/>
     <script src="../js/wiki.js" defer></script>
 
@@ -124,14 +125,18 @@
     </div>
 
     <header>
-      <a href="../index.html">
-        <h1>M4FIA</h1>
-      </a>
+      <div id="MOB-NAV">
+          <a id="HOME" href="../index.html">
+            <h1>M4FIA</h1>
+          </a>
+          <input type="checkbox" id="HAMBURGER"/>
+          <label for="HAMBURGER"></label>
+      </div>
       <nav>
-        <ul>
-          <li><a href="">Wiki</a></li>
-          <li><a href="game-tracker.html">Game Tracker</a></li>
-          <li><a href="suggestions.html">Suggestions</a></li>
+        <ul id="MENU">
+          <li class="item"><a href="wiki.html">Wiki</a></li>
+          <li class="item"><a href="game-tracker.html">Game Tracker</a></li>
+          <li class="item"><a href="suggestions.html">Suggestions</a></li>
         </ul>
       </nav>
     </header>
