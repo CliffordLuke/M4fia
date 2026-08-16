@@ -6,6 +6,11 @@ const title = document.querySelector("#LANDING-TITLE");
 const noResult = document.querySelector("#NO-MATCHING-SEARCH");
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
+const zoomCont = document.querySelector("#ZOOMED-IN-CONTAINER");
+const zoomContBtn = document.querySelector("#ZOOM-CONT-CLOSE");
+const zoomedCardCont = document.querySelector("#ZOOM-IMG-CONT");
+const imgHolder = document.querySelector("#ZOOM-IMG");
+
 //INTRO ANIM
 randomChar(4, 0, "M");
 randomChar(5, 1, "4");
@@ -104,8 +109,26 @@ searchBar.addEventListener("input", (inp) => {
             noResult.classList.remove("show");
         }
     }
-
 });
+
+cards.forEach((el) => {
+    el.addEventListener("click", () => {
+        if (zoomedCardCont.children > 0) {
+            zoomedCardCont.firstElementChild.remove()
+        }
+
+        zoomCont.classList.add("active");
+        const img = el.querySelector(".roleback");
+        const chosenCard = img.cloneNode(true)
+        chosenCard.classList.add("opened");
+
+        zoomedCardCont.appendChild(chosenCard);
+    })
+});
+
+zoomContBtn.addEventListener("click", () => {
+    zoomCont.classList.remove("active")
+})
 
 // SCROLL ANIMMATIONS
 const cardObserver = new IntersectionObserver((entries)=>{

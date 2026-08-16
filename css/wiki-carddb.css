@@ -322,7 +322,7 @@ section > h3 {
 .card .rolefront {
     backface-visibility: hidden;
 }
-.card .roleback {
+.card .roleback:not(.opened) {
     transform: rotateY(180deg);
     position: absolute;
     top: 0;
@@ -431,6 +431,80 @@ section > h3 {
 
 .card-overlay h4 {
     font-size: 2rem
+}
+
+/* ZOOMED IN */
+body:has(#ZOOMED-IN-CONTAINER.active) main, body:has(#ZOOMED-IN-CONTAINER.active) header {
+    filter: brightness(30%);
+}
+
+body:has(#ZOOMED-IN-CONTAINER.active) {
+    overflow: hidden;
+}
+
+#ZOOMED-IN-CONTAINER {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out
+}
+
+#ZOOMED-IN-CONTAINER.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#ZOOM-IMG-CONT {
+    position: relative;
+    background-color: none;
+    border-radius: 1rem;
+    border: 0.3rem solid var(--border-color);
+    background-color: rgba(128, 128, 128, 0.386);
+    width: 60%;
+    overflow: hidden;
+    aspect-ratio: sqrt(2)/1;
+}
+
+#ZOOM-CONT-CLOSE {
+    all: unset;
+    padding: 0.3rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: fit-content;
+    height: auto;
+    aspect-ratio: 1/1;
+    background-color: none;
+    color: rgb(136, 136, 136);
+    transition : background-color 0.2s ease-in-out;
+}
+
+#ZOOM-CONT-CLOSE:hover {
+    background-color: red;
+    cursor: pointer
+}
+
+#ZOOM-CONT-CLOSE::after {
+    display: block;
+    content: " ";
+    content: "close";
+    color: rgb(94, 195, 253);
+    font-family: "Material Icons";
+    align-self: center;
+    font-size: 2rem;
+}
+
+.roleback.opened {
+    width: 100%;
+    height: 100%;
 }
 
 /* ANIMATIONS */
