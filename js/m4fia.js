@@ -33,7 +33,6 @@ function playMusic() {
   const randomMusic = Math.floor(Math.random() * audioFiles.length);
 
   audioElements.src = audioFiles[randomMusic];
-  audioElements.setAttribute('id', 'bgMusic');
   audioElements.play();
 }
 

@@ -17,11 +17,18 @@
     <!-- To be Updated/Changed-->
     <title> M4FIA Game Tracker </title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/wiki-carddb.css">
     <script src="../js/wiki-carddb.js" defer></script>
 
   </head>
   <body>
+    <div id="ZOOMED-IN-CONTAINER">
+        <div id="ZOOM-IMG-CONT">
+            <button id="ZOOM-CONT-CLOSE"></button>
+        </div>
+    </div>
+
     <header>
       <a href="https://cliffordluke.github.io/M4fia/index.html">
         <h1>M4FIA</h1>
@@ -65,6 +72,7 @@
         </section>
 
         <section id="SEARCH-RESULTS-SECTION">
+            <p id="NO-MATCHING-SEARCH"> No cards match your search. </p>
             <div class="card-cont" id="SEARCH-RESULTS-CARD-CONT">
 
             </div>

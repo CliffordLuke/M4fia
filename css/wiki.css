@@ -308,6 +308,8 @@ header nav ul {
         pointer-events: none;
         display: flex;
         justify-content: center;
+        top: 0;
+        left: 0
     }
 
     #FOLDER-OPEN-RETURN-BTN {
