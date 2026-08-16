@@ -22,17 +22,16 @@ html {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background-color: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0px 20px;
-  height: 75px;
+  width: 100%;
+  height: clamp(65px, fit-content, 75px);
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   z-index: 101;
+  padding: clamp(0.8rem, 0.5vw, 1.2rem) 2vw;
 }
 
 header a {
@@ -45,15 +44,124 @@ header a:hover {
   text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
 }
 
-header nav ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+#MENU {
+    all: unset;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content max-content max-content;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: clamp(1.2rem, 2vw, 2rem)
 }
 
+.item {
+    all: unset;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    text-align: center;
+    justify-self: center;
+}
 
+.item a {
+    display: inline-block;
+    text-decoration: none;
+    width: 100%;
+    align-self: center;
+    color: white;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#HOME {
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+}
+
+#HOME h1 {
+  margin: 0
+}
+
+#HAMBURGER {
+    display: none
+}
+
+@media screen and (max-width: 425px) {
+    header {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    #MOB-NAV {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding-left: 0.5rem
+    }
+
+    #MOB-NAV label {
+        display: block;
+        cursor: pointer;
+        position: relative;
+        height: 100%;
+        width: auto;
+        aspect-ratio: 1 / 1;
+        text-align: center;
+        align-content: center;
+        font-size: 3.7rem;
+        color: white;
+    }
+
+    #HOME {
+      margin: auto 0
+    }
+    
+    #MOB-NAV label::before {
+        content: "menu";
+        font-family: "Material Icons";
+    }
+
+    #HAMBURGER:checked ~ label::before {
+        content: "close";
+    }
+
+    #MENU {
+        display: flex;
+        flex-direction: column;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        gap: 0;
+    }
+
+    header > nav {
+        width: 100%;
+        margin: 0;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .item a {
+        backdrop-filter: blur(10px);
+        height: 4rem;
+        font-size: 7vw;
+        border-radius: 0%;
+        text-align: center;
+        align-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        background-color: rgba(44, 44, 44, 0.5);
+    }
+
+    #MOB-NAV:has(#HAMBURGER:checked) ~ nav #MENU {
+        max-height: 500px;
+    }
+}
 
 /*Intro */
 

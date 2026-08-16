@@ -17,6 +17,7 @@
     <meta property="og:image" content=""/> <!-- Add Image URL Here -->
     <meta property="og:type" content="website"/>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
     <link rel="stylesheet" href="./css/m4fia.css">
     <script src="js/m4fia.js" defer></script>
   </head>
@@ -55,14 +56,18 @@
     </nav>
 
     <header>
-      <a href="index.html">
-        <h1>M4FIA</h1>
-      </a>
+      <div id="MOB-NAV">
+          <a id="HOME" href="index.html">
+            <h1>M4FIA</h1>
+          </a>
+          <input type="checkbox" id="HAMBURGER"/>
+          <label for="HAMBURGER"></label>
+      </div>
       <nav>
-        <ul>
-          <li><a href="pages/wiki.html">Wiki</a></li>
-          <li><a href="pages/game-tracker.html">Game Tracker</a></li>
-          <li><a href="pages/suggestions.html">Suggestions</a></li>
+        <ul id="MENU">
+          <li class="item"><a href="pages/wiki.html">Wiki</a></li>
+          <li class="item"><a href="pages/game-tracker.html">Game Tracker</a></li>
+          <li class="item"><a href="pages/suggestions.html">Suggestions</a></li>
         </ul>
       </nav>
     </header>
