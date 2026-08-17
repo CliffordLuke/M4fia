@@ -580,13 +580,16 @@ summary::before {
 
 
 /* More Pages Thing */
-/*
+
 .post-title1 {
-  font-size: 3rem;
+  font-size: clamp(3rem, 5vw, 3.5rem);
   font-weight: bold;
+  margin: 0
 }
 .post-text1 {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  text-align: justify;
+  margin: 0;
 }
 
 .post-div1A {
@@ -603,11 +606,12 @@ summary::before {
 
 
 .post-title2 {
-  font-size: 2rem;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
   font-weight: bold;
 }
 .post-text2 {
-  font-size: 2rem;
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
+  margin-top: 2rem;
 }
 
 .post-div2A {
@@ -622,11 +626,11 @@ summary::before {
 
 
 .post-title3 {
-  font-size: 2rem;
+  font-size: clamp(1.3rem, 2.7vw, 2.3rem);
   font-weight: bold;
 }
 .post-text3 {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 2vw, 2rem);
 }
 
 .post-div3A {
@@ -636,7 +640,7 @@ summary::before {
 .post-div3B {
   position: absolute;
   transform: translateX(70px) translateY(190px) rotate(-30deg);
-}*/
+}
 
 
 .poster-contents {
@@ -646,8 +650,9 @@ summary::before {
   display: flex;
   flex-direction: column;
   justify-self: center;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  overflow: hidden;
 }
 
 .pages {
@@ -662,13 +667,12 @@ summary::before {
   background: #111111;
   grid-template-columns: repeat(3, 1fr);
   overflow: hidden;
-  padding: 3rem 0
+  padding: 3rem 0;
 }
 
 .poster {
   width: clamp(15rem, 30vw, 25rem);
   aspect-ratio: 2/3;
-  padding: 1rem;
   border: #f3f0e8 8px solid;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
   justify-self: center;
@@ -676,6 +680,7 @@ summary::before {
   color: #000000;
   text-decoration: none;
   position: relative;
+  padding: 1rem;
 }
 
 .post1 {
@@ -723,6 +728,26 @@ summary::before {
   .poster {
     width: clamp(15rem, 80vw, 25rem);
   }
+
+  .post-text2 {
+    font-size: clamp(1.7rem, 2vw, 2.1rem);
+    margin-top: 3rem
+  }
+
+  .post-title2 {
+    font-size: clamp(1.5rem, 7vw, 3rem);
+    font-weight: bold;
+    margin-bottom: 2rem
+  }
+
+  .post-title3 {
+    font-size: clamp(1.2rem, 8vw, 3rem);
+    font-weight: bold;
+  }
+  
+  .post-text3 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
 }
 
 @media screen and (min-width: 425px) and (max-width: 768px) {
@@ -734,6 +759,23 @@ summary::before {
 
   .poster {
     width: 45%;
+  }
+
+  .post-title1 {
+    font-size: clamp(1.3rem, 7vw, 3rem);
+  }
+
+  .post-text1 {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+
+  .post-title3 {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    font-weight: bold;
+  }
+  
+  .post-text3 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
   }
 }
 
@@ -779,10 +821,6 @@ footer nav ul {
 
 .italics {
   font-style: italic;
-}
-
-.justify {
-  text-align: justify;
 }
 
 .text1 {
