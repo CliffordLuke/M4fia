@@ -306,6 +306,7 @@ main {
   background: #111111;
   border-bottom: #424242 1px solid;
   border-top: #424242 1px solid;
+  padding: 4rem 0
 }
 
 .about-slider {
@@ -318,12 +319,21 @@ main {
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  inset: 0;
+  justify-content: space-around;
+  top: 0;
+  left: 0; 
   height: 100%;
+  width: 100%;
   opacity: 0;
   transition: opacity 0.8s ease;
   pointer-events: none;
+}
+
+#ABOUT-SLIDER-TITLE, #ABOUT-SLIDER-INFO {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .about-slider-part.active {
@@ -331,28 +341,19 @@ main {
   pointer-events: auto;
 }
 
-.about p {
+.about .main-text, .about p {
   margin-left: 5%;
-  width: 750px;
 }
 
-.part1 {
-  background: url("../images/Slides/Slide1.png") center/cover no-repeat;
-}
-.part2 {
-  background: url("../images/Slides/Slide2.png") center/cover no-repeat;
-}
-.part3 {
-  background: url("../images/Slides/Slide3.png") center/cover no-repeat;
-}
-.part4 {
-  background: url("../images/Slides/Slide4.png") center/cover no-repeat;
-}
-.part5 {
-  background: url("../images/Slides/Slide5.png") center/cover no-repeat;
-}
-.part6 {
-  background: url("../images/Slides/Slide6.png") center/cover no-repeat;
+.part1 { background: url("../images/Slides/Slide1.png") center/cover no-repeat; }
+.part2 { background: url("../images/Slides/Slide2.png") center/cover no-repeat; }
+.part3 { background: url("../images/Slides/Slide3.png") center/cover no-repeat; }
+.part4 { background: url("../images/Slides/Slide4.png") center/cover no-repeat; }
+.part5 { background: url("../images/Slides/Slide5.png") center/cover no-repeat; }
+.part6 { background: url("../images/Slides/Slide6.png") center/cover no-repeat; }
+
+.part2 p {
+  margin: 0 0 0.2rem 5%
 }
 
 /* Main Page - About Page - TV */
@@ -433,6 +434,24 @@ main {
   z-index: 20;
 }
 
+.main-text {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+.text1 {
+  font-size: clamp(2rem, 2.8vw, 2.7rem);
+  margin-bottom: 0;
+  color: #d6d6d6;
+}
+
+.text2 {
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  color: #979797;
+}
+
 .tv-effect.turnOff {
   animation: tvOff 0.45s forwards;
 }
@@ -493,6 +512,26 @@ main {
   .tv {
     height: 100vh;
     aspect-ratio: 5/9;
+  }
+
+  .main-text {
+    font-size: clamp(3rem, 17vw, 5.5rem);
+  }
+
+  #ABOUT-SLIDER-TITLE, #ABOUT-SLIDER-INFO {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem
+  }
+
+  .about-slider p, .about-slider h2 {
+    margin-left: 0;
+    align-self: center;
   }
 }
 
@@ -839,21 +878,4 @@ footer nav ul {
 
 .italics {
   font-style: italic;
-}
-
-.text1 {
-  font-size: 3rem;
-  color: #d6d6d6;
-}
-
-.text2 {
-  font-size: 2rem;
-  color: #979797;
-}
-
-.main-text {
-  font-size: 6rem;
-  color: white;
-  padding: 0%;
-  margin: 0%;
 }
