@@ -298,12 +298,12 @@ main {
 /* Main Section - About Page */
 
 .about {
-  min-height: 100vh;
+  min-height: 70vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #111111;
-  padding: 40px;
   border-bottom: #424242 1px solid;
   border-top: #424242 1px solid;
 }
@@ -359,7 +359,7 @@ main {
 
 .tv {
   width: 75vw;
-  aspect-ratio: 16/9;
+  aspect-ratio: 15/9;
   border-radius: 10px;
   border: 3px solid #181818;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
@@ -378,31 +378,42 @@ main {
 }
 
 .tv-controls {
-  height: 80px;
+  height: clamp(60px, 6vw, 80px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 0 1.5vw;
   background: #242424;
 }
 
 .tv-logo {
-  font-size: 32px;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
   font-weight: 700;
   letter-spacing: 2px;
   color: #e0e0e0;
 }
 
+.controls {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 .controls button {
-  width: 42px;
-  height: 42px;
+  height: 25px;
+  aspect-ratio: 1/1;
   border: none;
   border-radius: 50%;
   background: #242424;
   color: #e0e0e0;
   cursor: pointer;
   transition: 0.2s;
+  margin: 0 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
+
 .controls button:hover {
   background: #323232;
   transform: translateY(-2px);
@@ -467,6 +478,21 @@ main {
   100% {
     transform: scaleX(1) scaleY(1);
     opacity: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .tv {
+    width: 100vw;
+    aspect-ratio: 13/9;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .tv {
+    height: 100vh;
+    aspect-ratio: 5/9;
   }
 }
 
@@ -761,7 +787,6 @@ summary::before {
   .post-text3 {
     font-size: clamp(1.5rem, 4vw, 2rem);
   }
-
   
   .post1 { transform: translateX(15%) rotate(-3deg); }
   .post2 { transform: translateY(7%) translateX(-15%) rotate(2deg); z-index: 7 }
