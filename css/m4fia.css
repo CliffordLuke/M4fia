@@ -693,10 +693,10 @@ summary::before {
 @media screen and (min-width: 768px) {
   .post1 { transform: translateX(50%) translateY(-1%) rotate(-8deg); }
   .post2 { transform: translateY(60px) rotate(3deg); }
-  .post3 { transform: translateX(-50%) translateY(-5%) rotate(16deg); }
+  .post3 { transform: translateX(-50%) translateY(-3%) rotate(16deg); }
 
   .post1:hover { transform: translateX(50%) translateY(-5%) scale(1.1); }
-  .post2:hover { transform: translateY(-20%) scale(1.1); }
+  .post2:hover { transform: translateY(-5%) scale(1.1); }
   .post3:hover { transform: translateX(-50%) translateY(-5%) scale(1.1); }
 }
 
