@@ -199,7 +199,9 @@ header a:hover {
 }
 .intro-text {
   color: #424242;
-  font-size: 2rem;
+  font-size: clamp(1rem, 5vw, 2rem);
+  text-align: center;
+  margin: 0 1.5rem
 }
 @keyframes introBG {
   70% {
