@@ -15,8 +15,10 @@ main {
   height: fit-content;
   align-items: center;
   text-align: center;
+  justify-content: center;
   flex-grow: 1;
-  overflow: hidden;
+  overflow: visible;
+  margin-top: 5rem;
 }
 
 
@@ -33,7 +35,7 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   width: 100%;
   height: clamp(65px, fit-content, 75px);
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 101;
@@ -243,6 +245,7 @@ header a:hover {
   overflow: hidden;
   transition: all 0.4s ease-in-out;
   align-self: flex-start;
+  margin: auto 0
 }
 
 .PlayerHolo, .HostHolo {

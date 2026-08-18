@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
+  margin-top: 5rem
 }
 
 html::-webkit-scrollbar {
@@ -27,7 +28,7 @@ header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   width: 100%;
   height: clamp(65px, fit-content, 75px);
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 101;
