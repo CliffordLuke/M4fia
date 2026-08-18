@@ -360,7 +360,7 @@ header a:hover {
         left: 50%;
         transform: translate(-50%);
         bottom: 1%;
-        font-size: clamp(0.7rem, 2.5vw, 1.3rem);
+        font-size: clamp(0.7rem, 2.5vw, 1.2rem);
         width: 100%;
         z-index: 20;
     }
@@ -410,13 +410,13 @@ header a:hover {
         #FOLDER-OPENED-CONTAINER {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: top;
             align-content: center;
         }
 
         .folder {
             width: 65%;
-            margin: 0
+            margin: 2vh  0 0 0
         }
 
         #FOLDER-RULES {
@@ -493,7 +493,7 @@ header a:hover {
     #FOLDER-OPEN-RETURN-BTN {
         all: unset;
         position: absolute;
-        width: 11vw;
+        width: clamp(6.5rem, 30vw, 12rem);
         aspect-ratio: 3/1;
         bottom: 3vh;
         right: 2vw;
@@ -506,27 +506,43 @@ header a:hover {
         align-items: center;
         overflow: hidden;
         pointer-events: none;
+        z-index: 20;
         transition: opacity 0.5s ease;
     }
 
     #NEXT-PAGE, #PREV-PAGE {
         all: unset;
+        display: inline-flex;
         position: absolute;
+        justify-content: center;
+        align-content: center;
         background: rgb(27, 27, 27);
         color: white;
         align-self: center;
-        font-size: 4rem;
-        padding: 0.2rem 0.5rem;
-        aspect-ratio: 1/1;
-        border-radius: 99rem;
+        width: clamp(2.3rem, 10vw, 4.5rem);
+        aspect-ratio: 1;
+        border-radius: 50%;
+        padding: 0.2rem;
         z-index: 99;
         outline: 1px solid rgba(255, 255, 255, 0.5);
         pointer-events: none;
         transition: opacity 0.5s ease-in-out;
+        text-align: center;
+        box-sizing: border-box;
     }
 
     #NEXT-PAGE { right: 15%; }
     #PREV-PAGE { left: 15%; }
+
+    #NEXT-PAGE > span, #PREV-PAGE > span {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        font-size: clamp(1rem, 5vw, 3.5rem);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     .page {
         box-sizing: border-box;
@@ -539,6 +555,14 @@ header a:hover {
         opacity: 0;
         color: black;
         transition: opacity 0.7s ease-in-out
+    }
+
+    .page p {
+        font-size: clamp(0.7rem, 3vw, 0.9rem);
+    }
+
+    .page h1 {
+        font-size: clamp(1.2rem, 6vw, 2.4rem);
     }
 
     #NEXT-PAGE.hide,
@@ -630,6 +654,28 @@ header a:hover {
 
     .rules .front.open > .inside-1:hover {
         scale: 2
+    }
+
+    @media screen and (max-width: 768px) and (min-width: 425px){
+        #NEXT-PAGE { right: 15%; bottom: 2% }
+        #PREV-PAGE { left: 15%; bottom: 2% }
+
+        #FOLDER-OPEN-RETURN-BTN {
+            bottom: 2%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    @media screen and (max-width: 425px) {
+        #NEXT-PAGE { right: 15%; bottom: 5% }
+        #PREV-PAGE { left: 15%; bottom: 5% }
+
+        #FOLDER-OPEN-RETURN-BTN {
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 
 /* CARD CATALOG STYLE */
