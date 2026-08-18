@@ -801,7 +801,7 @@ header a:hover {
 .holo-tri {
     position: absolute;
     width: 40px;
-    height: 400px;
+    height: 28vw;
     clip-path: polygon(
         50% 0%,
         100% 100%,
@@ -862,6 +862,20 @@ header a:hover {
 .faction-holo:nth-child(3) .holo-tri-cont:has(.holo-tri.flicker) { animation-delay: 0.6s; }
 
 .holo-tri-cont:has(.holo-tri.flicker) { animation: flicker 2s forwards; }
+
+@media screen and (max-width: 768px) {
+    #HOLO-CONT {
+        grid-template-columns: 1fr;
+    }
+
+    .faction-holo {
+        width: 70%
+    }
+
+    .holo-tri {
+        height: 50vw
+    }
+}
 
 /* CARDS CONTAINERS */
 .card-cont {
