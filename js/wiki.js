@@ -69,13 +69,12 @@ copyCards()
         //add sfx for folder open here soon idk
         if (folderOpened === false) {
             folderOpened = true
-            folderOpen(loreFolder, firstPageL, 'center right', loreTempChildren)
+            folderOpen(loreFolder, firstPageL, 'top right', loreTempChildren)
         }
     });
 
     //FOLDER CLOSE
     rulesFolder.children[0].addEventListener("animationend", (event) => { folderClose(rulesFolder, event, 0, '-3deg', firstPageR) });
-
     loreFolder.children[0].addEventListener("animationend", (event) => { folderClose(loreFolder, event, 1, '5deg', firstPageL) });
 
     //RETURN
@@ -163,7 +162,7 @@ async function folderOpen(folder, folderPage, transOrig, tempChildren) {
     }, {
         transformOrigin: 'top left',
         transform:  `
-            translate(0, 0)
+            translate(-10px, 0)
             scale(1.1)
         `,
         rotate: '0deg'
@@ -211,13 +210,11 @@ async function folderClose(folder, event, folderContIndex, rotation) {
             transformOrigin: 'top left',
             transform: `
                 translate(${deltaX}px, ${deltaY}px)
-                scale(1.1)
             `
         }, {
             transformOrigin: 'center center',
             transform:  `
                 translate(0, 0)
-                scale(1)
             `,
             rotate: rotation
         }], {
@@ -383,7 +380,7 @@ const folderObserver = new IntersectionObserver((entries)=>{
         }
     })
 }, {
-    threshold: 0.3
+    threshold: 0.2
 });
 
 folders.forEach((folder)=>folderObserver.observe(folder));
