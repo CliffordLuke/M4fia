@@ -346,13 +346,13 @@ header a:hover {
     }
 
     .front p:first-of-type {
-        margin: 3rem 1rem 2rem 1rem;
-        font-size: 1.7vw;
+        margin: 5vh 1vw 3.5vh 1vw;
+        font-size: clamp(1rem, 2vw, 1.5rem);
     }
 
     .front p:nth-of-type(2) {
-        margin: 1rem 0 1rem 0;
-        font-size: large;
+        margin: 1rem 0;
+        font-size: clamp(0.7rem, 2vw, 1.3rem);
     }
 
     .front p:last-of-type {
@@ -360,13 +360,15 @@ header a:hover {
         left: 50%;
         transform: translate(-50%);
         bottom: 1%;
-        font-size: small;
+        font-size: clamp(0.7rem, 2.5vw, 1.3rem);
+        width: 100%;
+        z-index: 20;
     }
 
 
     .front h3 {
         position: absolute;
-        font-size: 4.5vw;
+        font-size: clamp(2.3rem, 4.2vw, 5.5rem);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -376,7 +378,8 @@ header a:hover {
         box-sizing: content-box;
         padding-left: 2rem;
         padding-right: 2rem;
-        rotate:-7deg
+        rotate: -7deg;
+        z-index: 20;
     }
 
 
@@ -426,6 +429,19 @@ header a:hover {
         #FOLDER-OPENED-CONTAINER .folder {
             height: 80%;
         }
+        
+        .front h3 {
+            font-size: clamp(1.6rem, 7vw, 5rem);
+        }
+
+        .front p:first-of-type {
+            margin: 4vh 2vw 2vh 2vw;
+        }
+
+         .front p:nth-of-type(2) {
+            margin: 2vh 0;
+            font-size: clamp(0.7rem, 3vw, 1.5rem);
+        }
     }
 
     @media screen and (max-width: 425px) {
@@ -434,7 +450,15 @@ header a:hover {
         }
 
         #FOLDER-OPENED-CONTAINER .folder {
-            height: 65%;
+            height: 55%;
+        }
+
+        .front h3 {
+            font-size: clamp(1.3rem, 8vw, 5rem);
+        }
+
+        .front p:first-of-type {
+            margin: 3.8vh 2vw 3vh 2vw;
         }
     }
 
