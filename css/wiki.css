@@ -836,7 +836,7 @@ header a:hover {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 3rem;
     position: absolute;
-    top: 0;
+    top: -2rem;
     opacity: 0;
     justify-self: center;
     transition: all 0.5s ease-in-out;
@@ -846,9 +846,9 @@ header a:hover {
 .faction-holo:nth-child(2) .holo-title { color: #ff1010; text-shadow: #ff3b3b 0px 0px 15px; }
 .faction-holo:nth-child(3) .holo-title { color: white; text-shadow: #ffffff 0px 0px 15px; }
 
-.faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-2.3vw); }
-.faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-2.3vw); }
-.faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-2.3vw); }
+.faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+.faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+.faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
 
 /* HOLO SCROLL ANIMATIONS */
 .faction-holo:nth-child(1) .faction-img.popup { transition-delay: 0.2s; }
@@ -877,9 +877,14 @@ header a:hover {
         width: 10vw
     }
 
-    .faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-3vw); }
-    .faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-3vw); }
-    .faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-3vw); }
+    .holo-title {
+        font-size: 2.6rem;
+        top: -1rem
+    }
+
+    .faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-1rem); }
+    .faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-1rem); }
+    .faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-1rem); }
 }
 
 @media screen and (max-width: 425px) {
@@ -891,10 +896,6 @@ header a:hover {
         height: 70vw;
         width: 10vw
     }
-
-    .faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-20vw); }
-    .faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-20vw); }
-    .faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-20vw); }
 }
 
 /* CARDS CONTAINERS */
