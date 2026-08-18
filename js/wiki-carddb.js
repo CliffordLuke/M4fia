@@ -11,6 +11,8 @@ const zoomContBtn = document.querySelector("#ZOOM-CONT-CLOSE");
 const zoomedCardCont = document.querySelector("#ZOOM-IMG-CONT");
 const imgHolder = document.querySelector("#ZOOM-IMG");
 
+let children
+
 //INTRO ANIM
 randomChar(4, 0, "M");
 randomChar(5, 1, "4");
@@ -58,7 +60,7 @@ function randomBase64Char() {
 
 //SEARCH FUNCTIONALITY
 searchBar.addEventListener("input", (inp) => {
-    let children = Array.from(srcc.children)
+    children = Array.from(srcc.children)
 
     if (children.length > 0) {
         children.forEach((child) => {
@@ -108,6 +110,21 @@ searchBar.addEventListener("input", (inp) => {
         } else {
             noResult.classList.remove("show");
         }
+
+        children.forEach(el => {
+            el.addEventListener("click", () => {
+                if (zoomedCardCont.children > 0) {
+                    zoomedCardCont.firstElementChild.remove()
+                }
+
+                zoomCont.classList.add("active");
+                const img = el.querySelector(".roleback");
+                const chosenCard = img.cloneNode(true)
+                chosenCard.classList.add("opened");
+
+                zoomedCardCont.appendChild(chosenCard);
+            })
+        })
     }
 });
 
