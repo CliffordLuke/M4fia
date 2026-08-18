@@ -40,17 +40,27 @@ const pageFlip = document.querySelector("#SFX-PAGE-FLIP");
 
 let folderOpened = false;
 
+function copyCardFunc(group, groupCont) {
+    group.forEach(el => {
+        const child = el.cloneNode(true);
+        groupCont.appendChild(child)
+    })
+}
+
 function copyCards() {
-    const rg = remGrp.cloneNode(true);
-    const sg = synGrp.cloneNode(true);
-    const ng = nullGrp.cloneNode(true);
+    const rg = remGrp.querySelectorAll(".card");
+    const sg = synGrp.querySelectorAll(".card");
+    const ng = nullGrp.querySelectorAll(".card");
 
-    remGrp.parentElement.appendChild(rg);
-    synGrp.parentElement.appendChild(sg);
-    nullGrp.parentElement.appendChild(ng);
+    copyCardFunc(rg, remGrp)
+    copyCardFunc(sg, synGrp)
+    copyCardFunc(ng, nullGrp)
 
-    const ng2 = nullGrp.cloneNode(true);
-    nullGrp.parentElement.appendChild(ng2);
+    const carousel = document.querySelectorAll(".carousel")
+
+    carousel.forEach(el => {
+        el.classList.add("run-anim")
+    })
 }
 
 copyCards()

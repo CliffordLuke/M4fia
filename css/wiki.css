@@ -916,6 +916,7 @@ header a:hover {
     height: 70%;
     width: 100%;
     scrollbar-width: none;
+    overflow: hidden;
 }
 
 .role-card {
@@ -945,19 +946,17 @@ header a:hover {
     gap: 1rem;
     padding: 1rem 1rem 1rem 0;
     scroll-behavior: smooth;
+    width: max-content;
+    flex-shrink: 0;
 }
 
-#NULL-CARDS .inner-card-cont {
-    animation: nullSpin 12s infinite linear;
-}
+#REMNANTS-CARDS .carousel.run-anim { animation: spin 18s infinite linear; }
+#SYNDICATE-CARDS .carousel.run-anim { animation: spin 12s infinite linear; }
+#NULL-CARDS .carousel.run-anim { animation: spin 15s infinite linear; }
 
-#SYNDICATE-CARDS .inner-card-cont {
-    animation: syndicateSpin 25s infinite linear;
-}
-
-#REMNANTS-CARDS .inner-card-cont {
-    animation: remnantsSpin 40s infinite linear;
-}
+#NULL-CARDS:has(.card:hover) .carousel.run-anim,
+#SYNDICATE-CARDS:has(.card:hover) .carousel.run-anim,
+#REMNANTS-CARDS:has(.card:hover) .carousel.run-anim { animation-play-state: paused; }
 
 .card {
     position: relative;
@@ -991,12 +990,6 @@ header a:hover {
 .card:hover .card-contents {
     transform: rotateY(180deg);
     box-shadow: 0px 5px 19px 4px #000000;
-}
-
-#REMNANTS-CARDS:has(.card:hover) .inner-card-cont,
-#SYNDICATE-CARDS:has(.card:hover) .inner-card-cont,
-#NULL-CARDS:has(.card:hover) .inner-card-cont {
-    animation-play-state: paused;
 }
 
 #NULL-GROUP .card-overlay {
@@ -1101,7 +1094,7 @@ header a:hover {
     all: unset;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 2vw;
+    font-size: clamp(2rem, 2vw, 4rem);
     display: inline-block;
     margin: 2rem 0;
     box-sizing: border-box;
@@ -1117,13 +1110,23 @@ header a:hover {
     cursor: pointer
 }
 
+@media screen and (max-width: 768px) {
+    .card {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .card {
+        width: 80vw;
+    }
+}
+
+/* ANIMATIONS */
 .fade-in {
     animation: fadeIn 0.3s ease-in-out forwards;
 }
 
-
-
-/* ANIMATIONS */
 @keyframes flicker {
     0% { opacity: 0; }
     5% { opacity: 0.2; }
@@ -1171,30 +1174,12 @@ header a:hover {
     }
 }
 
-@keyframes syndicateSpin {
+@keyframes spin {
     from {
         translate: 0;
     }
     to {
-        translate: -164%;
-    }
-}
-
-@keyframes remnantsSpin {
-    from {
-        translate: 0;
-    }
-    to {
-        translate: -329%;
-    }
-}
-
-@keyframes nullSpin {
-    from {
-        translate: 0;
-    }
-    to {
-        translate: -66%;
+        transform: translateX(-50%)
     }
 }
 
