@@ -7,7 +7,6 @@ const introMessage = [
   "Oh no! Its the Gunship!",
   "Which one of you were going to tell me that tea tastes different if you put it in hot water?",
   "Welcome or Welcome back!",
-  "Let's trap Timothy in the Basement and make him shake his-",
   "HDMI 5 connected",
   "Why are you buying clothes in the soup store?!",
   "So I have materials btw",
@@ -205,7 +204,7 @@ btnMute.addEventListener("click", () => {
 
 
 
-
+// Clif's uhhh easter egg
 console.log('why are you here?');
 console.log('well, while you are here,');
 console.log('I am going to say...');
@@ -216,3 +215,38 @@ setTimeout(() => {console.log('...'); }, 40000);
 setTimeout(() => {console.log('...'); }, 50000); 
 setTimeout(() => {console.log('...nothing.'); }, 60000); 
 setTimeout(() => {console.log('thank you for your wasted time waiting for this.'); }, 63000); 
+
+
+// SCROLL ANIMATIONS
+const posters = document.querySelectorAll(".poster")
+
+const slamObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if (entry.isIntersecting){
+            entry.target.classList.add("slam");
+        }
+    })
+}, {
+    threshold: 0.3
+});
+
+posters.forEach((poster)=>slamObserver.observe(poster));
+
+
+const TV = document.querySelector(".tv");
+
+const tvOnObserver = new IntersectionObserver((entry) => {
+  if (entry[0].isIntersecting) {
+    tvOverlay.classList.remove("turnOff");
+    tvOverlay.classList.add("turnOn")
+
+    setTimeout(() => {
+      screen.style.opacity = 1;
+    }, 450);
+    clearInterval(slideshow);
+  };
+}, {
+  threshold: 0.5
+});
+
+tvOnObserver.observe(TV)
