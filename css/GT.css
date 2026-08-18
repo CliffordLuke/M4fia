@@ -87,10 +87,17 @@ header a:hover {
     text-align: center;
     align-content: center;
     font-size: clamp(1rem, 2vw, 1.3rem);
+    filter: invert(100%);
+    transition: all 0.15s ease-in-out;
 }
 
-#HOME h1 {
-  margin: 0
+#HOME img {
+  margin: 0;
+  height: 2.5rem;
+}
+
+#HOME:hover {
+  filter: invert(60%);
 }
 
 #HAMBURGER {
