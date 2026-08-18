@@ -780,7 +780,7 @@ header a:hover {
     aspect-ratio: 1/1;
     justify-self: center;
     align-self: center;
-    transform: translateY(-30px);
+    transform: translateY(-200%);
     border-radius: 100rem;
     opacity: 0;
 }
@@ -800,7 +800,7 @@ header a:hover {
 
 .holo-tri {
     position: absolute;
-    width: 40px;
+    width: 3vw;
     height: 28vw;
     clip-path: polygon(
         50% 0%,
@@ -809,7 +809,7 @@ header a:hover {
     );
     transform-origin: top center;
     top: 20px;
-    left: -11px;
+    justify-self: center;
     z-index: -1;
 }
 
@@ -846,9 +846,9 @@ header a:hover {
 .faction-holo:nth-child(2) .holo-title { color: #ff1010; text-shadow: #ff3b3b 0px 0px 15px; }
 .faction-holo:nth-child(3) .holo-title { color: white; text-shadow: #ffffff 0px 0px 15px; }
 
-.faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
-.faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
-.faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-1.5rem); }
+.faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-2.3vw); }
+.faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-2.3vw); }
+.faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-2.3vw); }
 
 /* HOLO SCROLL ANIMATIONS */
 .faction-holo:nth-child(1) .faction-img.popup { transition-delay: 0.2s; }
@@ -873,8 +873,28 @@ header a:hover {
     }
 
     .holo-tri {
-        height: 50vw
+        height: 50vw;
+        width: 10vw
     }
+
+    .faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-3vw); }
+    .faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-3vw); }
+    .faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-3vw); }
+}
+
+@media screen and (max-width: 425px) {
+    .faction-holo {
+        width: 95%
+    }
+
+    .holo-tri {
+        height: 70vw;
+        width: 10vw
+    }
+
+    .faction-holo:nth-child(1):hover .holo-title { opacity: 1; transform: translateY(-20vw); }
+    .faction-holo:nth-child(2):hover .holo-title { opacity: 1; transform: translateY(-20vw); }
+    .faction-holo:nth-child(3):hover .holo-title { opacity: 1; transform: translateY(-20vw); }
 }
 
 /* CARDS CONTAINERS */
@@ -908,6 +928,7 @@ header a:hover {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
+    scroll-margin-top: 5rem;
 }
 
 #REMNANTS-CARDS.opened,
