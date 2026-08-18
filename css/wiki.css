@@ -450,6 +450,10 @@ header a:hover {
             width: 100%;
         }
 
+        #FOLDER-OPENED-CONTAINER {
+            align-items: center;
+        }
+
         #FOLDER-OPENED-CONTAINER .folder {
             height: 55%;
         }
@@ -951,7 +955,7 @@ header a:hover {
     flex-shrink: 0;
 }
 
-#REMNANTS-CARDS .carousel.run-anim { animation: spin 18s infinite linear; }
+#REMNANTS-CARDS .carousel.run-anim { animation: spin 22s infinite linear; }
 #SYNDICATE-CARDS .carousel.run-anim { animation: spin 12s infinite linear; }
 #NULL-CARDS .carousel.run-anim { animation: spin 15s infinite linear; }
 
