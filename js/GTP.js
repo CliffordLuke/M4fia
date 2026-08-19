@@ -119,7 +119,7 @@ confirmButton.addEventListener("click", function() {
     const playerName = document.createElement("input");
 
     playerName.classList.add("player-name");
-    playerName.value = "Person " + (i - 1);
+    playerName.value = "Person " + (i);
 
 
 
