@@ -38,25 +38,52 @@ nav ul {
 }
 
  #landing {
-  margin: 100px;
+  margin: 5%;
   color: #79fa4e;
 }
 
-#comp {
+#compimg {
   width: 100%;
 }
 
-input[type=text], type[input=text]:focus {
-  width: 80%;
+.comp {
+  position:relative;
+  width: 100%;
+}
+
+.form {
+  position: absolute;
+  top: 6%;
+  left: 12%;
+}
+
+input, input:focus, select {
+  background-color: transparent;
+  caret-shape: underscore;
+  border: none;
+  outline: none;
+
+}
+
+label, input, .cmd, #minicons {
+  font-family: monospace;
+  font-size: 15px;
+}
+label, input, .cmd{
+    color:#79fa4e;
+}
+
+#category {
   background-color: transparent;
   caret-shape: underscore;
   border: none;
   outline: none;
 }
 
-label, input[type=text] {
-  color:#79fa4e;
-  font-family: monospace;
+#minicons {
+  color:#f35050
 }
 
-
+input[type="submit"]{
+  cursor: pointer;
+}
