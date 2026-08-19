@@ -193,7 +193,7 @@ document
 
 
 
-const bgMusic = document.getElementById("bgMusic");
+const bgMusic = document.getElementById("musicBG");
 const btnMute = document.getElementById("btnMute");
 
 btnMute.addEventListener("click", () => {
