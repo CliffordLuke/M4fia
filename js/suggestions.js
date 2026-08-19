@@ -13,7 +13,7 @@ hello.addEventListener("click", () => {
     }
     else {
         console.log("HOLY SHIT CATEGORY IS WRONG");
-        cons.textContent += " Invalid Category!"
+        cons.textContent = " Invalid Category!"
     }
 
     if (nam != "") {
@@ -21,7 +21,7 @@ hello.addEventListener("click", () => {
     }
     else {
         console.log("HOLY SHIT NAME IS WRONG")
-        cons.textContent += " Please input a Name!"
+        cons.textContent = " Please input a Name!"
     }
 
     
