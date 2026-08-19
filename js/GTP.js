@@ -88,6 +88,11 @@ const roleIcons = {
   "Mimic": "../images/RoleIcons/Mimic.png"
 }
 
+const bloodPNG = [
+  "../images/Blood/blood1.png",
+  "../images/Blood/blood2.png"
+];
+
 
 
 
@@ -178,11 +183,6 @@ confirmButton.addEventListener("click", function() {
     const bloodLayer = document.createElement("div");
     bloodLayer.classList.add("blood-layer"); 
 
-    const bloodPNG = [
-      "../images/Blood/blood1.png",
-      "../images/Blood/blood2.png"
-    ];
-
     function bloodRandom(min, max) {
       return Math.random() * (max - min) + min;
     }
@@ -209,8 +209,6 @@ confirmButton.addEventListener("click", function() {
 
         bloodThing.style.transform = `translate(-50%, -50%) rotate(${bloodRandom(-0, 360)}deg)`;
 
-        bloodThing.style.zIndex = Math.floor(bloodRandom(1, 7));
-
         bloodThing.style.opacity = `${bloodRandom(30, 75)}%`;
 
         bloodLayer.appendChild(bloodThing);
@@ -235,42 +233,81 @@ confirmButton.addEventListener("click", function() {
 
 
 
-  /* 1 Own Player Card */
-  const mePlayerCard = document.getElementById("MePlayerCard");
+/* 1 Own Player Card */
+const mePlayerCard = document.getElementById("MePlayerCard");
 
-  /* 2 Own Player Name */
-  const mePlayerName = document.getElementById("MePlayerName");
+/* 2 Own Player Name */
+const mePlayerName = document.getElementById("MePlayerName");
 
-  /* 3 Own Player Status */
-  const mePlayerStatus = document.getElementById("MePlayerStatus");
+/* 3 Own Player Status */
+const mePlayerStatus = document.getElementById("MePlayerStatus");
 
-  mePlayerStatus.addEventListener("click", function() {
-    if (mePlayerStatus.textContent === "ALIVE") {
-      mePlayerStatus.textContent = "DEAD";
-    } else {
-      mePlayerStatus.textContent = "ALIVE";
-    }
-  });
+/* 4 Own Player Role */
+const meRoleSelection = document.getElementById("MeRoleSelection");
+const meRoleIcon = document.getElementById("MeRoleIcon");
+const mePlayerRole = document.getElementById("MePlayerRole");
 
-  /* 4 Own Player Role */
-  const meRoleSelection = document.getElementById("MeRoleSelection");
-  const meRoleIcon = document.getElementById("MeRoleIcon");
-  const mePlayerRole = document.getElementById("MePlayerRole");
+for (let role of roles) {
+  const meRoleOption = document.createElement("option");
+  meRoleOption.textContent = role;
 
-  for (let role of roles) {
-    const meRoleOption = document.createElement("option");
-    meRoleOption.textContent = role;
+  mePlayerRole.appendChild(meRoleOption);
+}
 
-    mePlayerRole.appendChild(meRoleOption);
+mePlayerRole.addEventListener("change", function () {
+  const selectedRole = mePlayerRole.value;
+
+  meRoleIcon.src = roleIcons[selectedRole];
+});
+
+/* 5 Blood thing */
+const meBloodLayer = document.createElement("div");
+meBloodLayer.classList.add("blood-layer"); 
+
+function bloodRandom(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+function bloodGen() {
+  meBloodLayer.innerHTML = "";
+
+  const bloodAmount = Math.floor(bloodRandom(5, 10));
+
+  for (let i = 0; i < bloodAmount; i++) {
+    const bloodThing = document.createElement("img");
+
+    bloodThing.src = bloodPNG[
+      Math.floor(Math.random() * bloodPNG.length)
+    ];
+
+    bloodThing.classList.add("bloodstain");
+
+    const size = bloodRandom(50, 200);
+    bloodThing.style.width = `${size}px`;
+
+    bloodThing.style.left = `${bloodRandom(0, 100)}%`;
+    bloodThing.style.top = `${bloodRandom(0, 100)}%`;
+
+    bloodThing.style.transform = `translate(-50%, -50%) rotate(${bloodRandom(-0, 360)}deg)`;
+
+    bloodThing.style.opacity = `${bloodRandom(30, 75)}%`;
+
+    meBloodLayer.appendChild(bloodThing);
   }
+}
 
-  mePlayerRole.addEventListener("change", function () {
-    const selectedRole = mePlayerRole.value;
+mePlayerStatus.addEventListener("click", function() {
+  if (mePlayerStatus.textContent === "ALIVE") {
+    mePlayerStatus.textContent = "DEAD";
+    bloodGen();
+  } else {
+    mePlayerStatus.textContent = "ALIVE";
+    meBloodLayer.innerHTML = "";
+  }
+});
 
-    meRoleIcon.src = roleIcons[selectedRole];
-  });
 
-
+mePlayerCard.appendChild(meBloodLayer);
 
 
 
