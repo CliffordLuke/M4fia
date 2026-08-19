@@ -172,18 +172,7 @@ main {
 #MePlayer {
   width: 100%;
 }
-#MePlayerCard {
-  width: 100%;
-  min-height: 150px;
-  padding: 20px;
-  background: #ffcebb;
-  border: 1px solid #ffbfa6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
+
 
 .me-title {
   font-size: 2rem;
@@ -268,6 +257,19 @@ main {
   align-items: center;
 }
 
+#MeRoleSelection {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+#MeRoleIcon {
+  width: 50px;
+  height: 50px;
+}
+
 
 
 /* 1 Player Cards */
@@ -285,6 +287,21 @@ main {
   overflow: hidden;
   gap: 0.5rem;
 }
+
+#MePlayerCard {
+  width: 300px;
+  aspect-ratio: 5/3;
+  padding: 1rem;
+  background: #ffcebb;
+  border: 1px solid #ffbfa6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  gap: 0.5rem;
+}
+
 
 
 
@@ -305,6 +322,21 @@ main {
   outline: 1px solid #0f0f0f;
 }
 
+#MePlayerName {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.4rem;
+  font-weight: bold;
+  color: black;
+}
+#MePlayerName:focus {
+  outline: 1px solid #0f0f0f;
+}
+
 
 
 /* 3 Player Status */
@@ -312,6 +344,17 @@ main {
 .player-status {
   width: 50%;
   height: 10%;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid #0f0f0f;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#MePlayerStatus {
+  width: 50%;
+  height: 20%;
   background: rgba(100, 100, 100, 0.4);
   border: 1px solid #0f0f0f;
   color: black;
@@ -345,6 +388,14 @@ main {
   height: 50px;
 }
 
+#MePlayerRole {
+  width: 140px;
+  padding: 0.5rem;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  color: black;
+}
+
 
 
 /* 5 Player Notes */
@@ -366,69 +417,16 @@ main {
 
 
 
-#MePlayerCard {
-  width: 300px;
-  aspect-ratio: 5/3;
-  padding: 1rem;
-  background: #ffcebb;
-  border: 1px solid #ffbfa6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  gap: 0.5rem;
+/* Blood thing */
+
+.blood-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
 }
 
-
-
-#MePlayerName {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  text-align: center;
-  font-size: 1.5rem;
-  padding: 0.4rem;
-  font-weight: bold;
-  color: black;
-}
-#MePlayerName:focus {
-  outline: 1px solid #0f0f0f;
-}
-
-
-
-#MePlayerStatus {
-  width: 50%;
-  height: 20%;
-  background: rgba(100, 100, 100, 0.4);
-  border: 1px solid #0f0f0f;
-  color: black;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-
-
-#MePlayerRole {
-  width: 140px;
-  padding: 0.5rem;
-  background: rgba(100, 100, 100, 0.4);
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  color: black;
-}
-
-#MeRoleSelection {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-}
-
-#MeRoleIcon {
-  width: 50px;
-  height: 50px;
+.bloodstain {
+  position: absolute;
+  transform-origin: center;
+  pointer-events: none;
 }

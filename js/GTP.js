@@ -68,24 +68,24 @@ const roles = [
 ];
 
 const roleIcons = {
-  "Unknown": "/images/RoleIcons/Unknown.png",
-  "Field Doctor": "/images/RoleIcons/FieldDoctor.png",
-  "Detective": "/images/RoleIcons/Detective.png",
-  "Sheriff": "/images/RoleIcons/Sheriff.png",
-  "Lifevessel": "/images/RoleIcons/Lifevessel.png",
-  "Martyr": "/images/RoleIcons/Martyr.png",
-  "Operative": "/images/RoleIcons/Operative.png",
-  "Journalist": "/images/RoleIcons/Journalist.png",
-  "Apothecary": "/images/RoleIcons/Apothecary.png",
-  "Medium": "/images/RoleIcons/Medium.png",
-  "Civilian": "/images/RoleIcons/Civilian.png",
-  "Mafioso": "/images/RoleIcons/Mafioso.png",
-  "Silencer": "/images/RoleIcons/Silencer.png",
-  "Godfather": "/images/RoleIcons/Godfather.png",
-  "Suppressor": "/images/RoleIcons/Suppressor.png",
-  "Larkin": "/images/RoleIcons/Larkin.png",
-  "Jester": "/images/RoleIcons/Jester.png",
-  "Mimic": "/images/RoleIcons/Mimic.png"
+  "Unknown": "../images/RoleIcons/Unknown.png",
+  "Field Doctor": "../images/RoleIcons/FieldDoctor.png",
+  "Detective": "../images/RoleIcons/Detective.png",
+  "Sheriff": "../images/RoleIcons/Sheriff.png",
+  "Lifevessel": "../images/RoleIcons/Lifevessel.png",
+  "Martyr": "../images/RoleIcons/Martyr.png",
+  "Operative": "../images/RoleIcons/Operative.png",
+  "Journalist": "../images/RoleIcons/Journalist.png",
+  "Apothecary": "../images/RoleIcons/Apothecary.png",
+  "Medium": "../images/RoleIcons/Medium.png",
+  "Civilian": "../images/RoleIcons/Civilian.png",
+  "Mafioso": "../images/RoleIcons/Mafioso.png",
+  "Silencer": "../images/RoleIcons/Silencer.png",
+  "Godfather": "../images/RoleIcons/Godfather.png",
+  "Suppressor": "../images/RoleIcons/Suppressor.png",
+  "Larkin": "../images/RoleIcons/Larkin.png",
+  "Jester": "../images/RoleIcons/Jester.png",
+  "Mimic": "../images/RoleIcons/Mimic.png"
 }
 
 
@@ -123,14 +123,6 @@ confirmButton.addEventListener("click", function() {
 
     playerStatus.classList.add("player-status");
     playerStatus.textContent = "ALIVE";
-
-    playerStatus.addEventListener("click", function() {
-      if (playerStatus.textContent === "ALIVE") {
-        playerStatus.textContent = "DEAD";
-      } else {
-        playerStatus.textContent = "ALIVE";
-      }
-    });
 
 
 
@@ -180,6 +172,63 @@ confirmButton.addEventListener("click", function() {
     playerCard.appendChild(playerNotes);
 
     PlayerList.appendChild(playerCard);
+
+
+    /* Blood thing */
+    const bloodLayer = document.createElement("div");
+    bloodLayer.classList.add("blood-layer"); 
+
+    const bloodPNG = [
+      "../images/Blood/blood1.png",
+      "../images/Blood/blood2.png"
+    ];
+
+    function bloodRandom(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function bloodGen() {
+      bloodLayer.innerHTML = "";
+
+      const bloodAmount = Math.floor(bloodRandom(10, 20));
+
+      for (let i = 0; i < bloodAmount; i++) {
+        const bloodThing = document.createElement("img");
+
+        bloodThing.src = bloodPNG[
+          Math.floor(Math.random() * bloodPNG.length)
+        ];
+
+        bloodThing.classList.add("bloodstain");
+
+        const size = bloodRandom(50, 200);
+        bloodThing.style.width = `${size}px`;
+
+        bloodThing.style.left = `${bloodRandom(0, 100)}%`;
+        bloodThing.style.top = `${bloodRandom(0, 100)}%`;
+
+        bloodThing.style.transform = `translate(-50%, -50%) rotate(${bloodRandom(-0, 360)}deg)`;
+
+        bloodThing.style.zIndex = Math.floor(bloodRandom(1, 7));
+
+        bloodThing.style.opacity = `${bloodRandom(30, 75)}%`;
+
+        bloodLayer.appendChild(bloodThing);
+      }
+    }
+    
+    playerStatus.addEventListener("click", function() {
+      if (playerStatus.textContent === "ALIVE") {
+        playerStatus.textContent = "DEAD";
+        bloodGen();
+      } else {
+        playerStatus.textContent = "ALIVE";
+        bloodLayer.innerHTML = "";
+      }
+    });
+
+
+    playerCard.appendChild(bloodLayer);
   }
 });
 
@@ -290,3 +339,9 @@ timePrev.addEventListener("click", function () {
     gameTime.textContent = gamePhases[currentPhase];
   }
 });
+
+
+
+
+
+
