@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0px 20px;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 101;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ #landing {
+  margin: 5%;
+  color: #79fa4e;
+}
+
+#compimg {
+  width: 100%;
+}
+
+.comp {
+  position:relative;
+  width: 100%;
+}
+
+.form {
+  position: absolute;
+  top: 6%;
+  left: 12%;
+}
+
+input, input:focus, select {
+  background-color: transparent;
+  caret-shape: underscore;
+  border: none;
+  outline: none;
+
+}
+
+label, input, .cmd, #minicons {
+  font-family: monospace;
+  font-size: 15px;
+}
+label, input, .cmd{
+    color:#79fa4e;
+}
+
+#category {
+  background-color: transparent;
+  caret-shape: underscore;
+  border: none;
+  outline: none;
+}
+
+#minicons {
+  color:#f35050
+}
+
+input[type="submit"]{
+  cursor: pointer;
+}
