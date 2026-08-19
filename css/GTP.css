@@ -1,0 +1,453 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #111111;
+}
+
+
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0px 20px;
+  height: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 101;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header a:hover {
+  text-decoration: underline;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+}
+
+header nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Main */
+
+main {
+  margin-top: 75px;
+  width: 100%;
+  height: calc(100vh - 75px);
+}
+
+
+
+.div1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+}
+.div1A, .div1B {
+  display: flex;
+}
+.div1A {
+  position: relative;
+}
+.div1B {
+  position: absolute;
+  transform: translateY(40px);
+}
+
+.GTspan1, .GTspan2 {
+  font-weight: bold;
+  position: relative;
+  color: #0090e4;
+}
+.GTspan1 {
+  font-size: clamp(2rem, 10vw, 5rem) ;
+}
+.GTspan2 {
+  font-size: 2rem;
+}
+
+
+
+
+/* Player input */
+
+#PlayerInput {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100%;
+}
+
+#PlayNumControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#PlayNumControl button {
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  cursor: pointer; 
+}
+
+#PlayerInputBox {
+  width: 500px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.PlayInputText {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#PlayNumInput {
+  width: 100px;
+  height: 50px;
+  font-size: 2rem;
+  padding: 10px;
+  text-align: center;
+}
+
+#PlayNumInput::-webkit-inner-spin-button, #PlayNumInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+#PlayNumConfirm {
+  width: 75%;
+  height: 10%;
+}
+
+
+
+/* Game info */
+
+#GameInfo {
+  width: 100%;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 300px 2fr 300px;
+  align-items: center;
+  background: #111111;
+}
+
+
+/* Me Tracker */
+
+#MePlayer {
+  width: 100%;
+}
+
+
+.me-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.me-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+#TimeTracker {
+  width: 300px;
+  aspect-ratio: 5/3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #222222;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+#GameTimeTitle {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+#GameTimeTitle p {
+  margin: 0;
+  margin: 10px;
+}
+
+
+#GameTime {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  padding: 21px;
+  position: relative;
+}
+#GameTime p {
+  margin: 0px;
+}
+.night-icon::after {
+  position: absolute;
+  top: 25%;
+  left: 85%;
+  width: fit-content;
+  font-size: 4vw;
+  aspect-ratio: 1;
+  font-family: "Material Icons";
+  content: "bedtime";
+}
+.day-icon::before {
+  position: absolute;
+  top: 25%;
+  right: 85%;
+  width: fit-content;
+  font-size: 4vw;
+  aspect-ratio: 1;
+  font-family: "Material Icons";
+  content: "sunny";
+}
+
+#TimeControl {
+  display: flex;
+  width: 100%;
+}
+#TimeControl button {
+  width: 100%;
+  height: 40px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: #222222;
+  color: white;
+  font-size: 1.2rem;
+}
+
+
+
+/* Player List */
+
+#PlayerList {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+#MeRoleSelection {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+#MeRoleIcon {
+  width: 50px;
+  height: 50px;
+}
+
+
+
+/* 1 Player Cards */
+
+.player-card {
+  width: 300px;
+  aspect-ratio: 3/4;
+  padding: 1rem;
+  background: #ffcebb;
+  border: 1px solid #ffbfa6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  gap: 0.5rem;
+}
+
+#MePlayerCard {
+  width: 300px;
+  aspect-ratio: 5/3;
+  padding: 1rem;
+  background: #ffcebb;
+  border: 1px solid #ffbfa6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  gap: 0.5rem;
+}
+
+
+
+
+/* 2 Player Name */
+
+.player-name {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.4rem;
+  font-weight: bold;
+  color: black;
+}
+.player-name:focus {
+  outline: 1px solid #0f0f0f;
+}
+
+#MePlayerName {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 0.4rem;
+  font-weight: bold;
+  color: black;
+}
+#MePlayerName:focus {
+  outline: 1px solid #0f0f0f;
+}
+
+
+
+/* 3 Player Status */
+
+.player-status {
+  width: 50%;
+  height: 10%;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid #0f0f0f;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+#MePlayerStatus {
+  width: 50%;
+  height: 20%;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid #0f0f0f;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+
+
+/* 4 Player Role */
+
+.player-role {
+  width: 140px;
+  padding: 0.5rem;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  color: black;
+}
+
+.role-selection {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.role-icon {
+  width: 50px;
+  height: 50px;
+}
+
+#MePlayerRole {
+  width: 140px;
+  padding: 0.5rem;
+  background: rgba(100, 100, 100, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  color: black;
+}
+
+
+
+/* 5 Player Notes */
+
+.player-notes {
+  width: 100%;
+  flex: 1;
+  resize: none;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: black;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+.player-notes:focus {
+  outline: none;
+  border-color: #0f0f0f ;
+}
+
+
+
+/* Blood thing */
+
+.blood-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bloodstain {
+  position: absolute;
+  transform-origin: center;
+  pointer-events: none;
+}
