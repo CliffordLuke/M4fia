@@ -316,65 +316,41 @@ const gameTime = document.getElementById("GameTime");
 const timePrev = document.getElementById("TimePrev");
 const timeNext = document.getElementById("TimeNext");
 
-const gamePhases = [
-  "DAY 1",
-  "NIGHT 1",
-  "DAY 2",
-  "NIGHT 2",
-  "DAY 3",
-  "NIGHT 3",
-  "DAY 4",
-  "NIGHT 4",
-  "DAY 5",
-  "NIGHT 5",
-  "DAY 6",
-  "NIGHT 6",
-  "DAY 7",
-  "NIGHT 7",
-  "DAY 8",
-  "NIGHT 8",
-  "DAY 9",
-  "NIGHT 9",
-  "DAY 10",
-  "NIGHT 10",
-  "DAY 11",
-  "NIGHT 11",
-  "DAY 12",
-  "NIGHT 12",
-  "DAY 13",
-  "NIGHT 13",
-  "DAY 14",
-  "NIGHT 14",
-  "DAY 15",
-  "NIGHT 15",
-  "DAY 16",
-  "NIGHT 16",
-  "DAY 17",
-  "NIGHT 17",
-  "DAY 18",
-  "NIGHT 18",
-  "DAY 19",
-  "NIGHT 19",
-  "DAY 20",
-  "NIGHT 20",
-  "DAY 21+",
-  "NIGHT 21+",
-];
+let currentPhase = 1;
+let isDay = false;
 
-let currentPhase = 0;
-
-timeNext.addEventListener("click", function() {
-  if (currentPhase < gamePhases.length - 1) {
-    currentPhase++;
-    gameTime.textContent = gamePhases[currentPhase];
+function phaseUpdate() {
+  if (isDay) {
+    gameTime.textContent = `NIGHT ${currentPhase}`;
+    gameTime.classList.add("night-icon");
+    gameTime.classList.remove("day-icon");
+  } else {
+    gameTime.textContent = `DAY ${currentPhase}`;
+    gameTime.classList.add("day-icon");
+    gameTime.classList.remove("night-icon");
   }
+}
+
+timeNext.addEventListener("click", function () {
+  if (isDay) {
+    currentPhase++;
+    isDay = false;
+  } else {
+    isDay = true;
+  }
+
+  phaseUpdate();
 });
 
 timePrev.addEventListener("click", function () {
-  if (currentPhase > 0) {
+  if (isDay) {
+    isDay = false;
+  } else if (currentPhase > 1) {
     currentPhase--;
-    gameTime.textContent = gamePhases[currentPhase];
+    isDay = true;
   }
+
+  phaseUpdate();
 });
 
 
