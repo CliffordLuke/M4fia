@@ -1,66 +1,57 @@
 <!DOCTYPE html>
 <html lang="eng">
   <head>
-    <meta charset="UTF-8"/>
-    <meta property="og:type" content="website"/>
-    <!-- Might add more Open Graph properties -->
-
-    <!-- May edit content in the future-->
-    <meta content="M4FIA" property="og:title"/>
-
-    <!-- Add the M4FIA Website Description in content attribute-->
-    <meta name="description" content="TBA"/>
-
-    <!-- May change in order to properly make the UI responsive-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
     <!-- To be Updated/Changed-->
     <title> M4FIA Game Tracker </title>
 
-    <link rel="stylesheet" href="/css/GT.css">
-    <script src="/js/GT.js" defer></script>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8"/>
+    <meta name="" content=""/>
+    <meta name="description" content="TBA."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Open Graph Tags-->
+    <meta property="og:title" content="M4FIA Wiki"/>
+    <meta property="og:description" content="TBA"/> <!-- Feel free to edit Page Description Here-->
+    <meta property="og:url" content=""/> <!-- Add Url Here-->
+    <meta property="og:image" content=""/> <!-- Add Image URL Here -->
+    <meta property="og:type" content="website"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/GT.css">
+    <script src="../js/GT.js" defer></script>
   </head>
 
   <body>
     <header>
-      <a href="/index.html">
-        <h1>M4FIA</h1>
-      </a>
+      <div id="MOB-NAV">
+          <a id="HOME" href="../index.html">
+            <img src="../images/M4fiaLogo.png" alt="M4FIA Logo">
+          </a>
+          <input type="checkbox" id="HAMBURGER"/>
+          <label for="HAMBURGER"></label>
+      </div>
       <nav>
-        <ul>
-          <li><a href="/pages/wiki.html">Wiki</a></li>
-          <li><a href="/pages/game-tracker.html">Game Tracker</a></li>
-          <li><a href="/pages/suggestions.html">Suggestions</a></li>
+        <ul id="MENU">
+          <li class="item"><a href="wiki.html">Wiki</a></li>
+          <li class="item"><a href="game-tracker.html">Game Tracker</a></li>
+          <li class="item"><a href="suggestions.html">Suggestions</a></li>
         </ul>
       </nav>
     </header>
 
     <main>
       <section id="GTmain">
-        <div class="div1">
-          <div class="div1A">
-            <p><span class="GTspan1">GAME TRACKER</span></p>
-          </div>
-          <div class="div1B">
-            <p><span class="GTspan2">Keep Note of your Current Game</span></p>
-          </div>
-        </div>
+        <h2 class="GTspan1"> GAME TRACKER </h2>
+        <p class="GTspan2">Keep Note of your Current Game</p>
 
         <div id="options">
-          <a href="/pages/GTplayer.html" class="hologram PlayerHolo">
-            <div class="holo-div1">
-              <p><span class="holo-title">
-                Player
-              </span></p>
-            </div>
+          <a href="GTplayer.html" class="hologram PlayerHolo">
+            <p class="holo-title">Playing?</p>
           </a>
 
-          <a href="/pages/GThost.html" class="hologram HostHolo">
-            <div class="holo-div2">
-              <p><span class="holo-title">
-                Host
-              </span></p> 
-            </div>
+          <a href="GThost.html" class="hologram HostHolo">
+            <p class="holo-title"> Hosting? </p> 
           </a>
         </div>
       </section>

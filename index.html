@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta property="og:type" content="website"/>
-    <!-- Might add more Open Graph properties -->
-
-    <!-- May edit content in the future-->
-    <meta content="M4FIA" property="og:title"/>
-
-    <!-- Add the M4FIA Website Description in content attribute-->
-    <meta name="description" content="TBA"/>
-
-    <!-- May change in order to properly make the UI responsive-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
     <!-- To be Updated/Changed-->
     <title> M4FIA Website </title>
 
+    <!-- Meta Tags -->
+    <meta charset="UTF-8"/>
+    <meta name="" content=""/>
+    <meta name="description" content="TBA."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Open Graph Tags-->
+    <meta property="og:title" content="M4FIA Wiki"/>
+    <meta property="og:description" content="TBA"/> <!-- Feel free to edit Page Description Here-->
+    <meta property="og:url" content=""/> <!-- Add Url Here-->
+    <meta property="og:image" content=""/> <!-- Add Image URL Here -->
+    <meta property="og:type" content="website"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
     <link rel="stylesheet" href="./css/m4fia.css">
     <script src="js/m4fia.js" defer></script>
   </head>
@@ -55,14 +56,18 @@
     </nav>
 
     <header>
-      <a href="index.html">
-        <h1>M4FIA</h1>
-      </a>
+      <div id="MOB-NAV">
+          <a id="HOME" href="index.html">
+            <img src="images/M4fiaLogo.png" alt="M4FIA Logo">
+          </a>
+          <input type="checkbox" id="HAMBURGER"/>
+          <label for="HAMBURGER"></label>
+      </div>
       <nav>
-        <ul>
-          <li><a href="pages/wiki.html">Wiki</a></li>
-          <li><a href="pages/game-tracker.html">Game Tracker</a></li>
-          <li><a href="pages/suggestions.html">Suggestions</a></li>
+        <ul id="MENU">
+          <li class="item"><a href="pages/wiki.html">Wiki</a></li>
+          <li class="item"><a href="pages/game-tracker.html">Game Tracker</a></li>
+          <li class="item"><a href="pages/suggestions.html">Suggestions</a></li>
         </ul>
       </nav>
     </header>
@@ -73,7 +78,7 @@
         </div>
 
         <div class="landing-text">
-          <p><span class="title-text">M4FIA</span></p>
+          <h2>M4FIA</h2>
           <p><span class="subtitle-text">Clif's expansion of the classic social deduction game <span class="italics">'mafia'</span></span></p>
           <p><span class="italics subtitle-text">"Speak wisely, Act carefully, Trust rarely"</span></p>
         </div>
@@ -87,71 +92,68 @@
       <section id="about" class="about">
         <div class="tv">
           <div class="screen">
-            <div class="tv-effect">
+            <div class="tv-effect turnOff">
             </div>
 
             <div class="about-slider">
               <div class="about-slider-part part1 active">
-                <p><span class="main-text">M4FIA</span></p>
-                <p><span class="text1">
-                  <br>
-                </span></p>
-                <p><span class="text2">An expansion or a new version of the classic social deduction game.
-                  <br> <br>
-                More roles. New faction. More strategy.
-                </span></p>
+                <div id="ABOUT-SLIDER-TITLE">
+                  <h2 class="main-text">M4FIA</h2>
+                </div>
+                <div id="ABOUT-SLIDER-INFO">
+                  <p class="text2">An expansion or a new version of the classic social deduction game.</p>
+                  <p class="text2"> More roles. New faction. More strategy. </p>
+                </div>
               </div>
 
               <div class="about-slider-part part2">
-                <p><span class="main-text">UNIQUE ROLES</span></p>
-                <p><span class="text1">
-
-                </span></p>
-                <p><span class="text2">
-                  10 Remnants <br>
-                  5 Syndicate <br>
-                  2 Null
-                </span></p>
+                <div id="ABOUT-SLIDER-TITLE">
+                  <p class="main-text">UNIQUE ROLES</p>
+                </div>
+                <div id="ABOUT-SLIDER-INFO">
+                  <p class="text2">10 Remnants</p>
+                  <p class="text2"> 5 Syndicate </p>
+                  <p class="text2"> 2 Null </p>
+                </div>
               </div>
 
               <div class="about-slider-part part3">
-                <p><span class="main-text">THREE FACTIONS</span></p>
-                <p><span class="text1">
-                  <br>
-                </span></p>
-                <p><span class="text2">
-                  (This is not the French flag I swear!)
-                </span></p>
+                <div id="ABOUT-SLIDER-TITLE">
+                  <p class="main-text">THREE FACTIONS</p>
+                </div>
+                <div id="ABOUT-SLIDER-INFO">
+                  <p class="text2">(This is not the French flag I swear!)</p>
+                </div>
               </div>
 
               <div class="about-slider-part part4">
-                <p><span class="main-text">THREE FACTIONS</span></p>
-                <p><span class="text1">
-                  1. Remnants
-                </span></p>
-                <p><span class="text2">
-                  Restore the Order
-                </span></p>
+                <div id="ABOUT-SLIDER-TITLE">
+                  <p class="main-text">THREE FACTIONS</p>
+                </div>
+                <div id="ABOUT-SLIDER-INFO">
+                  <p class="text1">1. Remnants</p>
+                  <p class="text2">Restore the Order</p>
+                </div>
               </div>
 
               <div class="about-slider-part part5">
-                <p><span class="main-text">THREE FACTIONS</span></p>
-                <p><span class="text1">
-                  2. Null
-                </span></p>
-                <p><span class="text2">
-                  No Allegiance
-                </span></p>
+                <div id="ABOUT-SLIDER-TITLE">
+                  <p class="main-text">THREE FACTIONS</p>
+                </div>
+                <div id="ABOUT-SLIDER-INFO">
+                  <p class="text1">2. Null</p>
+                  <p class="text2">No Allegiance</p>
+                </div>
               </div>
 
               <div class="about-slider-part part6">
-                <p><span class="main-text">THREE FACTIONS</span></p>
-                <p><span class="text1">
-                  3. Syndicate
-                </span></p>
-                <p><span class="text2">
-                  Build your own Order
-                </span></p>
+                <div id="ABOUT-SLIDER-TITLE">
+                  <p class="main-text">THREE FACTIONS</p>
+                </div>
+                <div id="ABOUT-SLIDER-INFO">
+                  <p class="text1">3. Syndicate</p>
+                  <p class="text2">Build your own Order</p>
+                </div>
               </div>
 
 
@@ -175,50 +177,36 @@
 
       <section id="pages" class="pages">
         <a href="pages/wiki.html" class="poster post1">
-          <div class="post-div1A">
-            <p><span class="post-title1">
-              WIKI
-            </span></p>
-          </div>
-          <div class="post-div1B">
-            <p class="justify"><span class="post-text1">
-              Very long description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque harum molestiae explicabo, aliquid ipsa odio molestias, dolor eos fugit perferendis distinctio.
-            </span></p>
+          <div class="poster-contents">
+              <p class="post-title1"> WIKI </p>
+              <p class="post-text1"> Very long description. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque harum molestiae explicabo, aliquid ipsa odio molestias, dolor eos fugit perferendis distinctio. </p>
           </div>
         </a>
 
         <a href="pages/game-tracker.html" class="poster post2">
-          <div class="post-div2A">
-            <p><span class="post-text2">
-              Want to host a game?
-              <br>
-              Use the
-            </span></p>
-          </div>
+          <div class="poster-contents">
+              <p class="post-text2">
+                Want to host a game?
+                <br>
+                Use the 
+              </p>
 
-          <div class="post-div2B">
-            <p><span class="post-title2">
-              GAME TRACKER
-            </span></p> 
+              <p class="post-title2">
+                GAME TRACKER
+              </p> 
           </div>
         </a>
 
         <a href="pages/suggestions.html" class="poster post3">
-          <div class="post-div3A">
-            <p><span class="post-text3">
-              Have any
-              <br>
-            </span>
-            <span class="post-title3">
-              SUGGESTIONS?
-            </span></p>
-          </div>
-          <div class="post-div3B">
-            <p><span class="post-text3">
-              Help us
-              <br>
-              expand M4FIA
-            </span></p>
+          <div class="poster-contents">
+              <p><span class="post-text3">
+                Have any
+                <br>
+              </span>
+              <span class="post-title3">
+                SUGGESTIONS?
+              </span></p>
+              <p class="post-text3"> Help us <br> expand M4FIA </p>
           </div>
         </a>
       </section>
@@ -246,7 +234,7 @@
         </details>
       </section>
 
-      <audio autoplay loop id="musicBG">
+      <audio autoplay loop preload="auto" id="musicBG">
       </audio>
     </main>
 
