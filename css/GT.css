@@ -197,6 +197,12 @@ header a:hover {
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: #111111;
 }
 
 #options {
@@ -234,11 +240,10 @@ header a:hover {
   width: clamp(18rem, 50vh, 30rem);
   aspect-ratio: 3/4;
   padding: 1rem;
-  border: 1px solid rgba(0, 150, 225, 0.3);
   box-shadow: 0 0 15px rgba(0, 150, 225, 0.4), inset 0 0 30px rgba(0, 150, 225, 0.4);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   transition: 0.3s ease;
   color: #0090e4;
@@ -246,6 +251,8 @@ header a:hover {
   animation: holo-flicker 4s infinite;
   position: relative;
   overflow: hidden;
+  max-height: 0px;
+  padding: 0;
 }
 
 .hologram::before {
@@ -313,33 +320,18 @@ header a:hover {
   border: 1px solid rgba(0, 150, 225, 0.3);
   box-shadow: 0 0 15px rgba(0, 150, 225, 0.6), inset 0 0 30px rgba(0, 150, 225, 0.6);
   background: linear-gradient(180deg, rgba(0, 150, 225, 0.15), rgba(0, 150, 225, 0.05));
+  z-index: 20;
 }
 
 .PlayerHolo:hover::before, .HostHolo:hover::before {
   opacity: 0.8;
   animation-duration: 0.075s;
-  color: #000000;
-  text-decoration: none;
-  position: relative;
-  max-height: 0;
-  padding: 0;
-  border: none;
-  overflow: hidden;
-  transition: all 0.4s ease-in-out;
-  align-self: flex-start;
-  margin: auto 0
-}
-
-.PlayerHolo:hover, .HostHolo:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 0px 30px 0px rgba(0, 119, 255, 0.6);
-  z-index: 20;
 }
 
 .hologram.seen {
   max-height: 700px;
   padding: 1rem;
-  border: #0090e4 1px dashed;
+  border: 1px solid rgba(0, 150, 225, 0.3);
 }
 
 @media screen and (max-width: 768px) {
