@@ -25,30 +25,24 @@ input.forEach((check) => {
             err.textContent = "" 
             switch (true) {
                 case divcat.classList.contains("hide"):
-                    console.log(nam != "")
                     if (nam != "") {
                         divcat.classList.toggle('hide');
                         divcat.classList.toggle('show');
                         innam.disabled = true 
-                        console.log("name entered");
                     }
                     else {
-                        err.textContent = "Please input a Name!"
-                        console.log("name invalid!")                    
+                        err.textContent = "Please input a Name!"                 
                     }
                     break;
                 
                 case divtext.classList.contains("hide"):
-                    console.log(num >= 1 && num <= 3 || Number.isNaN(num))
                     if (num >= 1 && num <= 3 || Number.isNaN(num)) {
                         divtext.classList.toggle('hide');
                         divtext.classList.toggle('show');
                         incat.disabled = true 
-                        console.log("category entered");
                     }
                     else {
                         err.textContent = "Invalid Category!"
-                        console.log("category invalid!")
                     }
                     break;  
                 
@@ -57,23 +51,18 @@ input.forEach((check) => {
                         divconf.classList.toggle('hide');
                         divconf.classList.toggle('show');
                         intext.disabled = true 
-                        console.log("suggesstion entered");   
                     }
                     else {
                         err.textContent = "Suggestion cannot be empty!"
-                        console.log("suggestion invalid!")
                     }
                     break;
 
                 case divconf.classList.contains("show"):
-                    console.log(confval)
                     if (confval == "y" || confval == "n" || confval == "Y" || confval == "N") {
-                        err.textContent = "Thank you for your suggestion!"
-                        console.log("conformation entered");   
+                        err.textContent = "Thank you for your suggestion!"  
                     }
                     else {
                         err.textContent = "y or n only!"
-                        console.log("conformation invalid!")
                     }
                     break;
             }

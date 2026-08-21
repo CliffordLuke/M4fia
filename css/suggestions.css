@@ -8,6 +8,12 @@ body {
   background-color: black;
 }
 
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  scroll-behavior: smooth;
+}
+
 /* Header */
 
 header {
@@ -179,6 +185,7 @@ header a:hover {
   position: absolute;
   top: 6%;
   left: 12%;
+  width: 75%;
 }
 
 input, input:focus {
@@ -186,18 +193,16 @@ input, input:focus {
   caret-shape: underscore;
   border: none;
   outline: none;
-  width: 30%;
 }
 
-label, input, .cmd, #err {
+label, input, p {
   font-family: monospace;
-  font-size: 1rem;
+  font-size: .9rem;
 }
 
-label, input, .cmd{
+label, input, #int{
     color:#79fa4e;
-}
-
+} 
 
 #err {
   color:#f35050
