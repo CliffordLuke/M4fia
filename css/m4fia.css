@@ -286,6 +286,9 @@ main {
   }
 }
 
+#LANDING-LOGO {
+    width: clamp(18rem, 95vw, 45rem);
+}
 
 
 /* Wall things */
@@ -873,18 +876,13 @@ footer {
   text-align: center;
 }
 
-#FOOTER-LOGO {  
+.logo {  
     display: inline-block;
     width: clamp(10rem, 50%, 13rem);
     text-align: center;
     align-content: center;
     filter: invert(100%);
     transition: all 0.15s ease-in-out;
-}
-
-#FOOTER-LOGO img {
-  margin: 0;
-  height: 2.5rem;
 }
 
 footer a {
