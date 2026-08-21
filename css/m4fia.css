@@ -601,6 +601,11 @@ main {
 
 
 /* Main Page - Frequently Asked Question / FAQ */
+.faq {
+  padding: 3rem 0;
+  width: 100%;
+  height: fit-content
+}
 
 details summary {
   padding: 6px;
@@ -863,17 +868,19 @@ footer {
   height: 100px;
   width: 100%;
   border-top: #424242 1px solid;
+  color: white
 }
 
 footer a {
+  all: unset;
   text-decoration: none;
-  color: #424242;
 }
 
 
 footer a:hover {
   text-decoration: underline;
   text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+  cursor: pointer
 }
 
 footer nav ul {
