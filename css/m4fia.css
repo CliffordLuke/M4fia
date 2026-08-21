@@ -18,6 +18,9 @@ html {
   scrollbar-width: none;  /* Firefox */
 }
 
+#pages, #faq { scroll-margin-top: 5rem;}
+#about { scroll-margin-top: 10rem;}
+
 /* Header */
 
 header {
