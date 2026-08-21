@@ -249,4 +249,14 @@ const tvOnObserver = new IntersectionObserver((entry) => {
   threshold: 0.5
 });
 
-tvOnObserver.observe(TV)
+tvOnObserver.observe(TV);
+
+const introOverlay = document.querySelector(".intro-overlay");
+
+introOverlay.addEventListener("animationend", (anim) => {
+  if (anim.animationName === "introBG") {
+    const landingTitle = document.querySelector("#LANDING-LOGO")
+
+    landingTitle.classList.add("reveal")
+  };
+});

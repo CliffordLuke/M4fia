@@ -239,6 +239,7 @@ header a:hover {
 
 
 
+
 /* Main Section */
 
 main {
@@ -288,6 +289,19 @@ main {
 
 #LANDING-LOGO {
     width: clamp(18rem, 95vw, 45rem);
+}
+
+#LANDING-LOGO-CONT {
+  max-width: 0;
+  position: relative;
+  left: -50%;
+  overflow: hidden;
+  transition: max-width 0.5s ease-in-out;
+}
+
+#LANDING-LOGO-CONT:has(#LANDING-LOGO.reveal) {
+    max-width: 100%;
+    animation: move 0.5s ease-in-out forwards
 }
 
 
@@ -929,4 +943,16 @@ footer ul li { margin: 0 1rem }
 .poster.slam {
   opacity: 1;
   scale: 1
+}
+
+/* ANIMATIONS */
+@keyframes move {
+  from {
+    opacity: 0;
+    transform: translateX(0%)
+  }
+  to {
+    opacity: 1;
+    transform: translateX(50%)
+  }
 }
