@@ -1,0 +1,385 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #111111;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden
+}
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  width: 100%;
+  height: clamp(65px, fit-content, 75px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  padding: clamp(0.8rem, 0.5vw, 1.2rem) 2vw;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header a:hover {
+  text-decoration: underline;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+}
+
+#MENU {
+    all: unset;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content max-content max-content;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: clamp(1.2rem, 2vw, 2rem)
+}
+
+.item {
+    all: unset;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    text-align: center;
+    justify-self: center;
+}
+
+.item a {
+    display: inline-block;
+    text-decoration: none;
+    width: 100%;
+    align-self: center;
+    color: white;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#HOME {
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    filter: invert(100%);
+    transition: all 0.15s ease-in-out;
+}
+
+#HOME img {
+  margin: 0;
+  height: 2.5rem;
+}
+
+#HOME:hover {
+  filter: invert(60%);
+}
+
+#HAMBURGER {
+    display: none
+}
+
+@media screen and (max-width: 425px) {
+    header {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    #MOB-NAV {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding-left: 0.5rem
+    }
+
+    #MOB-NAV label {
+        display: block;
+        cursor: pointer;
+        position: relative;
+        height: 100%;
+        width: auto;
+        aspect-ratio: 1 / 1;
+        text-align: center;
+        align-content: center;
+        font-size: 3.7rem;
+        color: white;
+    }
+
+    #HOME {
+      margin: auto 0
+    }
+    
+    #MOB-NAV label::before {
+        content: "menu";
+        font-family: "Material Icons";
+    }
+
+    #HAMBURGER:checked ~ label::before {
+        content: "close";
+    }
+
+    #MENU {
+        display: flex;
+        flex-direction: column;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        gap: 0;
+    }
+
+    header > nav {
+        width: 100%;
+        margin: 0;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .item a {
+        backdrop-filter: blur(10px);
+        height: 4rem;
+        font-size: 7vw;
+        border-radius: 0%;
+        text-align: center;
+        align-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        background-color: rgba(44, 44, 44, 0.5);
+    }
+
+    #MOB-NAV:has(#HAMBURGER:checked) ~ nav #MENU {
+        max-height: 500px;
+    }
+}
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: clamp(65px, 8vw, 75px);
+  overflow: visible;
+}
+
+
+.GTspan1, .GTspan2 {
+  font-weight: bold;
+  color: #0090e4;
+  margin: 0;
+  opacity: 0;
+}
+.GTspan1 {
+  font-size: clamp(2.2rem, 10vw, 4rem);
+}
+.GTspan2 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.3rem, 6vw, 2.5rem);
+  transition: opacity 0.7s ease-in-out;
+}
+
+.GTspan1.flicker, .GTspan2.flicker {
+  animation: flicker 2s forwards;
+}
+
+.GTspan2.flicker {
+  animation-delay: 0.2s
+}
+
+
+
+
+#GTmain {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+#options {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  align-items: flex-start;
+  text-align: center;
+  padding: 0 2.5rem;
+  padding: 1rem 0;
+}
+
+.holo-title {
+  font-size: clamp(3rem, 3vw, 3.3rem);
+  font-weight: bold;
+  color: #0090e4;
+  text-shadow: 0 0 15px rgba(0, 150, 225, 0.8), 0 0 15px rgba(0, 150, 225, 0.5);
+  position: relative;
+  z-index: 2;
+  opacity: 0.75;
+}
+.holo-div1, .holo-div2 {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+
+.hologram {
+  width: clamp(18rem, 50vh, 30rem);
+  aspect-ratio: 3/4;
+  padding: 0;
+  box-shadow: 0 0 15px rgba(0, 150, 225, 0.4), inset 0 0 30px rgba(0, 150, 225, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: flex-start;
+  align-items: center;
+  transition: 0.3s ease;
+  color: #0090e4;
+  text-decoration: none;
+  animation: holo-flicker 4s infinite;
+  position: relative;
+  overflow: hidden;
+  max-height: 0px;
+}
+
+.hologram::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0, 150, 225, 0.1) 0px, rgba(0, 150, 225, 0.1) 1px, transparent 1px, transparent 1.5%);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: scanlines 0.25s linear infinite;
+}
+
+.hologram::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(180deg, transparent 35%, rgba(0, 150, 225, 0.1) 50%, transparent 65%);
+  pointer-events: none;
+  animation: holosweep 10s linear infinite;
+}
+
+@keyframes holo-flicker {
+  0%,
+  10%,
+  18%,
+  22%,
+  30%,
+  40%,
+  50%,
+  58%,
+  62%,
+  63%,
+  67%,
+  70%,
+  80%,
+  90%,
+  100% {opacity: 1;} 
+  
+  20%,
+  60%,
+  65% {opacity: 0.85;}
+}
+
+@keyframes scanlines {
+  from {transform: translateY(0);}
+  to {transform: translateY(1.5%);}
+}
+
+@keyframes holosweep {
+  0% {transform: translateY(-60%);}
+  40% {transform: translateY(60%);}
+  100% {transform: translateY(60%);}
+}
+
+
+
+
+.PlayerHolo, .HostHolo {
+  background: linear-gradient(180deg, rgba(0, 150, 225, 0.08), rgba(0, 150, 225, 0.02));
+  transition: 0.5s ease;
+}
+
+.PlayerHolo:hover, .HostHolo:hover {
+  transform: scale(1.05);
+  border: 1px solid rgba(0, 150, 225, 0.3);
+  box-shadow: 0 0 15px rgba(0, 150, 225, 0.6), inset 0 0 30px rgba(0, 150, 225, 0.6);
+  background: linear-gradient(180deg, rgba(0, 150, 225, 0.15), rgba(0, 150, 225, 0.05));
+  z-index: 20;
+}
+
+.PlayerHolo:hover::before, .HostHolo:hover::before {
+  opacity: 0.8;
+  animation-duration: 0.075s;
+}
+
+.hologram.seen {
+  max-height: 700px;
+  padding: 1rem;
+  border: 1px solid rgba(0, 150, 225, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow: visible  
+  }
+
+  .GTspan1 {
+    padding-top: 1rem;
+  }
+  
+  .GTspan2 {
+    padding-bottom: 1rem
+  }
+
+  #options {
+    flex-direction: column;
+    padding: 0 0 2rem 0
+  }
+
+  .hologram {
+    width: clamp(14rem, 90vw, 35rem);
+    align-self: center;
+  }
+
+  main {
+    overflow: visible;
+  }
+}
+
+/* ANIMATIONS */
+
+.fade-in {
+  opacity: 1
+}
+
+@keyframes flicker {
+    0% { opacity: 0; }
+    5% { opacity: 0.2; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.1; }
+    20% { opacity: 1; }
+    25% { opacity: 0.3; }
+    30% { opacity: 1; }
+    100% { opacity: 1 }
+}

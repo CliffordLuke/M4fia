@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <!-- To be Updated/Changed-->
+    <title> M4FIA GT - Player </title>
+
+    <!-- Meta Tags -->
+    <meta charset="UTF-8"/>
+    <meta name="" content=""/>
+    <meta name="description" content="TBA."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Open Graph Tags-->
+    <meta property="og:title" content="M4FIA Wiki"/>
+    <meta property="og:description" content="TBA"/> <!-- Feel free to edit Page Description Here-->
+    <meta property="og:url" content=""/> <!-- Add Url Here-->
+    <meta property="og:image" content=""/> <!-- Add Image URL Here -->
+    <meta property="og:type" content="website"/>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/GTP.css">
+    <script src="../js/GTP.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <div id="MOB-NAV">
+          <a id="HOME" href="../index.html">
+            <img src="../images/M4fiaLogo.png" alt="M4FIA Logo">
+          </a>
+          <input type="checkbox" id="HAMBURGER"/>
+          <label for="HAMBURGER"></label>
+      </div>
+      <nav>
+        <ul id="MENU">
+          <li class="item"><a href="wiki.html">Wiki</a></li>
+          <li class="item"><a href="game-tracker.html">Game Tracker</a></li>
+          <li class="item"><a href="suggestions.html">Suggestions</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="PlayerInput">
+        <div id="PlayerInputBox">
+          <p><span class="PlayInputText">How many players are there?</span></p>
+
+          <div id="PlayNumControl">
+            <button id="PlayMinus">-</button>
+            <input type="number" id="PlayNumInput" min="4" max="20" value="6">
+            <button id="PlayPlus">+</button>
+          </div>
+
+          <button id="PlayNumConfirm">Confirm</button>
+        </div>
+      </section>
+
+      <section id="GameInfo">
+        <div id="MePlayerList">
+          <div id="MePlayerCard">
+
+            <input id="MePlayerName" value="Me">
+            <button id="MePlayerStatus">ALIVE</button>
+
+            <div id="MeRoleSelection">
+              <img id="MeRoleIcon" src="../images/RoleIcons/Unknown.png">
+              <select id="MePlayerRole"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="div1">
+          <div class="div1A">
+            <p><span class="GTspan1">GAME TRACKER</span></p>
+          </div>
+          <div class="div1B">
+            <p><span class="GTspan2">Keep Note of your Current Game</span></p>
+          </div>
+        </div>
+
+
+        <div id="TimeTracker">
+          <div id="GameTimeTitle">
+            <p>CURRENT PHASE</p>
+          </div>
+
+          <div id="GameTime" class="day-icon">
+            <p>DAY 1</p>
+          </div>
+
+          <div id="TimeControl">
+            <button id="TimePrev">Prev</button>
+            <button id="TimeNext">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="PlayerList">
+      </section>
+    </main>
+  </body>
+</html>
