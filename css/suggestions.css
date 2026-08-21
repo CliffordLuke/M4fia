@@ -177,7 +177,7 @@ header a:hover {
 }
 
 .comp {
-  position:relative;
+  position: relative;
   width: 100%;
 }
 
@@ -186,30 +186,35 @@ header a:hover {
   top: 6%;
   left: 12%;
   width: 75%;
+  height: 56%;
 }
 
-input, input:focus {
+input, textarea, input:focus, span {
   background-color: transparent;
   caret-shape: underscore;
   border: none;
   outline: none;
 }
 
-label, input, p {
+textarea {
+  display: block;
+  width: 100%;
+  resize: both;
+  min-height: 2.5rem;
+  line-height: 1.25rem;
+}
+
+label, input, textarea, p {
   font-family: monospace;
   font-size: .9rem;
 }
 
-label, input, #int{
+label, input, #int, textarea, .green{
     color:#79fa4e;
 } 
 
-#err {
+.red {
   color:#f35050
-}
-
-input[type="submit"]{
-  cursor: pointer;
 }
 
 .hide {
@@ -218,4 +223,19 @@ input[type="submit"]{
 
 .show {
   display: block
+}
+
+.hologram::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0, 225, 49, 0.1) 0px, rgba(0, 196, 13, 0.1) 1px, transparent 1px, transparent 1.5%);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: scanlines 0.25s linear infinite;
+}
+
+@keyframes scanlines {
+  from {transform: translateY(0);}
+  to {transform: translateY(1.5%);}
 }
