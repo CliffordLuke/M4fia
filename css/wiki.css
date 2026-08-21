@@ -1158,6 +1158,8 @@ footer {
     align-content: center;
     filter: invert(100%);
     transition: all 0.15s ease-in-out;
+    pointer-events: none;
+    user-select: none;
 }
 
 footer a {
