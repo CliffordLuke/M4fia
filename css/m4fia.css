@@ -18,6 +18,9 @@ html {
   scrollbar-width: none;  /* Firefox */
 }
 
+#pages, #faq { scroll-margin-top: 5rem;}
+#about { scroll-margin-top: 10rem;}
+
 /* Header */
 
 header {
@@ -49,7 +52,7 @@ header a:hover {
     all: unset;
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: max-content max-content max-content;
+    grid-template-columns: max-content max-content max-content max-content;
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
@@ -239,6 +242,7 @@ header a:hover {
 
 
 
+
 /* Main Section */
 
 main {
@@ -286,6 +290,27 @@ main {
   }
 }
 
+.landing-p { opacity: 0; }
+.landing-p.reveal { animation: fadeIn 0.5s ease-in-out forwards }
+
+#LANDING-LOGO {
+    width: clamp(18rem, 95vw, 45rem);
+}
+
+#LANDING-LOGO-CONT {
+  max-width: 0;
+  position: relative;
+  left: -50%;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  transition: max-width 0.5s ease-in-out;
+}
+
+#LANDING-LOGO-CONT:has(#LANDING-LOGO.reveal) {
+    max-width: 100%;
+    animation: move 0.5s ease-in-out forwards
+}
 
 
 /* Wall things */
@@ -601,32 +626,61 @@ main {
 
 
 /* Main Page - Frequently Asked Question / FAQ */
+.faq {
+  padding: 3rem 0;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #e5e5e5;
+}
+
+.faq h2 {
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0 0 1rem 0;
+  padding: 0 0.5rem;
+  width: 100%;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+details {
+  background-color: rgb(37, 37, 37);
+  border-radius: 0.5rem;
+  width: clamp(10rem, 95vw, 70rem);
+  padding: 1rem;
+  margin: 0.4rem 0;
+  text-align: left;
+  transition: all 0.2s ease-in-out;
+}
+
+details:not([open]):hover {
+  background-color: rgb(55, 55, 55);
+}
 
 details summary {
-  padding: 6px;
   width: 100%;
-  background-color: #030303;
-  color: #424242;
-  border-top: 1px #101010 solid;
   cursor: pointer;
   font-size: 25px;
-	padding-inline: 30px;
+  position: relative;
+  padding: 0 1rem 0 0;
+  font-size: clamp(1.2rem, 4vw, 2rem)
 }
 
 details p {
-  background-color: #030303;
-  padding: 6px;
-  color: #424242;
-  margin: 0px;
-  font-size: 20px;
-	padding-inline: 10px;
+  margin: 0.5rem 0 0 0;
+  font-size: clamp(1rem, 4vw, 1.3rem);
+  padding-inline: 2rem;
 }
 
 .details::details-content {
 	display: block;
 	block-size: 0;
 	overflow: hidden;
-  transition: 0.5s ease-out allow-discrete;
+  transition: 0.2s ease-out allow-discrete;
 }
 
 .details[open]::details-content {
@@ -641,8 +695,8 @@ summary::marker {
 summary::before {
 	content: '▶';
 	position: absolute;
-	transition: 0.5s ease-out;
-  margin-left: -21px;
+  right: 0;
+	transition: 0.2s ease-out;
   transform: translateY(-4px);
 }
 
@@ -652,7 +706,11 @@ summary::before {
   transform: translateX(-2px);
 }
 
-
+@media screen and (max-width: 425px) {
+  details p {
+    padding-inline: 1.3rem;
+  }
+}
 
 
 
@@ -856,38 +914,59 @@ summary::before {
 
 footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   background-color: #030303;
-  padding: 0px 20px;
-  height: 100px;
+  padding: 1.3rem 20px;
+  height: fit-content;
   width: 100%;
   border-top: #424242 1px solid;
+  color: white;
+  text-align: center;
+}
+
+.logo {  
+    display: inline-block;
+    width: clamp(10rem, 50%, 13rem);
+    text-align: center;
+    align-content: center;
+    filter: invert(100%);
+    transition: all 0.15s ease-in-out;
+    pointer-events: none;
+    user-select: none;
 }
 
 footer a {
+  all: unset;
   text-decoration: none;
-  color: #424242;
 }
-
 
 footer a:hover {
   text-decoration: underline;
   text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+  cursor: pointer
 }
 
-footer nav ul {
+footer ul {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
+  margin-top: 2rem
 }
 
+footer ul li { margin: 0 1rem }
 
+#FOOTER-LEGAL-PAGES-CONT { margin-top: 0.8rem }
 
-
-
+.footer-credits:nth-of-type(1) { margin-top: 2rem; font-size: 1rem /*7vw*/ }
+.footer-credits:nth-of-type(2) { font-size: clamp(0.6rem, 2.7vw, 0.8rem); color: rgb(207, 207, 207) }
+.footer-credits { margin: 0 }
 
 
 /* Text */
@@ -902,4 +981,25 @@ footer nav ul {
 .poster.slam {
   opacity: 1;
   scale: 1
+}
+
+/* ANIMATIONS */
+@keyframes move {
+  from {
+    opacity: 0;
+    transform: translateX(0%)
+  }
+  to {
+    opacity: 1;
+    transform: translateX(50%)
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0
+  }
+  to {
+    opacity: 1
+  }
 }

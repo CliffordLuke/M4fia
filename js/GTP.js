@@ -2,8 +2,8 @@ const playerInput = document.getElementById("PlayNumInput");
 const confirmButton = document.getElementById("PlayNumConfirm");
 const PlayerList = document.getElementById("PlayerList");
 const PlayerInputSection = document.getElementById("PlayerInput");
-const MePlayerList = document.getElementById("MePlayerList");
 const GameInfo = document.getElementById("GameInfo");
+const gameTitle = document.querySelector(".title-div")
 
 PlayerList.style.display = "none";
 GameInfo.style.display = "none";
@@ -100,8 +100,9 @@ confirmButton.addEventListener("click", function() {
   const playerCount = playerInput.value;
 
   PlayerInputSection.style.display = "none";
-  PlayerList.style.display = "grid";
-  GameInfo.style.display = "grid";
+  PlayerList.style.display = "flex";
+  GameInfo.style.display = "flex";
+  gameTitle.style.display = "flex";
 
 
   for (let i=2; i <= playerCount; i++) {
@@ -137,7 +138,7 @@ confirmButton.addEventListener("click", function() {
 
     const roleIcon = document.createElement("img");
     roleIcon.classList.add("role-icon");
-    roleIcon.src = "/images/RoleIcons/Unknown.png";
+    roleIcon.src = "../images/RoleIcons/Unknown.png";
 
     const playerRole = document.createElement("select");
     playerRole.classList.add("player-role");
@@ -170,7 +171,7 @@ confirmButton.addEventListener("click", function() {
 
 
 
-    /* Heiracrchy */
+    /* Heirarchy */
     playerCard.appendChild(playerName);
     playerCard.appendChild(playerStatus);
     playerCard.appendChild(roleSelection);
@@ -312,7 +313,7 @@ mePlayerCard.appendChild(meBloodLayer);
 
 
 
-const gameTime = document.getElementById("GameTime");
+const gameTime = document.getElementById("GameTimeP");
 const timePrev = document.getElementById("TimePrev");
 const timeNext = document.getElementById("TimeNext");
 
@@ -322,12 +323,12 @@ let isDay = false;
 function phaseUpdate() {
   if (isDay) {
     gameTime.textContent = `NIGHT ${currentPhase}`;
-    gameTime.classList.add("night-icon");
-    gameTime.classList.remove("day-icon");
+    gameTime.parentElement.classList.add("night-icon");
+    gameTime.parentElement.classList.remove("day-icon");
   } else {
     gameTime.textContent = `DAY ${currentPhase}`;
-    gameTime.classList.add("day-icon");
-    gameTime.classList.remove("night-icon");
+    gameTime.parentElement.classList.add("day-icon");
+    gameTime.parentElement.classList.remove("night-icon");
   }
 }
 
