@@ -42,18 +42,27 @@
           <div class="form">
             <p class="cmd">Initializing interactive feedback wizard...</p>
 
-            <label for="name">C:\M4FIA\Suggestions\Name></label>
-            <input type="text" id="name" autofocus></input> <br>
+            <div id="sug-name" class="show">
+              <label for="name">C:\M4FIA\Suggestions\Name></label>
+             <input type="text" id="name" autofocus></input> <br>
+            </div> 
 
-            <label for="category">C:\M4FIA\Suggestions\Type> [1: Feature, 2: Bug, 3: Other]:</label>
-            <input type="text" id="category"/> <br>
+            <div id="sug-cat" class="hide">
+             <label for="category">C:\M4FIA\Suggestions\Type> [1: Feature, 2: Bug, 3: Other]:</label>
+             <input type="text" id="category"/> <br>
+            </div>
 
-            <label for="sug">C:\M4FIA\Suggestions\Suggestion> </label>
-            <input type="text" id="sug"/> <br>
+            <div id="sug-text" class="hide">
+              <label for="suggestion">C:\M4FIA\Suggestions\Suggestion> </label>
+              <input type="text" id="suggestion"/> <br>
+            </div>
 
-            <p id="minicons"></p>
-            <input type="submit" value="submit"/>
-            
+             <div id="sug-conf" class="hide">
+              <label for="conf">C:\M4FIA\Suggestions\Confirmation> Do you confirm your suggestion? [y/n]:</label>
+              <input type="text" id="conf"/> <br>
+            </div>
+
+            <p id="err"></p>
           </div>
         </div> 
       </section>
