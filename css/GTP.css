@@ -269,18 +269,6 @@ main {
   height: 10%;
 }
 
-@media screen and (max-width: 768px) {
-  #PlayerInput {
-    height: 76vh;
-  }
-
-  #PlayerInputBox {
-    justify-self: flex-end;
-    margin-top: 10vh;
-  }
-}
-
-
 
 /* Game info */
 
@@ -292,6 +280,27 @@ main {
   align-items: center;
   background: #111111;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  #PlayerInput {
+    height: 76vh;
+  }
+
+  #PlayerInputBox {
+    justify-self: flex-end;
+    margin-top: 10vh;
+  }
+
+  .title-div {
+    position: relative
+  }
+
+  #GameInfo {
+    margin-top: 2rem;
+    gap: 1rem;
+    justify-content: center;
+  }
 }
 
 
@@ -585,4 +594,24 @@ main {
   position: absolute;
   transform-origin: center;
   pointer-events: none;
+}
+
+@media screen and (max-width: 768px) {
+  #MePlayerCard, #TimeTracker {
+    width: clamp(10rem, 48%, 22rem)
+  }
+
+  .title-div { width: 100% }
+    
+  .GTspan1 { font-size: clamp(1.5rem, 10vw, 5rem); }
+  .GTspan2 { font-size: clamp(1rem, 5vw, 4rem); }
+
+  #MePlayerName {font-size: clamp(0.5rem, 2.5vw, 1.5rem);}
+  #MePlayerStatus {font-size: clamp(0.5rem, 2.5vw, 1.6rem);}
+  #MeRoleIcon {width: 8vw;}
+  #MePlayerRole {width: 30vw;}
+
+  #GameTimeTitle p {font-size: clamp(1rem, 2vw, 1.6rem)}
+  #GameTime p {font-size: clamp(0.8rem, 2.5vw, 3rem)}
+  #TimeControl button span {font-size: clamp(0.5rem, 2vw, 2rem);}
 }
