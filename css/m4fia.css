@@ -651,6 +651,11 @@ details {
   padding: 1rem;
   margin: 0.4rem 0;
   text-align: left;
+  transition: all 0.2s ease-in-out;
+}
+
+details:not([open]):hover {
+  background-color: rgb(55, 55, 55);
 }
 
 details summary {
