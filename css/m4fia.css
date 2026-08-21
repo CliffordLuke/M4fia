@@ -759,25 +759,6 @@ summary::before {
 }
 
 
-
-.post-title3 {
-  font-size: clamp(1.3rem, 2.7vw, 2.3rem);
-  font-weight: bold;
-}
-.post-text3 {
-  font-size: clamp(1.2rem, 2vw, 2rem);
-}
-
-.post-div3A {
-  position: absolute;
-  transform: translateX(-70px) translateY(-210px) rotate(-30deg);
-}
-.post-div3B {
-  position: absolute;
-  transform: translateX(70px) translateY(190px) rotate(-30deg);
-}
-
-
 .poster-contents {
   width: 100%;
   height: 100%;
@@ -788,6 +769,12 @@ summary::before {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+}
+
+.poster-contents img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;;
 }
 
 .pages {
@@ -808,14 +795,12 @@ summary::before {
 .poster {
   width: clamp(15rem, 24vw, 25rem);
   aspect-ratio: 2/3;
-  border: #f3f0e8 8px solid;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
   justify-self: center;
   transition: 0.3s ease;
   color: #000000;
   text-decoration: none;
   position: relative;
-  padding: 1rem;
   opacity: 0;
   scale: 1.2;
   transition: all 0.3s ease-in-out
