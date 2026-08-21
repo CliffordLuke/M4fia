@@ -252,11 +252,16 @@ const tvOnObserver = new IntersectionObserver((entry) => {
 tvOnObserver.observe(TV);
 
 const introOverlay = document.querySelector(".intro-overlay");
+const landingP = document.querySelectorAll(".landing-p")
 
 introOverlay.addEventListener("animationend", (anim) => {
   if (anim.animationName === "introBG") {
     const landingTitle = document.querySelector("#LANDING-LOGO")
 
     landingTitle.classList.add("reveal")
+
+    landingP.forEach((el) => {
+      el.classList.add("reveal")
+    })
   };
 });
