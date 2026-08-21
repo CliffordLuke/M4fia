@@ -42,6 +42,12 @@
     </header>
 
     <main>
+      
+      <div class="title-div">
+          <p class="GTspan1">GAME TRACKER</p>
+          <p class="GTspan2">Keep Note of your Current Game</p>
+      </div>
+      
       <section id="PlayerInput">
         <div id="PlayerInputBox">
           <p><span class="PlayInputText">How many players are there?</span></p>
@@ -57,28 +63,15 @@
       </section>
 
       <section id="GameInfo">
-        <div id="MePlayerList">
-          <div id="MePlayerCard">
+        <div id="MePlayerCard">
+          <input id="MePlayerName" value="Me">
+          <button id="MePlayerStatus">ALIVE</button>
 
-            <input id="MePlayerName" value="Me">
-            <button id="MePlayerStatus">ALIVE</button>
-
-            <div id="MeRoleSelection">
-              <img id="MeRoleIcon" src="../images/RoleIcons/Unknown.png">
-              <select id="MePlayerRole"></select>
-            </div>
+          <div id="MeRoleSelection">
+            <img id="MeRoleIcon" src="../images/RoleIcons/Unknown.png">
+            <select id="MePlayerRole"></select>
           </div>
         </div>
-
-        <div class="div1">
-          <div class="div1A">
-            <p><span class="GTspan1">GAME TRACKER</span></p>
-          </div>
-          <div class="div1B">
-            <p><span class="GTspan2">Keep Note of your Current Game</span></p>
-          </div>
-        </div>
-
 
         <div id="TimeTracker">
           <div id="GameTimeTitle">
@@ -86,12 +79,12 @@
           </div>
 
           <div id="GameTime" class="day-icon">
-            <p>DAY 1</p>
+            <p id="GameTimeP">DAY 1</p>
           </div>
 
           <div id="TimeControl">
-            <button id="TimePrev">Prev</button>
-            <button id="TimeNext">Next</button>
+            <button id="TimePrev"><span>Prev</span></button>
+            <button id="TimeNext"><span>Next</span></button>
           </div>
         </div>
       </section>
