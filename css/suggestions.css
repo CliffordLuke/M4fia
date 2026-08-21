@@ -181,33 +181,36 @@ header a:hover {
   left: 12%;
 }
 
-input, input:focus, select {
+input, input:focus {
   background-color: transparent;
   caret-shape: underscore;
   border: none;
   outline: none;
-
+  width: 30%;
 }
 
-label, input, .cmd, #minicons {
+label, input, .cmd, #err {
   font-family: monospace;
-  font-size: 15px;
+  font-size: 1rem;
 }
+
 label, input, .cmd{
     color:#79fa4e;
 }
 
-#category {
-  background-color: transparent;
-  caret-shape: underscore;
-  border: none;
-  outline: none;
-}
 
-#minicons {
+#err {
   color:#f35050
 }
 
 input[type="submit"]{
   cursor: pointer;
+}
+
+.hide {
+  display: none
+}
+
+.show {
+  display: block
 }
