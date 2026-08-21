@@ -181,35 +181,38 @@ header a:hover {
   left: 12%;
 }
 
-input, input:focus, select {
+input, input:focus {
   background-color: transparent;
   caret-shape: underscore;
   border: none;
   outline: none;
-
+  width: 30%;
 }
 
-label, input, .cmd, #minicons {
+label, input, .cmd, #err {
   font-family: monospace;
-  font-size: 15px;
+  font-size: 1rem;
 }
+
 label, input, .cmd{
     color:#79fa4e;
 }
 
-#category {
-  background-color: transparent;
-  caret-shape: underscore;
-  border: none;
-  outline: none;
-}
 
-#minicons {
+#err {
   color:#f35050
 }
 
 input[type="submit"]{
   cursor: pointer;
+}
+
+.hide {
+  display: none
+}
+
+.show {
+  display: block
 }
 
 /* Footer */
@@ -267,3 +270,4 @@ footer ul li { margin: 0 1rem }
 .footer-credits:nth-of-type(1) { margin-top: 2rem; font-size: 1rem /*7vw*/ }
 .footer-credits:nth-of-type(2) { font-size: clamp(0.6rem, 2.7vw, 0.8rem); color: rgb(207, 207, 207) }
 .footer-credits { margin: 0 }
+
