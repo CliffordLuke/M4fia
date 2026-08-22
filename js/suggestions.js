@@ -1,69 +1,76 @@
-// Defines Inputs in Suggestions
-const input = document.querySelectorAll(".cli-input");      
-
-// Defines Form Divs
-const divcat = document.getElementById("sug-cat");
-const divtext = document.getElementById("sug-text");
-const divema = document.getElementById("sug-ema");
-const divconf = document.getElementById("sug-conf");
-
-// Defines Inputs Separately
-const incat = document.getElementById("category");
-const intext = document.getElementById("suggestion");
-const inema = document.getElementById("ema");
-const inconf = document.getElementById("conf");
-const labtext = document.getElementById("sug-bug")
-
-// Defines labels (p)/
-let err = document.getElementById("err");
+// Defines labes in command line
 let int = document.getElementById("int");
 let com = document.getElementById("intcom")
 
 // Sleep helper
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+// Checcks current step (what part of the form you're currently in)
+let curstep = "cat"
+
+const intblk = document.getElementById("test")
+if (intblk) {
+    attachlisteners(intblk)
+}
+
+// Attacking listeners 
+function attachlisteners(currentblock) {
+    // Defines Form Divs and Labels
+    const divcat = document.getElementById("sug-cat");
+    const divtext = document.getElementById("sug-text");
+    const divema = document.getElementById("sug-ema");
+    const divconf = document.getElementById("sug-conf");
+    const labtext = document.getElementById("sug-bug");
+    let err = document.getElementById("err");
+
+    // Defines Inputs Separately
+    const incat = document.getElementById("category");
+    const intext = document.getElementById("suggestion");
+    const inema = document.getElementById("ema");
+    const inconf = document.getElementById("conf");
+    const input = document.querySelectorAll(".cli-input");   
 
 
-// Main CLI (Command Line Interface) function
-function inputchecking (){
+    const time = "0"
+    // Main CLI (Command Line Interface)
     input.forEach((check) => { 
-        check.addEventListener('keydown', () => { 
-            if ((event.code === "Enter" && !(event.shiftKey)) || (event.code === "NumpadEnter" && !(event.shiftKey))) {
-                err.textContent = ""
-                let catval = document.getElementById("category").value;
-                switch (true) {
-                    case divtext.classList.contains("hide"):
+        check.addEventListener('keydown', async () => { 
+            if ((event.code === "Enter" && !event.shiftKey) || (event.code === "NumpadEnter" && !event.shiftKey)) {
+                err.textContent = "";
+                switch (curstep) {
+                    case "cat":
+                        let catval = document.getElementById("category").value;
                         if (catval >= 1 && catval <= 3 || Number.isNaN(catval)) {
                             incat.disabled = true; 
-                            setTimeout(() => {
-                                divtext.classList.remove("hide");
-                                divtext.classList.add("show");
-                                intext.focus();
-                                switch (true) {
-                                    case (Number(catval) === 1 || Number(catval) === 3):
-                                        labtext.textContent += "Suggestion> Input your suggestions below:";
-                                        break;
+                            await sleep(time);
+                            divtext.classList.remove("hide");
+                            divtext.classList.add("show");
+                            intext.focus();
+                            switch (true) {
+                                case (Number(catval) === 1 || Number(catval) === 3):
+                                    labtext.textContent += "Suggestion> Input your suggestions below:";
+                                    break;
 
-                                    case (Number(catval) === 2):
-                                        labtext.textContent += "Bug> Report your bug below:";
-                                        break;     
-                                }
-                            }, 500)
-                        } 
+                                case (Number(catval) === 2):
+                                    labtext.textContent += "Bug> Report your bug below:";
+                                    break;     
+                            }
+                            curstep = "sug";
+                        }
                         else {
                             err.textContent = "Invalid Category!";
                         }
                         break;
 
-                    case divema.classList.contains("hide"):
+                    case "sug":
                         let cleantxt = intext.value.replace(/[\r\n]/g, "").trim();
                         if (cleantxt !== "") {
                             intext.disabled = true;
-                            setTimeout(() => {
-                                divema.classList.remove("hide");
-                                divema.classList.add("show");
-                                inema.focus();
-                            }, 500)
+                            await sleep(time);
+                            divema.classList.remove("hide");
+                            divema.classList.add("show");
+                            inema.focus();
+                            curstep = "ema";
                         }
                         else {
                             switch (true) {
@@ -78,42 +85,50 @@ function inputchecking (){
                         }
                         break;
 
-                    case divconf.classList.contains("hide"):
+                    case "ema":
                         inema.disabled = true; 
-                        setTimeout(() => {
-                            divconf.classList.remove("hide");
-                            divconf.classList.add("show");
-                            inconf.focus();
-                        }, 500);
+                        await sleep(time);
+                        divconf.classList.remove("hide");
+                        divconf.classList.add("show");
+                        inconf.focus();
+                        curstep = "conf";
                         break;
 
-                    case divconf.classList.contains("show"):
-                        switch (true) {
-                            case (inconf.value === "y" || inconf.value === "Y"):
-                                incat.disabled = true;
-                                intext.disabled = true;
-                                inema.disabled = true;
-                                inconf.disabled = true
-                                err.classList.toggle("red")
-                                err.classList.toggle("green")
-                                setTimeout(() => {
-                                    err.textContent = "Thank you for suggesting!"    
-                                }, 500);
+                    case "conf":
+                        let confval = inconf.value
+                        console.log(confval)
+                        inconf.disabled = true
+                        switch (confval) {
+                            case ("y"):
+                            case ("Y"):
+                                
+                                err.classList.toggle("red");
+                                err.classList.toggle("green");
+                                await sleep(time);
+                                err.textContent = "Thank you for suggesting!";
                                 break;
 
-                            case (inconf.value === "n" || inconf.value === "N"):
-                                err.textContent = ""
-                                incat.disabled = false;
-                                intext.disabled = false;
-                                inema.disabled = false;
-                                let divcat2 = divcat.cloneNode(true);
-                                let divtext2 = divtext.cloneNode(true);
-                                let divema2 = divema.cloneNode(true);
-                                let divconf2 = divconf.cloneNode(true);
-                                divcat2.appendChild;
-                                divtext2.appendChild;
-                                divema2.appendChild;
-                                divconf2.appendChild;
+                            case ("n"):
+                            case ("N"):
+                                currentblock.removeAttribute("id");
+                                currentblock.querySelectorAll("[id]").forEach(el => el.removeAttribute("id"));
+
+                                const template = document.getElementById("cli-temp");
+                                const clone = template.content.cloneNode(true);
+                                const newBlock = clone.querySelector("test");
+
+                                newBlock.id = "test";
+                                document.getElementById("clicont").appendChild(clone);
+
+                                curstep = "category";
+
+                                attachlisteners(newBlock);
+                                newBlock.querySelector("#category").focus();
+                                break;
+
+                            default:
+                                inconf.disabled = false;
+                                err.textContent = "Enter y or n"
                                 break;
                         }        
                         break;
@@ -121,35 +136,39 @@ function inputchecking (){
             }
         })
     })
+
+
+    // Start up anim
+    window.addEventListener("load", async () => {
+        await sleep (200)
+        int.classList.remove("hide")
+        int.classList.add("show")
+
+        for (let i = 0; i < 3; i++) {
+            await sleep (750)
+            int.textContent += "."
+        }
+
+        await sleep (time)
+        com.classList.remove("hide")
+        com.classList.add("show")
+
+        await sleep (time)
+        divcat.classList.remove("hide")
+        divcat.classList.add("show")
+        incat.focus()
+        incat.value = ""
+        inema.value = ""
+        intext.value = ""
+        inconf.value = ""
+    })
+
+    intext.addEventListener('input', () => {
+        intext.style.height = 'auto';
+        intext.style.height = intext.scrollHeight + 'px';
+    });
 }
 
-// Start up anim
-window.addEventListener("load", async () => {
-    await sleep (200)
-    int.classList.remove("hide")
-    int.classList.add("show")
 
-    for (let i = 0; i < 3; i++) {
-        await sleep (750)
-        int.textContent += "."
-    }
 
-    await sleep (500)
-    com.classList.remove("hide")
-    com.classList.add("show")
 
-    await sleep (500)
-    divcat.classList.remove("hide")
-    divcat.classList.add("show")
-    incat.focus()
-    incat.value = ""
-    inema.value = ""
-    intext.value = ""
-    inconf.value = ""
-    inputchecking()
-})
-
-intext.addEventListener('input', () => {
-    intext.style.height = 'auto';
-    intext.style.height = intext.scrollHeight + 'px';
-});
