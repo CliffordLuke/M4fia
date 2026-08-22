@@ -8,6 +8,10 @@ body {
   background-color: black;
 }
 
+main {
+  margin-top: 10vh
+}
+
 html {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
