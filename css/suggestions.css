@@ -181,7 +181,7 @@ main { margin-top: 75px }
 
 .comp {
   position: relative;
-  width: 100%;
+  width: 75%;
 }
 
 .parent {
@@ -196,6 +196,7 @@ main { margin-top: 75px }
   left: 7.4%;
   width: 85.2%;
   height: 68.3%;
+  scrollbar-gutter: stable;
 }
 
 input, textarea, input:focus, span {
