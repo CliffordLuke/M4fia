@@ -1,0 +1,323 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #111111;
+  width: 100%;
+  height: fit-content;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+  scroll-behavior: smooth;
+}
+
+main {
+  margin-top: 10vh
+}
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  width: 100%;
+  height: clamp(65px, fit-content, 75px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 101;
+  padding: clamp(0.8rem, 0.5vw, 1.2rem) 2vw;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header a:hover {
+  text-decoration: underline;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+}
+
+#MENU {
+    all: unset;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: max-content max-content max-content max-content;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: clamp(1.2rem, 2vw, 2rem)
+}
+
+.item {
+    all: unset;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    text-align: center;
+    justify-self: center;
+}
+
+.item a {
+    display: inline-block;
+    text-decoration: none;
+    width: 100%;
+    align-self: center;
+    color: white;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#HOME {
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    filter: invert(100%);
+    transition: all 0.15s ease-in-out;
+}
+
+#HOME img {
+  margin: 0;
+  height: 2.5rem;
+}
+
+#HOME:hover {
+  filter: invert(60%);
+}
+
+#HAMBURGER {
+    display: none
+}
+
+@media screen and (max-width: 425px) {
+    header {
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 0;
+    }
+
+    #MOB-NAV {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        padding-left: 0.5rem
+    }
+
+    #MOB-NAV label {
+        display: block;
+        cursor: pointer;
+        position: relative;
+        height: 100%;
+        width: auto;
+        aspect-ratio: 1 / 1;
+        text-align: center;
+        align-content: center;
+        font-size: 3.7rem;
+        color: white;
+    }
+
+    #HOME {
+      margin: auto 0
+    }
+    
+    #MOB-NAV label::before {
+        content: "menu";
+        font-family: "Material Icons";
+    }
+
+    #HAMBURGER:checked ~ label::before {
+        content: "close";
+    }
+
+    #MENU {
+        display: flex;
+        flex-direction: column;
+        max-height: 0px;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        gap: 0;
+    }
+
+    header > nav {
+        width: 100%;
+        margin: 0;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .item a {
+        backdrop-filter: blur(10px);
+        height: 4rem;
+        font-size: 7vw;
+        border-radius: 0%;
+        text-align: center;
+        align-content: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        background-color: rgba(44, 44, 44, 0.5);
+    }
+
+    #MOB-NAV:has(#HAMBURGER:checked) ~ nav #MENU {
+        max-height: 500px;
+    }
+}
+
+/* COMING SOON */
+#COMING-SOON-CONT {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.767);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+#COMING-SOON-CONT h2 {
+    color: white;
+    border: yellow dashed;
+    border-width: 1px 0 1px 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem
+}
+
+/* Player input */
+
+#PlayerInput {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100%;
+}
+
+#PlayNumControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#PlayNumControl button {
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  cursor: pointer; 
+}
+
+#PlayerInputBox {
+  height: clamp(30rem, 85vh, 40rem);
+  margin: 0 auto;
+  margin-top: 4vh;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#PlayerInputBox p {
+  text-align: center;
+}
+
+.PlayInputText {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#PlayNumInput {
+  width: 100px;
+  height: 50px;
+  font-size: 2rem;
+  padding: 10px;
+  text-align: center;
+}
+
+#PlayNumInput::-webkit-inner-spin-button, #PlayNumInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+#PlayNumConfirm {
+  width: 75%;
+  height: 10%;
+}
+
+/* Footer */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #030303;
+  padding: 1.3rem 20px;
+  height: fit-content;
+  width: 100%;
+  border-top: #424242 1px solid;
+  color: white;
+  text-align: center;
+}
+
+.logo {  
+    display: inline-block;
+    width: clamp(10rem, 50%, 13rem);
+    text-align: center;
+    align-content: center;
+    filter: invert(100%);
+    transition: all 0.15s ease-in-out;
+    pointer-events: none;
+    user-select: none;
+}
+
+footer a {
+  all: unset;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  text-shadow: 0.4px 0 currentColor, -0.4px 0 currentColor;
+  cursor: pointer
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-top: 2rem
+}
+
+footer ul li { margin: 0 1rem }
+
+#FOOTER-LEGAL-PAGES-CONT { margin-top: 0.8rem }
+
+.footer-credits:nth-of-type(1) { margin-top: 2rem; font-size: 1rem /*7vw*/ }
+.footer-credits:nth-of-type(2) { font-size: clamp(0.6rem, 2.7vw, 0.8rem); color: rgb(207, 207, 207) }
+.footer-credits { margin: 0 }
