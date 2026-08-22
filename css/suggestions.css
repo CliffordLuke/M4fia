@@ -8,6 +8,10 @@ body {
   background-color: black;
 }
 
+main {
+  margin-top: 10vh
+}
+
 /* Header */
 
 header {

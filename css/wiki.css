@@ -7,7 +7,7 @@ body {
     background-size: cover;
     margin: 0;
     width: 100%;
-    margin-top: 4rem
+    margin-top: 10vh
 }
 
 html::-webkit-scrollbar {
