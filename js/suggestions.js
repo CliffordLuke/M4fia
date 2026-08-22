@@ -149,3 +149,7 @@ window.addEventListener("load", async () => {
     inputchecking()
 })
 
+intext.addEventListener('input', () => {
+    intext.style.height = 'auto';
+    intext.style.height = intext.scrollHeight + 'px';
+});

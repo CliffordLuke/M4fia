@@ -208,9 +208,10 @@ input, textarea, input:focus, span {
 textarea {
   display: block;
   width: 100%;
-  resize: both;
+  resize: none;
+  overflow-y: hidden;
+  transition: height 0.1s ease; 
   min-height: 2.5rem;
-  line-height: 1.25rem;
 }
 
 .green, p {
@@ -219,8 +220,6 @@ textarea {
 }
 
 .green{ color:#79fa4e } 
-
-textarea { resize: vertical }
 
 #err { width: 100%; }
 
