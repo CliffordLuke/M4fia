@@ -30,10 +30,9 @@ function inputchecking (){
         check.addEventListener('keydown', () => { 
             if ((event.code === "Enter" && !(event.shiftKey)) || (event.code === "NumpadEnter" && !(event.shiftKey))) {
                 err.textContent = ""
+                let catval = document.getElementById("category").value;
                 switch (true) {
                     case divtext.classList.contains("hide"):
-                        let catval = document.getElementById("category").value;
-                        console.log(catval)
                         if (catval >= 1 && catval <= 3 || Number.isNaN(catval)) {
                             incat.disabled = true; 
                             setTimeout(() => {
@@ -57,7 +56,8 @@ function inputchecking (){
                         break;
 
                     case divema.classList.contains("hide"):
-                        if (intext.value != "") {
+                        let cleantxt = intext.value.replace(/[\r\n]/g, "").trim();
+                        if (cleantxt !== "") {
                             intext.disabled = true;
                             setTimeout(() => {
                                 divema.classList.remove("hide");
