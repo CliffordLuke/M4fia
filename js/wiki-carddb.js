@@ -120,6 +120,7 @@ searchBar.addEventListener("input", (inp) => {
                 }
 
                 zoomCont.classList.add("active");
+                zoomedCardCont.classList.add("active");
                 img = el.querySelector(".roleback");
                 chosenCard = img.cloneNode(true)
                 chosenCard.classList.add("opened");
@@ -133,6 +134,7 @@ searchBar.addEventListener("input", (inp) => {
 cards.forEach((el) => {
     el.addEventListener("click", () => {
         zoomCont.classList.add("active");
+        zoomedCardCont.classList.add("active");
         img = el.querySelector(".roleback");
         chosenCard = img.cloneNode(true)
         chosenCard.classList.add("opened");
@@ -142,7 +144,8 @@ cards.forEach((el) => {
 });
 
 zoomContBtn.addEventListener("click", () => {
-    zoomCont.classList.remove("active")
+    zoomCont.classList.remove("active");
+    zoomedCardCont.classList.remove("active")
     
     zoomedCardCont.querySelector(".opened").remove()
 })
