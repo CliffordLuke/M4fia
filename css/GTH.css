@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #111111;
+  width: 100%;
+  height: fit-content;
+}
+
+main {
+  margin-top: 10vh
+}
+
+/* COMING SOON */
+#COMING-SOON-CONT {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.767);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+#COMING-SOON-CONT h2 {
+    color: white;
+    border: yellow dashed;
+    border-width: 1px 0 1px 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem
+}
+
+/* Player input */
+
+#PlayerInput {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  height: 100%;
+}
+
+#PlayNumControl {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+#PlayNumControl button {
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  cursor: pointer; 
+}
+
+#PlayerInputBox {
+  height: clamp(30rem, 85vh, 40rem);
+  margin: 0 auto;
+  margin-top: 4vh;
+  padding: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#PlayerInputBox p {
+  text-align: center;
+}
+
+.PlayInputText {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+#PlayNumInput {
+  width: 100px;
+  height: 50px;
+  font-size: 2rem;
+  padding: 10px;
+  text-align: center;
+}
+
+#PlayNumInput::-webkit-inner-spin-button, #PlayNumInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+#PlayNumConfirm {
+  width: 75%;
+  height: 10%;
+}

@@ -22,10 +22,11 @@ inema.value = ""
 intext.value = ""
 inconf.value = ""
 
+// Main CLI (Command Line Interface) function
 input.forEach((check) => { 
-    check.addEventListener('keydown', () => {
-        err.textContent = "" 
+    check.addEventListener('keydown', () => { 
         if ((event.code === "Enter" && !(event.shiftKey)) || (event.code === "NumpadEnter" && !(event.shiftKey))) {
+            err.textContent = ""
             switch (true) {
                 case divtext.classList.contains("hide"):
                     if (incat.value >= 1 && incat.value <= 3 || Number.isNaN(incat.value)) {
@@ -67,13 +68,19 @@ input.forEach((check) => {
                 case divconf.classList.contains("show"):
                     switch (true) {
                         case (inconf.value === "y" || inconf.value === "Y"):
+                            incat.disabled = true;
+                            intext.disabled = true;
+                            inema.disabled = true;
                             inconf.disabled = true
                             err.classList.toggle("red")
                             err.classList.toggle("green")
-                            err.textContent = "Thank you suggesting!"
+                            err.textContent = "Thank you for suggesting!"
                             break;
                         case (inconf.value === "n" || inconf.value === "N"):
-                            err.textContent = "bruh."
+                            err.textContent = "Please edit your response. When done, type y."
+                            incat.disabled = false;
+                            intext.disabled = false;
+                            inema.disabled = false;
                             break;
                     }
                     break;
@@ -81,3 +88,5 @@ input.forEach((check) => {
         }          
     })        
 })
+
+// start up anim
