@@ -12,6 +12,8 @@ const zoomedCardCont = document.querySelector("#ZOOM-IMG-CONT");
 const imgHolder = document.querySelector("#ZOOM-IMG");
 
 let children
+let img 
+let chosenCard
 
 //INTRO ANIM
 randomChar(4, 0, "M");
@@ -118,8 +120,9 @@ searchBar.addEventListener("input", (inp) => {
                 }
 
                 zoomCont.classList.add("active");
-                const img = el.querySelector(".roleback");
-                const chosenCard = img.cloneNode(true)
+                zoomedCardCont.classList.add("active");
+                img = el.querySelector(".roleback");
+                chosenCard = img.cloneNode(true)
                 chosenCard.classList.add("opened");
 
                 zoomedCardCont.appendChild(chosenCard);
@@ -130,13 +133,10 @@ searchBar.addEventListener("input", (inp) => {
 
 cards.forEach((el) => {
     el.addEventListener("click", () => {
-        if (zoomedCardCont.children > 0) {
-            zoomedCardCont.firstElementChild.remove()
-        }
-
         zoomCont.classList.add("active");
-        const img = el.querySelector(".roleback");
-        const chosenCard = img.cloneNode(true)
+        zoomedCardCont.classList.add("active");
+        img = el.querySelector(".roleback");
+        chosenCard = img.cloneNode(true)
         chosenCard.classList.add("opened");
 
         zoomedCardCont.appendChild(chosenCard);
@@ -144,7 +144,10 @@ cards.forEach((el) => {
 });
 
 zoomContBtn.addEventListener("click", () => {
-    zoomCont.classList.remove("active")
+    zoomCont.classList.remove("active");
+    zoomedCardCont.classList.remove("active")
+    
+    zoomedCardCont.querySelector(".opened").remove()
 })
 
 // SCROLL ANIMMATIONS

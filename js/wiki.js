@@ -350,28 +350,47 @@ function folderReturn(folder, folderPage) {
 
 
 // HOLOGRAM FUNCTIONALITY
-remHolo.addEventListener("click", () => { cardContToggle(remnantsCards, syndicateCards, nullCards); })
-synHolo.addEventListener("click", () => { cardContToggle(syndicateCards, remnantsCards, nullCards); })
-nullHolo.addEventListener("click", () => { cardContToggle(nullCards, remnantsCards, syndicateCards); })
+remHolo.addEventListener("click", (e) => {
+    e.preventDefault();
+    cardContToggle(remnantsCards, syndicateCards, nullCards);
+});
+
+synHolo.addEventListener("click", (e) => {
+    e.preventDefault();
+    cardContToggle(syndicateCards, remnantsCards, nullCards);
+});
+
+nullHolo.addEventListener("click", (e) => {
+    e.preventDefault();
+    cardContToggle(nullCards, remnantsCards, syndicateCards);
+});
 
 function cardContToggle(targetCard, otherCard1, otherCard2) {
     remHolo.style.pointerEvents = "none";
     synHolo.style.pointerEvents = "none";
     nullHolo.style.pointerEvents = "none";
 
+    const wasOpened = targetCard.classList.contains("opened");
+    
     otherCard1.classList.remove("opened");
     otherCard2.classList.remove("opened");
 
     targetCard.classList.toggle("opened");
 
-    targetCard.addEventListener("transitionend", (event) => {
-        if (event.propertyName === "max-height") {
-            remHolo.style.pointerEvents = "all";
-            synHolo.style.pointerEvents = "all";
-            nullHolo.style.pointerEvents = "all";
-        };
-    });
+    if (!wasOpened) {
+        setTimeout(() => {
+            targetCard.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }, 500);
+    }
 
+    setTimeout(() => {
+        remHolo.style.pointerEvents = "all";
+        synHolo.style.pointerEvents = "all";
+        nullHolo.style.pointerEvents = "all";
+    }, 500);
 }
 
 // SCROLL ANIMATIONS
