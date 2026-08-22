@@ -7,7 +7,6 @@ body {
     background-size: cover;
     margin: 0;
     width: 100%;
-    margin-top: 10vh
 }
 
 html::-webkit-scrollbar {
@@ -27,7 +26,8 @@ header > h1, section > h2 {
 
 main {
     overflow: hidden;
-    transition: all ease-in-out 0.3s
+    transition: all ease-in-out 0.3s;
+    margin-top: 75px
 }
 
 body:has(#FOLDER-OPENED-CONTAINER.opened) header,
@@ -223,7 +223,8 @@ header a:hover {
     box-sizing: content-box;
     margin: 3rem 0;
     padding: 2rem;
-    height: fit-content;
+    height: calc(100vh - 75px);
+    overflow: hidden;
     text-align: center;
 }
 
