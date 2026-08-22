@@ -210,8 +210,12 @@ label, input, textarea, p {
 }
 
 label, input, #int, textarea, .green{
-    color:#79fa4e;
+  color:#79fa4e;
 } 
+
+textarea {
+  resize: vertical;
+}
 
 #err {
   width: 100%;
