@@ -91,6 +91,11 @@ label, input, #int, textarea, .green {
   height: fit-content
 }
 
+#suggestion {
+  field-sizing: content;
+  min-height: 3em; 
+}
+
 @keyframes scanlines {
   from {transform: translateY(0);}
   to {transform: translateY(1.5%);}
