@@ -184,6 +184,12 @@ main { margin-top: 75px }
   width: 100%;
 }
 
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
 .form {
   position: absolute;
   top: 10%;
