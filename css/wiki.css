@@ -976,6 +976,7 @@ header a:hover {
     width: 30vw;
     perspective: 1000px;
     transition: all 0.3s ease-in-out;
+    user-select: none;
 }
 
 .card:hover {
