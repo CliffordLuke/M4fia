@@ -15,21 +15,30 @@ main {
   color: #79fa4e;
 }
 
-#compimg {
+#crt {
   width: 100%;
+  border-radius: 1rem;
+  user-select: none;
 }
 
 .comp {
   position: relative;
-  width: 100%;
+  width: 75%;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
 }
 
 .form {
   position: absolute;
-  top: 6%;
-  left: 12%;
-  width: 75%;
-  height: 56%;
+  top: 10%;
+  left: 7.4%;
+  width: 85.2%;
+  height: 68.3%;
+  scrollbar-gutter: stable;
 }
 
 input, textarea, input:focus, span {
@@ -42,9 +51,10 @@ input, textarea, input:focus, span {
 textarea {
   display: block;
   width: 100%;
-  resize: both;
+  resize: none;
+  overflow-y: hidden;
+  transition: height 0.1s ease; 
   min-height: 2.5rem;
-  line-height: 1.25rem;
 }
 
 label, input, textarea, p:not(.footer-credits) {
@@ -52,20 +62,23 @@ label, input, textarea, p:not(.footer-credits) {
   font-size: .9rem;
 }
 
+.green{ color:#79fa4e } 
 label, input, #int, textarea, .green {
     color:#79fa4e;
 } 
 
-.red {
-  color:#f35050
-}
+#err { width: 100%; }
 
-.hide {
-  display: none
-}
+.red { color:#f35050 }
 
-.show {
-  display: block
+.hide { display: none }
+
+.show { display: block }
+
+.hologram {
+  overflow-x: clip;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .hologram::after {

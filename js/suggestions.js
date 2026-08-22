@@ -1,92 +1,174 @@
-// Defines Inputs in Suggestions
-const input = document.querySelectorAll(".cli-input");      
+// Defines labes in command line
+let int = document.getElementById("int");
+let com = document.getElementById("intcom")
 
-// Defines Form Divs
-const divcat = document.getElementById("sug-cat");
-const divtext = document.getElementById("sug-text");
-const divema = document.getElementById("sug-ema");
-const divconf = document.getElementById("sug-conf");
+// Sleep helper
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Defines Inputs Separately
-const incat = document.getElementById("category");
-const intext = document.getElementById("suggestion");
-const inema = document.getElementById("ema");
-const inconf = document.getElementById("conf");
-const labtext = document.getElementById("sug-bug")
+// Checcks current step (what part of the form you're currently in)
+let curstep = "cat"
 
-// Defines Error/
-let err = document.getElementById("err");
+const intblk = document.getElementById("test")
+if (intblk) {
+    attachlisteners(intblk)
+}
 
-incat.value = ""
-inema.value = ""
-intext.value = ""
-inconf.value = ""
+// Attacking listeners 
+function attachlisteners(currentblock) {
+    // Defines Form Divs and Labels
+    const divcat = document.getElementById("sug-cat");
+    const divtext = document.getElementById("sug-text");
+    const divema = document.getElementById("sug-ema");
+    const divconf = document.getElementById("sug-conf");
+    const labtext = document.getElementById("sug-bug");
+    let err = document.getElementById("err");
 
-// Main CLI (Command Line Interface) function
-input.forEach((check) => { 
-    check.addEventListener('keydown', () => { 
-        if ((event.code === "Enter" && !(event.shiftKey)) || (event.code === "NumpadEnter" && !(event.shiftKey))) {
-            err.textContent = ""
-            switch (true) {
-                case divtext.classList.contains("hide"):
-                    if (incat.value >= 1 && incat.value <= 3 || Number.isNaN(incat.value)) {
-                        divtext.classList.toggle("hide");
-                        divtext.classList.toggle("show");
-                        intext.focus();
-                        incat.disabled = true; 
-                        switch (true){
-                            case (Number(incat.value) === 1 || Number(incat.value) === 3):
-                                labtext.textContent += "Suggestion> Input your suggestions below:";
-                                break;
+    // Defines Inputs Separately
+    const incat = document.getElementById("category");
+    const intext = document.getElementById("suggestion");
+    const inema = document.getElementById("ema");
+    const inconf = document.getElementById("conf");
+    const input = document.querySelectorAll(".cli-input");   
 
-                            case (Number(incat.value) === 2):
-                                labtext.textContent += "Bug> Report your bug below:";
-                                break;
+
+    const time = "0"
+    // Main CLI (Command Line Interface)
+    input.forEach((check) => { 
+        check.addEventListener('keydown', async () => { 
+            if ((event.code === "Enter" && !event.shiftKey) || (event.code === "NumpadEnter" && !event.shiftKey)) {
+                err.textContent = "";
+                switch (curstep) {
+                    case "cat":
+                        let catval = document.getElementById("category").value;
+                        if (catval >= 1 && catval <= 3 || Number.isNaN(catval)) {
+                            incat.disabled = true; 
+                            await sleep(time);
+                            divtext.classList.remove("hide");
+                            divtext.classList.add("show");
+                            intext.focus();
+                            switch (true) {
+                                case (Number(catval) === 1 || Number(catval) === 3):
+                                    labtext.textContent += "Suggestion> Input your suggestions below:";
+                                    break;
+
+                                case (Number(catval) === 2):
+                                    labtext.textContent += "Bug> Report your bug below:";
+                                    break;     
+                            }
+                            curstep = "sug";
                         }
-                    }
-                    else {
-                        err.textContent = "Invalid Category!";
-                    }
-                    break;
-                case divema.classList.contains("hide"):
-                    if (intext.value != "") {
-                        divema.classList.toggle("hide");
-                        divema.classList.toggle("show");
-                        inema.focus();
-                        intext.disabled = true;
-                    }
-                    else {
-                        err.textContent = "Report can not be blank!";
-                    }
-                    break;
-                case divconf.classList.contains("hide"):
-                    divconf.classList.toggle("hide");
-                    divconf.classList.toggle("show");
-                    inconf.focus();
-                    inema.disabled = true; 
-                    break;
-                case divconf.classList.contains("show"):
-                    switch (true) {
-                        case (inconf.value === "y" || inconf.value === "Y"):
-                            incat.disabled = true;
-                            intext.disabled = true;
-                            inema.disabled = true;
-                            inconf.disabled = true
-                            err.classList.toggle("red")
-                            err.classList.toggle("green")
-                            err.textContent = "Thank you for suggesting!"
-                            break;
-                        case (inconf.value === "n" || inconf.value === "N"):
-                            err.textContent = "Please edit your response. When done, type y."
-                            incat.disabled = false;
-                            intext.disabled = false;
-                            inema.disabled = false;
-                            break;
-                    }
-                    break;
-            }  
-        }          
-    })        
-})
+                        else {
+                            err.textContent = "Invalid Category!";
+                        }
+                        break;
 
-// start up anim
+                    case "sug":
+                        let cleantxt = intext.value.replace(/[\r\n]/g, "").trim();
+                        if (cleantxt !== "") {
+                            intext.disabled = true;
+                            await sleep(time);
+                            divema.classList.remove("hide");
+                            divema.classList.add("show");
+                            inema.focus();
+                            curstep = "ema";
+                        }
+                        else {
+                            switch (true) {
+                                    case (Number(catval) === 1 || Number(catval) === 3):
+                                            err.textContent = "Suggestion can not be blank!";
+                                        break;
+
+                                    case (Number(catval) === 2):
+                                            err.textContent = "Bug Report can not be blank!";
+                                        break;
+                                }
+                        }
+                        break;
+
+                    case "ema":
+                        inema.disabled = true; 
+                        await sleep(time);
+                        divconf.classList.remove("hide");
+                        divconf.classList.add("show");
+                        inconf.focus();
+                        curstep = "conf";
+                        break;
+
+                    case "conf":
+                        let confval = inconf.value
+                        console.log(confval)
+                        inconf.disabled = true
+                        switch (confval) {
+                            case ("y"):
+                            case ("Y"):
+                                
+                                err.classList.toggle("red");
+                                err.classList.toggle("green");
+                                await sleep(time);
+                                err.textContent = "Thank you for suggesting!";
+                                break;
+
+                            case ("n"):
+                            case ("N"):
+                                currentblock.removeAttribute("id");
+                                currentblock.querySelectorAll("[id]").forEach(el => el.removeAttribute("id"));
+
+                                const template = document.getElementById("cli-temp");
+                                const clone = template.content.cloneNode(true);
+                                const newBlock = clone.querySelector("test");
+
+                                newBlock.id = "test";
+                                document.getElementById("clicont").appendChild(clone);
+
+                                curstep = "category";
+
+                                attachlisteners(newBlock);
+                                newBlock.querySelector("#category").focus();
+                                break;
+
+                            default:
+                                inconf.disabled = false;
+                                err.textContent = "Enter y or n"
+                                break;
+                        }        
+                        break;
+                }
+            }
+        })
+    })
+
+
+    // Start up anim
+    window.addEventListener("load", async () => {
+        await sleep (200)
+        int.classList.remove("hide")
+        int.classList.add("show")
+
+        for (let i = 0; i < 3; i++) {
+            await sleep (750)
+            int.textContent += "."
+        }
+
+        await sleep (time)
+        com.classList.remove("hide")
+        com.classList.add("show")
+
+        await sleep (time)
+        divcat.classList.remove("hide")
+        divcat.classList.add("show")
+        incat.focus()
+        incat.value = ""
+        inema.value = ""
+        intext.value = ""
+        inconf.value = ""
+    })
+
+    intext.addEventListener('input', () => {
+        intext.style.height = 'auto';
+        intext.style.height = intext.scrollHeight + 'px';
+    });
+}
+
+
+
+
