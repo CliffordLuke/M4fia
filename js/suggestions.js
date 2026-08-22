@@ -14,8 +14,13 @@ const inema = document.getElementById("ema");
 const inconf = document.getElementById("conf");
 const labtext = document.getElementById("sug-bug")
 
-// Defines Error/
+// Defines labels (p)/
 let err = document.getElementById("err");
+let int = document.getElementById("int");
+let com = document.getElementById("intcom")
+
+// Sleep helper
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 incat.value = ""
 inema.value = ""
@@ -90,7 +95,7 @@ input.forEach((check) => {
                             break;
 
                         case (inconf.value === "n" || inconf.value === "N"):
-                            err.textContent = "Please edit your response. When done, type y."
+                            err.textContent = ""
                             incat.disabled = false;
                             intext.disabled = false;
                             inema.disabled = false;
@@ -102,4 +107,24 @@ input.forEach((check) => {
     })
 })
 
-// start up anim
+// Start up anim
+window.addEventListener("load", async () => {
+    await sleep (200)
+    int.classList.remove("hide")
+    int.classList.add("show")
+
+    for (let i = 0; i < 3; i++) {
+        await sleep (750)
+        int.textContent += "."
+    }
+
+    await sleep (500)
+    com.classList.remove("hide")
+    com.classList.add("show")
+
+    await sleep (500)
+    divcat.classList.remove("hide")
+    divcat.classList.add("show")
+    incat.focus()
+})
+

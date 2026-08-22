@@ -213,16 +213,20 @@ label, input, #int, textarea, .green{
     color:#79fa4e;
 } 
 
-.red {
-  color:#f35050
+#err {
+  width: 100%;
 }
-
-.hide {
-  display: none
-}
+.red {color:#f35050}
+.hide {display: none}
 
 .show {
   display: block
+}
+
+.hologram {
+  overflow-x: clip;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .hologram::after {
