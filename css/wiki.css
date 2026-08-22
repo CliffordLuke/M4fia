@@ -230,7 +230,6 @@ header a:hover {
     box-sizing: content-box;
     margin: 3rem 0;
     padding: 2rem;
-    overflow: hidden;
     text-align: center;
 }
 
@@ -950,7 +949,7 @@ header a:hover {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
-    scroll-margin-top: -300px;
+    scroll-margin-top: 200px;
 }
 
 #REMNANTS-CARDS.opened,
