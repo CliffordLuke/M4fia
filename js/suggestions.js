@@ -22,10 +22,7 @@ let com = document.getElementById("intcom")
 // Sleep helper
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-incat.value = ""
-inema.value = ""
-intext.value = ""
-inconf.value = ""
+
 
 // Main CLI (Command Line Interface) function
 input.forEach((check) => { 
@@ -34,19 +31,20 @@ input.forEach((check) => {
             err.textContent = ""
             switch (true) {
                 case divtext.classList.contains("hide"):
-                    if (incat.value >= 1 && incat.value <= 3 || Number.isNaN(incat.value)) {
+                    let catval = document.getElementById("category").value;
+                    console.log(catval)
+                    if (catval >= 1 && catval <= 3 || Number.isNaN(catval)) {
                         incat.disabled = true; 
                         setTimeout(() => {
                             divtext.classList.remove("hide");
                             divtext.classList.add("show");
                             intext.focus();
-
                             switch (true) {
-                                case (Number(incat.value) === 1 || Number(incat.value) === 3):
+                                case (Number(catval) === 1 || Number(catval) === 3):
                                     labtext.textContent += "Suggestion> Input your suggestions below:";
                                     break;
 
-                                case (Number(incat.value) === 2):
+                                case (Number(catval) === 2):
                                     labtext.textContent += "Bug> Report your bug below:";
                                     break;     
                             }
@@ -67,7 +65,15 @@ input.forEach((check) => {
                         }, 500)
                     }
                     else {
-                        err.textContent = "Report can not be blank!";
+                        switch (true) {
+                                case (Number(catval) === 1 || Number(catval) === 3):
+                                        err.textContent = "Suggestion can not be blank!";
+                                    break;
+
+                                case (Number(catval) === 2):
+                                        err.textContent = "Bug Report can not be blank!";
+                                    break;     
+                            }
                     }
                     break;
 
@@ -126,5 +132,9 @@ window.addEventListener("load", async () => {
     divcat.classList.remove("hide")
     divcat.classList.add("show")
     incat.focus()
+    incat.value = ""
+    inema.value = ""
+    intext.value = ""
+    inconf.value = ""
 })
 
