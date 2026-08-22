@@ -166,14 +166,17 @@ header a:hover {
         max-height: 500px;
     }
 }
+main { margin-top: 75px }
 
  #landing {
   margin: 5%;
   color: #79fa4e;
 }
 
-#compimg {
+#crt {
   width: 100%;
+  border-radius: 1rem;
+  user-select: none;
 }
 
 .comp {
@@ -183,10 +186,10 @@ header a:hover {
 
 .form {
   position: absolute;
-  top: 6%;
-  left: 12%;
-  width: 75%;
-  height: 56%;
+  top: 10%;
+  left: 7.4%;
+  width: 85.2%;
+  height: 68.3%;
 }
 
 input, textarea, input:focus, span {
@@ -204,28 +207,22 @@ textarea {
   line-height: 1.25rem;
 }
 
-label, input, textarea, p {
+.green, p {
   font-family: monospace;
   font-size: .9rem;
 }
 
-label, input, #int, textarea, .green{
-  color:#79fa4e;
-} 
+.green{ color:#79fa4e } 
 
-textarea {
-  resize: vertical;
-}
+textarea { resize: vertical }
 
-#err {
-  width: 100%;
-}
-.red {color:#f35050}
-.hide {display: none}
+#err { width: 100%; }
 
-.show {
-  display: block
-}
+.red { color:#f35050 }
+
+.hide { display: none }
+
+.show { display: block }
 
 .hologram {
   overflow-x: clip;
