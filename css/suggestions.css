@@ -208,12 +208,12 @@ textarea {
   line-height: 1.25rem;
 }
 
-label, input, textarea, p {
+label, input, textarea, p:not(.footer-credits) {
   font-family: monospace;
   font-size: .9rem;
 }
 
-label, input, #int, textarea, .green{
+label, input, #int, textarea, .green {
     color:#79fa4e;
 } 
 
