@@ -72,7 +72,10 @@
     <main>
       <section id="landing" class="landing">
         <div class="landing-bg">
-          <video src="./images/burning.mp4" class="bg-vid"></video>
+          <video autoplay loop>
+            <source src="./videos/burning.mp4" type="video/mp4" preload="auto">
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         <div class="landing-text">
@@ -98,7 +101,7 @@
             <div class="about-slider">
               <div class="about-slider-part part1 active">
                 <div id="ABOUT-SLIDER-TITLE">
-                  <h2 class="main-text">M4FIA</h2>
+                  <h2><img id="MAIN-TEXT" class="logo" src="images/M4fiaLogo.png" alt="M4FIA Logo"></h2>
                 </div>
                 <div id="ABOUT-SLIDER-INFO">
                   <p class="text2">An expansion or a new version of the classic social deduction game.</p>

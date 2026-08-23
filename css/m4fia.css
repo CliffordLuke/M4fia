@@ -169,6 +169,16 @@ main {
 
 
 /* Main Section - About Page */
+#MAIN-TEXT {
+  margin-top: 0;
+  width: clamp(3rem, 20vw, 20rem);
+}
+
+@media screen and (max-width: 425px) {
+  #MAIN-TEXT {
+    width: clamp(6rem, 50vw, 20rem);
+  }
+}
 
 .about {
   min-height: 70vh;
@@ -215,7 +225,7 @@ main {
   pointer-events: auto;
 }
 
-.about .main-text, .about p {
+.about #MAIN-TEXT, .about p {
   margin-left: 5%;
 }
 
@@ -306,13 +316,6 @@ main {
   pointer-events: none;
   opacity: 0;
   z-index: 20;
-}
-
-.main-text {
-  font-size: clamp(3rem, 8vw, 5.5rem);
-  color: white;
-  padding: 0;
-  margin: 0;
 }
 
 .text1 {
