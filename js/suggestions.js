@@ -30,6 +30,7 @@ const cliCont = document.querySelector("#clicont");
 let elChild
 
 const time = "0"
+const tvtitle = document.querySelector("#TVTITLE")
 
 // Main CLI (Command Line Interface)
 
@@ -124,7 +125,7 @@ formItems.addEventListener("keydown", ev => {
             } else if (confval === "n" || confval === "N") {
                 var formChild = Array.from(formItems.children);
                 formChild.toReversed().forEach(el => {
-                    cliCont.insertBefore(el, Array.from(cliCont.children)[4]);
+                    cliCont.insertBefore(el, Array.from(cliCont.children)[5]);
                 });
 
                 inp.readOnly = true;
@@ -143,24 +144,24 @@ formItems.addEventListener("keydown", ev => {
     }
 });
 
-    // Start up anim
-    window.addEventListener("load", async () => {
+tvtitle.addEventListener("animationend", async ev => {
+    if (ev.animationName === "flicker") {
+        // Start up anim
         await sleep (200)
-        int.classList.remove("hide")
-        int.classList.add("show")
+            int.classList.remove("hide")
+            int.classList.add("show")
 
-        for (let i = 0; i < 3; i++) {
-            await sleep (750)
-            int.textContent += "."
-        }
+            for (let i = 0; i < 3; i++) {
+                await sleep (750)
+                int.textContent += "."
+            }
 
-        await sleep (time)
-        com.classList.remove("hide")
-        com.classList.add("show")
+            await sleep (time)
+            com.classList.remove("hide")
+            com.classList.add("show")
 
-        await sleep (time)
-        formItems.appendChild(divcat)
-        incat.focus()
-    })
-
-
+            await sleep (time)
+            formItems.appendChild(divcat)
+            incat.focus()
+    }
+})

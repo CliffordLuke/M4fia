@@ -90,6 +90,15 @@ textarea {
   top: 0;
   left: 0;
   pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hologram h2 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  animation: flicker 2s reverse forwards;
+  font-family: monospace;
 }
 
 .hologram::after {
@@ -142,4 +151,15 @@ textarea {
 @keyframes scanlines {
   from {transform: translateY(0);}
   to {transform: translateY(1.5%);}
+}
+
+@keyframes flicker {
+    0% { opacity: 0; }
+    5% { opacity: 0.2; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.1; }
+    20% { opacity: 1; }
+    25% { opacity: 0.3; }
+    30% { opacity: 1; }
+    100% { opacity: 1 }
 }
