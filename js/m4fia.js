@@ -21,10 +21,9 @@ introText.textContent = introMessage[Math.floor(Math.random() * introMessage.len
 
 
 
-
+/*
 const audioFiles = [
-  "audio/Boundless Box - Apeirophobia Original Soundtrack (Placeholder).mp3",
-  "audio/Kri3tyy Galaxii - Surreal Peace (Placeholder).mp3"
+  "audio/Boundless Box - Apeirophobia Original Soundtrack (Placeholder).mp3"
 ];
 const audioElements = document.getElementById("musicBG");
 
@@ -36,6 +35,7 @@ function playMusic() {
 }
 
   playMusic();
+*/
 
 
 
@@ -192,14 +192,14 @@ document
 });
 
 
-
+/*
 const bgMusic = document.getElementById("musicBG");
 const btnMute = document.getElementById("btnMute");
 
 btnMute.addEventListener("click", () => {
   bgMusic.muted = !bgMusic.muted;
 });
-
+*/
 
 
 
@@ -250,6 +250,32 @@ const tvOnObserver = new IntersectionObserver((entry) => {
 });
 
 tvOnObserver.observe(TV);
+
+const faqtitle = document.querySelector("#FAQ-H2")
+
+const fadeObserver = new IntersectionObserver((entry) => {
+  if (entry[0].isIntersecting) {
+    entry[0].target.classList.add("fade-in")
+  };
+}, {
+  threshold: 0.5
+});
+
+fadeObserver.observe(faqtitle)
+
+const details = document.querySelectorAll("details")
+
+const slideObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if (entry.isIntersecting){
+            entry.target.classList.add("reveal");
+        }
+    })
+}, {
+    threshold: 0.3
+});
+
+details.forEach((detail)=>slideObserver.observe(detail));
 
 const introOverlay = document.querySelector(".intro-overlay");
 const landingP = document.querySelectorAll(".landing-p")

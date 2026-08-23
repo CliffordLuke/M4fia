@@ -27,22 +27,52 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
 }
 
 /* BANNER STYLE */
-#M4FIA-BANNER {
-    position: relative;
-    height: calc(100vh - 75px);
+.landing {
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: #424242 1px solid;
 }
-
-@media screen and (max-width: 425px) {
-    #M4FIA-BANNER {
-        height: 100vh;
-    }
+.landing-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.landing-text {
+  animation: textOut linear both;
+  animation-timeline: scroll(root);
+  
+  animation-range: entry 0% exit 35%;
+}
+@keyframes textOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 #M4FIA-BANNER-VIDEO {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     box-shadow: 0px 9px 24px 7px rgba(0,0,0,0.88);
+    filter: brightness(50%);
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    max-width: 100%;
 }
 
 #M4FIA-BANNER-TEXT {
@@ -55,6 +85,8 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
     font-size: clamp(4rem, 10vw, 8rem);
     text-align: center;
     animation: flicker 2s;
+    z-index: 100;
+    color: white
 }
 
 /* INFORMATION STYLE */

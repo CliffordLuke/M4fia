@@ -38,6 +38,19 @@ const nullGrp = document.querySelector("#NULL-GROUP");
 // AUDIO
 const pageFlip = document.querySelector("#SFX-PAGE-FLIP");
 
+// LANDING ANIM
+const landingBg = document.querySelector(".landing-bg");
+const landing = document.querySelector(".landing");
+
+window.addEventListener("scroll", () => {
+    const rect = landing.getBoundingClientRect();
+
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        landingBg.style.transform = `translateY(${window.scrollY * 0.75}px)`;
+    }
+});
+
+
 let folderOpened = false;
 
 function copyCardFunc(group, groupCont) {
