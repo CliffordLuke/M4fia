@@ -1,92 +1,232 @@
 body {
-    background-color: rgb(23, 23, 23);
-    width: 100%;
-    height: 100vh;
-    overflow: hidden
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  overflow-y: hidden;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    height: 100%;
+  margin-top: 10vh
 }
 
+/* MAIN CONTENT */
 
-.holo-title {
-  font-size: clamp(3rem, 3vw, 3.3rem);
-  font-weight: bold;
-  color: #04e400;
-  text-shadow: 0 0 15px rgba(0, 225, 11, 0.8), 0 0 15px rgba(52, 225, 0, 0.5);
-  position: relative;
-  z-index: 2;
-  opacity: 0.75;
-}
- .holo-div2 {
-  position: relative;
-  z-index: 2;
-}
-
-
-.hologram {
-  width: clamp(18rem, 75vw, 60rem);
-  aspect-ratio: 5/3;
-  padding: 0;
-  text-shadow: 0 0 15px rgba(0, 225, 11, 0.8), 0 0 15px rgba(52, 225, 0, 0.5);
+ #landing {
+  color: #79fa4e;
+  height: calc(100vh - 75px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-self: flex-start;
-  align-items: center;
-  transition: 0.3s ease;
-  color: #00e404;
-  text-decoration: none;
-  animation: holo-flicker 4s infinite;
-  position: relative;
-  overflow: hidden;
 }
 
-.hologram::before {
-  content: "";
+#crt {
+  width: 100%;
+  border-radius: 1rem;
+  filter: brightness(70%);
+}
+
+.comp {
+  position: relative;
+  width: 70%;
+  justify-self: center;
+  align-self: center;
+  margin: auto 0
+}
+
+.form {
   position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(rgba(0, 225, 0, 0.1) 0px, rgba(0, 225, 0, 0.1) 1px, transparent 1px, transparent 1.5%);
+  top: 10%;
+  left: 7.4%;
+  width: 85.2%;
+  height: 68.3%;
+  scrollbar-gutter: stable;
+  overflow-x: clip;
+  overflow-y: auto;
+  padding-inline: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+input, textarea, input:focus, span {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.cli-input:focus {
+  z-index: 3;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.input-div label {
+  width: fit-content
+}
+
+.cli-input {
+  justify-self: flex-start;
+  align-self: flex-start;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  resize: none;
+  overflow-y: hidden;
+  transition: height 0.1s ease; 
+  min-height: 2.5rem;
+}
+
+#err { width: 100%; }
+.red { color:#f35050 }
+.green{ color:#79fa4e } 
+.hide { display: none }
+.show { display: block }
+
+.hologram {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
   pointer-events: none;
-  opacity: 0.5;
-  animation: scanlines 0.25s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.hologram h2 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  animation: flicker 2s reverse forwards;
+  font-family: monospace;
 }
 
 .hologram::after {
   content: "";
   position: absolute;
-  inset: -20%;
-  background: linear-gradient(180deg, transparent 35%, rgba(4, 225, 0, 0.1) 50%, transparent 65%);
-  pointer-events: none;
-  animation: holosweep 10s linear infinite;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0, 225, 49, 0.1) 0px, rgba(0, 196, 13, 0.1) 1px, transparent 1px, transparent 1.5%);
+  opacity: 0.5;
+  animation: scanlines 0.25s linear infinite;
 }
 
-@keyframes holo-flicker {
-  0%,
-  10%,
-  18%,
-  22%,
-  30%,
-  40%,
-  50%,
-  58%,
-  62%,
-  63%,
-  67%,
-  70%,
-  80%,
-  90%,
-  100% {opacity: 1;} 
-  
-  20%,
-  60%,
-  65% {opacity: 0.85;}
+#FORM-ITEMS {
+  height: fit-content;
+}
+
+.form-text {
+  font-family: monospace;
+  font-size: clamp(0.7rem, 1.1vw, 1.7rem)
+}
+
+#suggestion {
+  field-sizing: content;
+  min-height: 3em; 
+}
+
+@media screen and (max-width: 768px) {
+  .comp {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .comp {
+    width: auto;
+    height: 90%;
+  }
+  #crt {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 0
+  }
+  .form {
+    width: 100%;
+    top: 8%;
+    left: 0;
+    padding: 0.5rem
+  }
+}
+
+/* WINDOW */
+#CLI-WINDOW {
+  border: 2px solid #79fa4e;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: clamp(8rem, 50%, 40rem);
+  margin: auto;
+  height: clamp(8rem, 50%, 20rem);
+  font-family: monospace;
+  font-size: clamp(0.5rem, 1vw, 3rem);
+}
+
+#CLI-WINDOW p {
+  margin-top: 0
+}
+
+#CLIWINDOW-IN {
+  margin: 1rem 2.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#CLIWINDOW-CONT {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+  align-content: center;
+}
+
+#CLIWINDOW-CONT a {
+  border: 2px solid #79fa4e;
+  padding: 0.5rem;
+  color: white;
+  text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap
+}
+
+#CLIWINDOW-CONT a:hover {
+  background-color: #6bd547;
+}
+
+#CLIWINDOW-TOP {
+  width: 100%;
+  background-color: #79fa4e;
+  height: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  #CLI-WINDOW {
+    width: clamp(8rem, 55%, 40rem);
+    height: clamp(8rem, 50%, 20rem);
+    font-size: clamp(0.5rem, 1.5vw, 3rem);
+    }
+}
+
+@media screen and (max-width: 425px) {
+  #CLI-WINDOW {
+    width: clamp(8.5rem, 95vw, 30rem);
+    height: clamp(8rem, 35vh, 12rem);
+    font-size: clamp(0.8rem, 1.8vw, 3rem);
+    }
 }
 
 @keyframes scanlines {
@@ -94,23 +234,13 @@ main {
   to {transform: translateY(1.5%);}
 }
 
-@keyframes holosweep {
-  0% {transform: translateY(-60%);}
-  40% {transform: translateY(60%);}
-  100% {transform: translateY(60%);}
-}
-
-
-
-
-.HostHolo {
-  border: 1px solid rgba(34, 225, 0, 0.3);
-  box-shadow: 0 0 15px rgba(15, 225, 0, 0.6), inset 0 0 30px rgba(0, 225, 7, 0.6);
-  background: linear-gradient(180deg, rgba(37, 225, 0, 0.15), rgba(0, 225, 15, 0.05));
-  transition: 0.5s ease;
-}
-
-.HostHolo:hover::before {
-  opacity: 0.8;
-  animation-duration: 0.075s;
+@keyframes flicker {
+    0% { opacity: 0; }
+    5% { opacity: 0.2; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.1; }
+    20% { opacity: 1; }
+    25% { opacity: 0.3; }
+    30% { opacity: 1; }
+    100% { opacity: 1 }
 }
