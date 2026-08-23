@@ -7,9 +7,6 @@ let com = document.getElementById("intcom");
 // Sleep helper
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Checcks current step (what part of the form you're currently in)
-let curstep = "cat"
-
 // Defines Form Divs and Labels
 const temp = document.querySelector("#cli-temp");
 const tempCont = document.importNode(temp.content, true)
@@ -28,7 +25,9 @@ const intext = tempCont.querySelector("#suggestion");
 const inema = tempCont.querySelector("#ema");
 const inconf = tempCont.querySelector("#conf");
 
-let input = tempCont.querySelectorAll(".cli-input");   
+let input = tempCont.querySelectorAll(".cli-input");
+const cliCont = document.querySelector("#clicont");
+let elChild
 
 const time = "0"
 
@@ -75,12 +74,11 @@ formItems.addEventListener("keydown", ev => {
             let catval = Number(inp.value);
 
             if (catval >= 1 && catval <= 3) {
-                inp.disabled = true;
+                inp.readOnly = true;
 
                 sugClone = divtext.cloneNode(true);
-                sugClone.removeAttribute('id');
                 sugClone.querySelector(".cli-input").value = ""
-                sugClone.querySelector(".cli-input").disabled = false
+                sugClone.querySelector(".cli-input").readOnly = false
                 formItems.appendChild(sugClone);
                 sugClone.querySelector(".cli-input").focus()
             } else {
@@ -92,11 +90,10 @@ formItems.addEventListener("keydown", ev => {
 
         case "suggestion":
             if (inp.value.length > 0) {
-                inp.disabled = true
+                inp.readOnly = true
                 emaClone = divema.cloneNode(true);
-                emaClone.removeAttribute('id');
                 emaClone.querySelector(".cli-input").value = ""
-                emaClone.querySelector(".cli-input").disabled = false
+                emaClone.querySelector(".cli-input").readOnly = false
                 formItems.appendChild(emaClone);
                 emaClone.querySelector(".cli-input").focus()
             } else {
@@ -105,11 +102,10 @@ formItems.addEventListener("keydown", ev => {
             break;
         case "ema":
             if (inp.checkValidity()) {
-                inp.disabled = true
+                inp.readOnly = true
                 confClone = divconf.cloneNode(true);
-                confClone.removeAttribute('id');
                 confClone.querySelector(".cli-input").value = ""
-                confClone.querySelector(".cli-input").disabled = false
+                confClone.querySelector(".cli-input").readOnly = false
                 formItems.appendChild(confClone);
                 confClone.querySelector(".cli-input").focus()
             } else {
@@ -119,18 +115,25 @@ formItems.addEventListener("keydown", ev => {
             break;
 
         case "conf": {
-            inp.disabled = true
             let confval = inp.value;
 
             if (confval === "y" || confval === "Y") {
+                inp.readOnly = true
                 errorP("success");
+                formItems.submit()
             } else if (confval === "n" || confval === "N") {
+                var formChild = Array.from(formItems.children);
+                formChild.toReversed().forEach(el => {
+                    cliCont.insertBefore(el, Array.from(cliCont.children)[4]);
+                });
+
+                inp.readOnly = true;
+
                 catClone = divcat.cloneNode(true);
-                catClone.removeAttribute('id');
-                catClone.querySelector(".cli-input").value = ""
-                catClone.querySelector(".cli-input").disabled = false
+                catClone.querySelector(".cli-input").value = "";
+                catClone.querySelector(".cli-input").readOnly = false;
                 formItems.appendChild(catClone);
-                catClone.querySelector(".cli-input").focus()
+                catClone.querySelector(".cli-input").focus();
             } else {
                 errorP("error")
             }
@@ -158,18 +161,6 @@ formItems.addEventListener("keydown", ev => {
         await sleep (time)
         formItems.appendChild(divcat)
         incat.focus()
-        /*
-        incat.value = ""
-        inema.value = ""
-        intext.value = ""
-        inconf.value = ""*/
     })
-/*
-    intext.addEventListener('input', () => {
-        intext.style.height = 'auto';
-        intext.style.height = intext.scrollHeight + 'px';
-    });
-
-*/
 
 

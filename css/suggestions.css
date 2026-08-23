@@ -11,8 +11,10 @@ main {
 /* MAIN CONTENT */
 
  #landing {
-  margin: 5%;
   color: #79fa4e;
+  height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
 }
 
 #crt {
@@ -22,8 +24,10 @@ main {
 
 .comp {
   position: relative;
-  width: 75%;
+  width: 70%;
   justify-self: center;
+  align-self: center;
+  margin: auto 0
 }
 
 .form {
@@ -35,13 +39,32 @@ main {
   scrollbar-gutter: stable;
   overflow-x: clip;
   overflow-y: auto;
+  padding-inline: 0.5rem
 }
 
 input, textarea, input:focus, span {
   background-color: transparent;
-  caret-shape: underscore;
   border: none;
   outline: none;
+}
+
+.cli-input:focus {
+  z-index: 3;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.input-div label {
+  width: fit-content
+}
+
+.cli-input {
+  justify-self: flex-start;
+  align-self: flex-start;
 }
 
 textarea {
@@ -53,18 +76,9 @@ textarea {
   min-height: 2.5rem;
 }
 
-label, input, textarea, p:not(.footer-credits) {
-  font-family: monospace;
-  font-size: .9rem;
-}
-
-.green{ color:#79fa4e } 
-label, input, #int, textarea, .green {
-    color:#79fa4e;
-} 
-
 #err { width: 100%; }
 .red { color:#f35050 }
+.green{ color:#79fa4e } 
 .hide { display: none }
 .show { display: block }
 
@@ -88,12 +102,41 @@ label, input, #int, textarea, .green {
 }
 
 #FORM-ITEMS {
-  height: fit-content
+  height: fit-content;
+}
+
+.form-text {
+  font-family: monospace;
+  font-size: clamp(0.7rem, 1.1vw, 1.7rem)
 }
 
 #suggestion {
   field-sizing: content;
   min-height: 3em; 
+}
+
+@media screen and (max-width: 768px) {
+  .comp {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .comp {
+    width: auto;
+    height: 90%;
+  }
+  #crt {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 0
+  }
+  .form {
+    width: 100%;
+    top: 8%;
+    left: 0;
+    padding: 0.5rem
+  }
 }
 
 @keyframes scanlines {
