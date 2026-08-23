@@ -11,61 +11,94 @@ main {
 /* MAIN CONTENT */
 
  #landing {
-  margin: 5%;
   color: #79fa4e;
+  height: calc(100vh - 75px);
+  display: flex;
+  flex-direction: column;
 }
 
-#compimg {
+#crt {
   width: 100%;
+  border-radius: 1rem;
 }
 
 .comp {
   position: relative;
-  width: 100%;
+  width: 70%;
+  justify-self: center;
+  align-self: center;
+  margin: auto 0
 }
 
 .form {
   position: absolute;
-  top: 6%;
-  left: 12%;
-  width: 75%;
-  height: 56%;
+  top: 10%;
+  left: 7.4%;
+  width: 85.2%;
+  height: 68.3%;
+  scrollbar-gutter: stable;
+  overflow-x: clip;
+  overflow-y: auto;
+  padding-inline: 0.5rem
 }
 
 input, textarea, input:focus, span {
   background-color: transparent;
-  caret-shape: underscore;
   border: none;
   outline: none;
+}
+
+.cli-input:focus {
+  z-index: 3;
+}
+
+.input-div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.input-div label {
+  width: fit-content
+}
+
+.cli-input {
+  justify-self: flex-start;
+  align-self: flex-start;
 }
 
 textarea {
   display: block;
   width: 100%;
-  resize: both;
+  resize: none;
+  overflow-y: hidden;
+  transition: height 0.1s ease; 
   min-height: 2.5rem;
-  line-height: 1.25rem;
 }
 
-label, input, textarea, p:not(.footer-credits) {
+#err { width: 100%; }
+.red { color:#f35050 }
+.green{ color:#79fa4e } 
+.hide { display: none }
+.show { display: block }
+
+.hologram {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hologram h2 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  animation: flicker 2s reverse forwards;
   font-family: monospace;
-  font-size: .9rem;
-}
-
-label, input, #int, textarea, .green {
-    color:#79fa4e;
-} 
-
-.red {
-  color:#f35050
-}
-
-.hide {
-  display: none
-}
-
-.show {
-  display: block
 }
 
 .hologram::after {
@@ -73,12 +106,60 @@ label, input, #int, textarea, .green {
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(rgba(0, 225, 49, 0.1) 0px, rgba(0, 196, 13, 0.1) 1px, transparent 1px, transparent 1.5%);
-  pointer-events: none;
   opacity: 0.5;
   animation: scanlines 0.25s linear infinite;
+}
+
+#FORM-ITEMS {
+  height: fit-content;
+}
+
+.form-text {
+  font-family: monospace;
+  font-size: clamp(0.7rem, 1.1vw, 1.7rem)
+}
+
+#suggestion {
+  field-sizing: content;
+  min-height: 3em; 
+}
+
+@media screen and (max-width: 768px) {
+  .comp {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .comp {
+    width: auto;
+    height: 90%;
+  }
+  #crt {
+    object-fit: cover;
+    height: 100%;
+    border-radius: 0
+  }
+  .form {
+    width: 100%;
+    top: 8%;
+    left: 0;
+    padding: 0.5rem
+  }
 }
 
 @keyframes scanlines {
   from {transform: translateY(0);}
   to {transform: translateY(1.5%);}
+}
+
+@keyframes flicker {
+    0% { opacity: 0; }
+    5% { opacity: 0.2; }
+    10% { opacity: 0.9; }
+    15% { opacity: 0.1; }
+    20% { opacity: 1; }
+    25% { opacity: 0.3; }
+    30% { opacity: 1; }
+    100% { opacity: 1 }
 }

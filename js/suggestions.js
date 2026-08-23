@@ -1,92 +1,167 @@
-// Defines Inputs in Suggestions
-const input = document.querySelectorAll(".cli-input");      
+const formItems = document.querySelector("#FORM-ITEMS");
 
-// Defines Form Divs
-const divcat = document.getElementById("sug-cat");
-const divtext = document.getElementById("sug-text");
-const divema = document.getElementById("sug-ema");
-const divconf = document.getElementById("sug-conf");
+// Defines labes in command line
+let int = document.getElementById("int");
+let com = document.getElementById("intcom");
+
+// Sleep helper
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Defines Form Divs and Labels
+const temp = document.querySelector("#cli-temp");
+const tempCont = document.importNode(temp.content, true)
+
+const divcat = tempCont.querySelector("#sug-cat");
+const divtext = tempCont.querySelector("#sug-text");
+const divema = tempCont.querySelector("#sug-ema");
+const divconf = tempCont.querySelector("#sug-conf");
+const labtext = tempCont.querySelector("#sug-bug");
+
+const err = tempCont.querySelector("#err");
 
 // Defines Inputs Separately
-const incat = document.getElementById("category");
-const intext = document.getElementById("suggestion");
-const inema = document.getElementById("ema");
-const inconf = document.getElementById("conf");
-const labtext = document.getElementById("sug-bug")
+const incat = tempCont.querySelector("#category");
+const intext = tempCont.querySelector("#suggestion");
+const inema = tempCont.querySelector("#ema");
+const inconf = tempCont.querySelector("#conf");
 
-// Defines Error/
-let err = document.getElementById("err");
+let input = tempCont.querySelectorAll(".cli-input");
+const cliCont = document.querySelector("#clicont");
+let elChild
 
-incat.value = ""
-inema.value = ""
-intext.value = ""
-inconf.value = ""
+const time = "0"
+const tvtitle = document.querySelector("#TVTITLE")
 
-// Main CLI (Command Line Interface) function
-input.forEach((check) => { 
-    check.addEventListener('keydown', () => { 
-        if ((event.code === "Enter" && !(event.shiftKey)) || (event.code === "NumpadEnter" && !(event.shiftKey))) {
-            err.textContent = ""
-            switch (true) {
-                case divtext.classList.contains("hide"):
-                    if (incat.value >= 1 && incat.value <= 3 || Number.isNaN(incat.value)) {
-                        divtext.classList.toggle("hide");
-                        divtext.classList.toggle("show");
-                        intext.focus();
-                        incat.disabled = true; 
-                        switch (true){
-                            case (Number(incat.value) === 1 || Number(incat.value) === 3):
-                                labtext.textContent += "Suggestion> Input your suggestions below:";
-                                break;
+// Main CLI (Command Line Interface)
 
-                            case (Number(incat.value) === 2):
-                                labtext.textContent += "Bug> Report your bug below:";
-                                break;
-                        }
-                    }
-                    else {
-                        err.textContent = "Invalid Category!";
-                    }
-                    break;
-                case divema.classList.contains("hide"):
-                    if (intext.value != "") {
-                        divema.classList.toggle("hide");
-                        divema.classList.toggle("show");
-                        inema.focus();
-                        intext.disabled = true;
-                    }
-                    else {
-                        err.textContent = "Report can not be blank!";
-                    }
-                    break;
-                case divconf.classList.contains("hide"):
-                    divconf.classList.toggle("hide");
-                    divconf.classList.toggle("show");
-                    inconf.focus();
-                    inema.disabled = true; 
-                    break;
-                case divconf.classList.contains("show"):
-                    switch (true) {
-                        case (inconf.value === "y" || inconf.value === "Y"):
-                            incat.disabled = true;
-                            intext.disabled = true;
-                            inema.disabled = true;
-                            inconf.disabled = true
-                            err.classList.toggle("red")
-                            err.classList.toggle("green")
-                            err.textContent = "Thank you for suggesting!"
-                            break;
-                        case (inconf.value === "n" || inconf.value === "N"):
-                            err.textContent = "Please edit your response. When done, type y."
-                            incat.disabled = false;
-                            intext.disabled = false;
-                            inema.disabled = false;
-                            break;
-                    }
-                    break;
-            }  
-        }          
-    })        
+function errorP(result) {
+    if (result === "error") {
+        err.textContent = "Invalid Input!"
+        err.classList.add("red");
+        err.classList.remove("green")
+    } else if (result === "success") {
+        err.textContent = "Thank you for submitting! We'll look into this soon."
+        err.classList.remove("red");
+        err.classList.add("green")
+    }
+
+    let errClone = err.cloneNode(true)
+    formItems.appendChild(errClone)
+}
+
+function errorCheck() {
+    if (formItems.lastElementChild.id === "err") {
+        formItems.lastElementChild.remove()
+    }
+};
+
+
+formItems.addEventListener("keydown", ev => {
+    if (ev.key !== "Enter" || ev.shiftKey) {
+        return;
+    }
+
+    const inp = ev.target;
+
+    if (!inp.classList.contains("cli-input")) {
+        return;
+    }
+
+    ev.preventDefault();
+    errorCheck();
+
+    switch (inp.id) {
+        case "category": {
+            let catval = Number(inp.value);
+
+            if (catval >= 1 && catval <= 3) {
+                inp.readOnly = true;
+
+                sugClone = divtext.cloneNode(true);
+                sugClone.querySelector(".cli-input").value = ""
+                sugClone.querySelector(".cli-input").readOnly = false
+                formItems.appendChild(sugClone);
+                sugClone.querySelector(".cli-input").focus()
+            } else {
+                errorP("error");
+            }
+
+            break;
+        }
+
+        case "suggestion":
+            if (inp.value.length > 0) {
+                inp.readOnly = true
+                emaClone = divema.cloneNode(true);
+                emaClone.querySelector(".cli-input").value = ""
+                emaClone.querySelector(".cli-input").readOnly = false
+                formItems.appendChild(emaClone);
+                emaClone.querySelector(".cli-input").focus()
+            } else {
+                errorP("error")
+            }
+            break;
+        case "ema":
+            if (inp.checkValidity()) {
+                inp.readOnly = true
+                confClone = divconf.cloneNode(true);
+                confClone.querySelector(".cli-input").value = ""
+                confClone.querySelector(".cli-input").readOnly = false
+                formItems.appendChild(confClone);
+                confClone.querySelector(".cli-input").focus()
+            } else {
+                errorP("error")
+            }
+
+            break;
+
+        case "conf": {
+            let confval = inp.value;
+
+            if (confval === "y" || confval === "Y") {
+                inp.readOnly = true
+                errorP("success");
+                formItems.submit()
+            } else if (confval === "n" || confval === "N") {
+                var formChild = Array.from(formItems.children);
+                formChild.toReversed().forEach(el => {
+                    cliCont.insertBefore(el, Array.from(cliCont.children)[5]);
+                });
+
+                inp.readOnly = true;
+
+                catClone = divcat.cloneNode(true);
+                catClone.querySelector(".cli-input").value = "";
+                catClone.querySelector(".cli-input").readOnly = false;
+                formItems.appendChild(catClone);
+                catClone.querySelector(".cli-input").focus();
+            } else {
+                errorP("error")
+            }
+
+            break;
+        }
+    }
+});
+
+tvtitle.addEventListener("animationend", async ev => {
+    if (ev.animationName === "flicker") {
+        // Start up anim
+        await sleep (200)
+            int.classList.remove("hide")
+            int.classList.add("show")
+
+            for (let i = 0; i < 3; i++) {
+                await sleep (750)
+                int.textContent += "."
+            }
+
+            await sleep (time)
+            com.classList.remove("hide")
+            com.classList.add("show")
+
+            await sleep (time)
+            formItems.appendChild(divcat)
+            incat.focus()
+    }
 })
-
-// start up anim

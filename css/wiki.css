@@ -3,7 +3,6 @@ body {
     background-size: cover;
     margin: 0;
     width: 100%;
-    margin-top: 10vh
 }
 
 header > h1, section > h2 {
@@ -13,7 +12,8 @@ header > h1, section > h2 {
 
 main {
     overflow: hidden;
-    transition: all ease-in-out 0.3s
+    transition: all ease-in-out 0.3s;
+    margin-top: clamp(65px, 5vw, 75px)
 }
 
 body:has(#FOLDER-OPENED-CONTAINER.opened) header,
@@ -94,7 +94,6 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
     box-sizing: content-box;
     margin: 3rem 0;
     padding: 2rem;
-    height: fit-content;
     text-align: center;
 }
 
@@ -442,7 +441,7 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
     }
 
     .page p {
-        font-size: clamp(0.7rem, 3vw, 0.9rem);
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
     }
 
     .page h1 {
@@ -814,7 +813,7 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease-in-out;
-    scroll-margin-top: -300px;
+    scroll-margin-top: 200px;
 }
 
 #REMNANTS-CARDS.opened,
@@ -847,6 +846,7 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
     width: 30vw;
     perspective: 1000px;
     transition: all 0.3s ease-in-out;
+    user-select: none;
 }
 
 .card:hover {

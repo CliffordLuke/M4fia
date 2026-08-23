@@ -17,6 +17,7 @@
     <meta property="og:type" content="website"/>
 
     <!-- External Links -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/suggestions.css"/>
     <link rel="stylesheet" href="../globals.css"/>
     <script src="../js/suggestions.js" defer></script>
@@ -43,36 +44,18 @@
 
     <main>
       <section id="landing">
-        <div class="comp">
-          <img id="compimg" src="../images/compu-temporary.png">
-          <div class="form">
-            <div class="hologram">
-              <p id="int">Initializing interactive feedback wizard...</p>
-
-              <div id="sug-cat" class="show">
-                <label for="category">C:\M4FIA\Suggestions\Type> [1: Feature, 2: Bug, 3: Other]:</label>
-                <input type="text" id="category" class="cli-input" autofocus/> <br>
+          <div class="comp">
+            <img id="crt" src="../images/crt.png">
+            <div id="clicont" class="form">
+              <div id="hologram" class="hologram">
+                <h2 class="green" id="TVTITLE"> suggestionOS </h2>
               </div>
-
-              <div id="sug-text" class="hide">
-                <label id="sug-bug" class="cli-input" for="suggestion">C:\M4FIA\Suggestions\</label>
-                <textarea id="suggestion" class="cli-input" role="textbox"></textarea> <br>
-              </div>
-
-             <div id="sug-ema" class="hide">
-                <label for="ema">C:\M4FIA\Suggestions\Email> (This is Optional)</label>
-                <input type="email" id="ema" class="cli-input"></input> <br>
-              </div> 
-
-              <div id="sug-conf" class="hide">
-                <label for="conf">C:\M4FIA\Suggestions\Confirmation> Submit your suggestion? [y/n]:</label>
-                <input type="text" class="cli-input" id="conf"/> <br>
-              </div>
-
-              <p id="err" class="red"></p>
+              <p id="int" class="hide green form-text">Initializing interactive feedback wizard</p> <br>
+              <p id="intcom" class="hide green form-text" >Initialization Complete!</p> <br>
+              <form id="FORM-ITEMS" action="https://formsubmit.co/m4fia.archive@gmail.com " method="POST">
+              </form>
             </div>
           </div>
-        </div> 
       </section>
      </main>
      <footer id="footer">
@@ -91,5 +74,30 @@
       <p class="footer-credits">© 2026 Clifford Luke. All rights reserved.</p>
       <p class="footer-credits">Developed by Clifford Luke, Jhazmine Audrey, Timothy Mcquin, and RaphlTicket</p>
     </footer>
+
+  <template id="cli-temp">
+      <div id="sug-cat" class="input-div" >
+        <label for="category" class="green form-text">C:\M4FIA\Suggestions\Type> [1: Feature, 2: Bug, 3: Other]:</label>
+        <input type="text" id="category" class="cli-input green form-text" autofocus name="Category"/> <br>
+      </div>
+
+      <div id="sug-text" class="input-div">
+        <label id="sug-bug" class="green form-text" for="suggestion">C:\M4FIA\Suggestions\</label>
+        <textarea id="suggestion" class="cli-input green form-text" role="textbox" name="Suggestion"></textarea> <br>
+      </div>
+
+      <div id="sug-ema" class="input-div">
+        <label for="ema" class="green form-text">C:\M4FIA\Suggestions\Email> (This is Optional):</label>
+        <input type="email" id="ema" class="cli-input green form-text" name="Email"></input> <br>
+      </div> 
+
+      <div id="sug-conf" class="input-div">
+        <label for="conf" class="green form-text">C:\M4FIA\Suggestions\Confirmation> Submit your suggestion? [y/n]:</label>
+        <input type="text" class="cli-input green form-text" id="conf" name="Confirmation"/> <br>
+      </div>
+
+      <p id="err" class="red form-text"></p>
+  </template>
+
   </body>
 </html>
