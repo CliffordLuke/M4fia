@@ -1,174 +1,167 @@
+const formItems = document.querySelector("#FORM-ITEMS");
+
 // Defines labes in command line
 let int = document.getElementById("int");
-let com = document.getElementById("intcom")
+let com = document.getElementById("intcom");
 
 // Sleep helper
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Checcks current step (what part of the form you're currently in)
-let curstep = "cat"
+// Defines Form Divs and Labels
+const temp = document.querySelector("#cli-temp");
+const tempCont = document.importNode(temp.content, true)
 
-const intblk = document.getElementById("test")
-if (intblk) {
-    attachlisteners(intblk)
+const divcat = tempCont.querySelector("#sug-cat");
+const divtext = tempCont.querySelector("#sug-text");
+const divema = tempCont.querySelector("#sug-ema");
+const divconf = tempCont.querySelector("#sug-conf");
+const labtext = tempCont.querySelector("#sug-bug");
+
+const err = tempCont.querySelector("#err");
+
+// Defines Inputs Separately
+const incat = tempCont.querySelector("#category");
+const intext = tempCont.querySelector("#suggestion");
+const inema = tempCont.querySelector("#ema");
+const inconf = tempCont.querySelector("#conf");
+
+let input = tempCont.querySelectorAll(".cli-input");
+const cliCont = document.querySelector("#clicont");
+let elChild
+
+const time = "0"
+const tvtitle = document.querySelector("#TVTITLE")
+
+// Main CLI (Command Line Interface)
+
+function errorP(result) {
+    if (result === "error") {
+        err.textContent = "Invalid Input!"
+        err.classList.add("red");
+        err.classList.remove("green")
+    } else if (result === "success") {
+        err.textContent = "Thank you for submitting! We'll look into this soon."
+        err.classList.remove("red");
+        err.classList.add("green")
+    }
+
+    let errClone = err.cloneNode(true)
+    formItems.appendChild(errClone)
 }
 
-// Attacking listeners 
-function attachlisteners(currentblock) {
-    // Defines Form Divs and Labels
-    const divcat = document.getElementById("sug-cat");
-    const divtext = document.getElementById("sug-text");
-    const divema = document.getElementById("sug-ema");
-    const divconf = document.getElementById("sug-conf");
-    const labtext = document.getElementById("sug-bug");
-    let err = document.getElementById("err");
-
-    // Defines Inputs Separately
-    const incat = document.getElementById("category");
-    const intext = document.getElementById("suggestion");
-    const inema = document.getElementById("ema");
-    const inconf = document.getElementById("conf");
-    const input = document.querySelectorAll(".cli-input");   
+function errorCheck() {
+    if (formItems.lastElementChild.id === "err") {
+        formItems.lastElementChild.remove()
+    }
+};
 
 
-    const time = "0"
-    // Main CLI (Command Line Interface)
-    input.forEach((check) => { 
-        check.addEventListener('keydown', async () => { 
-            if ((event.code === "Enter" && !event.shiftKey) || (event.code === "NumpadEnter" && !event.shiftKey)) {
-                err.textContent = "";
-                switch (curstep) {
-                    case "cat":
-                        let catval = document.getElementById("category").value;
-                        if (catval >= 1 && catval <= 3 || Number.isNaN(catval)) {
-                            incat.disabled = true; 
-                            await sleep(time);
-                            divtext.classList.remove("hide");
-                            divtext.classList.add("show");
-                            intext.focus();
-                            switch (true) {
-                                case (Number(catval) === 1 || Number(catval) === 3):
-                                    labtext.textContent += "Suggestion> Input your suggestions below:";
-                                    break;
+formItems.addEventListener("keydown", ev => {
+    if (ev.key !== "Enter" || ev.shiftKey) {
+        return;
+    }
 
-                                case (Number(catval) === 2):
-                                    labtext.textContent += "Bug> Report your bug below:";
-                                    break;     
-                            }
-                            curstep = "sug";
-                        }
-                        else {
-                            err.textContent = "Invalid Category!";
-                        }
-                        break;
+    const inp = ev.target;
 
-                    case "sug":
-                        let cleantxt = intext.value.replace(/[\r\n]/g, "").trim();
-                        if (cleantxt !== "") {
-                            intext.disabled = true;
-                            await sleep(time);
-                            divema.classList.remove("hide");
-                            divema.classList.add("show");
-                            inema.focus();
-                            curstep = "ema";
-                        }
-                        else {
-                            switch (true) {
-                                    case (Number(catval) === 1 || Number(catval) === 3):
-                                            err.textContent = "Suggestion can not be blank!";
-                                        break;
+    if (!inp.classList.contains("cli-input")) {
+        return;
+    }
 
-                                    case (Number(catval) === 2):
-                                            err.textContent = "Bug Report can not be blank!";
-                                        break;
-                                }
-                        }
-                        break;
+    ev.preventDefault();
+    errorCheck();
 
-                    case "ema":
-                        inema.disabled = true; 
-                        await sleep(time);
-                        divconf.classList.remove("hide");
-                        divconf.classList.add("show");
-                        inconf.focus();
-                        curstep = "conf";
-                        break;
+    switch (inp.id) {
+        case "category": {
+            let catval = Number(inp.value);
 
-                    case "conf":
-                        let confval = inconf.value
-                        console.log(confval)
-                        inconf.disabled = true
-                        switch (confval) {
-                            case ("y"):
-                            case ("Y"):
-                                
-                                err.classList.toggle("red");
-                                err.classList.toggle("green");
-                                await sleep(time);
-                                err.textContent = "Thank you for suggesting!";
-                                break;
+            if (catval >= 1 && catval <= 3) {
+                inp.readOnly = true;
 
-                            case ("n"):
-                            case ("N"):
-                                currentblock.removeAttribute("id");
-                                currentblock.querySelectorAll("[id]").forEach(el => el.removeAttribute("id"));
-
-                                const template = document.getElementById("cli-temp");
-                                const clone = template.content.cloneNode(true);
-                                const newBlock = clone.querySelector("test");
-
-                                newBlock.id = "test";
-                                document.getElementById("clicont").appendChild(clone);
-
-                                curstep = "category";
-
-                                attachlisteners(newBlock);
-                                newBlock.querySelector("#category").focus();
-                                break;
-
-                            default:
-                                inconf.disabled = false;
-                                err.textContent = "Enter y or n"
-                                break;
-                        }        
-                        break;
-                }
+                sugClone = divtext.cloneNode(true);
+                sugClone.querySelector(".cli-input").value = ""
+                sugClone.querySelector(".cli-input").readOnly = false
+                formItems.appendChild(sugClone);
+                sugClone.querySelector(".cli-input").focus()
+            } else {
+                errorP("error");
             }
-        })
-    })
 
-
-    // Start up anim
-    window.addEventListener("load", async () => {
-        await sleep (200)
-        int.classList.remove("hide")
-        int.classList.add("show")
-
-        for (let i = 0; i < 3; i++) {
-            await sleep (750)
-            int.textContent += "."
+            break;
         }
 
-        await sleep (time)
-        com.classList.remove("hide")
-        com.classList.add("show")
+        case "suggestion":
+            if (inp.value.length > 0) {
+                inp.readOnly = true
+                emaClone = divema.cloneNode(true);
+                emaClone.querySelector(".cli-input").value = ""
+                emaClone.querySelector(".cli-input").readOnly = false
+                formItems.appendChild(emaClone);
+                emaClone.querySelector(".cli-input").focus()
+            } else {
+                errorP("error")
+            }
+            break;
+        case "ema":
+            if (inp.checkValidity()) {
+                inp.readOnly = true
+                confClone = divconf.cloneNode(true);
+                confClone.querySelector(".cli-input").value = ""
+                confClone.querySelector(".cli-input").readOnly = false
+                formItems.appendChild(confClone);
+                confClone.querySelector(".cli-input").focus()
+            } else {
+                errorP("error")
+            }
 
-        await sleep (time)
-        divcat.classList.remove("hide")
-        divcat.classList.add("show")
-        incat.focus()
-        incat.value = ""
-        inema.value = ""
-        intext.value = ""
-        inconf.value = ""
-    })
+            break;
 
-    intext.addEventListener('input', () => {
-        intext.style.height = 'auto';
-        intext.style.height = intext.scrollHeight + 'px';
-    });
-}
+        case "conf": {
+            let confval = inp.value;
 
+            if (confval === "y" || confval === "Y") {
+                inp.readOnly = true
+                errorP("success");
+                formItems.submit()
+            } else if (confval === "n" || confval === "N") {
+                var formChild = Array.from(formItems.children);
+                formChild.toReversed().forEach(el => {
+                    cliCont.insertBefore(el, Array.from(cliCont.children)[5]);
+                });
 
+                inp.readOnly = true;
 
+                catClone = divcat.cloneNode(true);
+                catClone.querySelector(".cli-input").value = "";
+                catClone.querySelector(".cli-input").readOnly = false;
+                formItems.appendChild(catClone);
+                catClone.querySelector(".cli-input").focus();
+            } else {
+                errorP("error")
+            }
 
+            break;
+        }
+    }
+});
+
+tvtitle.addEventListener("animationend", async ev => {
+    if (ev.animationName === "flicker") {
+        // Start up anim
+        await sleep (200)
+            int.classList.remove("hide")
+            int.classList.add("show")
+
+            for (let i = 0; i < 3; i++) {
+                await sleep (750)
+                int.textContent += "."
+            }
+
+            await sleep (time)
+            com.classList.remove("hide")
+            com.classList.add("show")
+
+            await sleep (time)
+            formItems.appendChild(divcat)
+            incat.focus()
+    }
+})
