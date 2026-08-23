@@ -1,0 +1,116 @@
+body {
+    background-color: rgb(23, 23, 23);
+    width: 100%;
+    height: 100vh;
+    overflow: hidden
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+}
+
+
+.holo-title {
+  font-size: clamp(3rem, 3vw, 3.3rem);
+  font-weight: bold;
+  color: #04e400;
+  text-shadow: 0 0 15px rgba(0, 225, 11, 0.8), 0 0 15px rgba(52, 225, 0, 0.5);
+  position: relative;
+  z-index: 2;
+  opacity: 0.75;
+}
+ .holo-div2 {
+  position: relative;
+  z-index: 2;
+}
+
+
+.hologram {
+  width: clamp(18rem, 75vw, 60rem);
+  aspect-ratio: 5/3;
+  padding: 0;
+  text-shadow: 0 0 15px rgba(0, 225, 11, 0.8), 0 0 15px rgba(52, 225, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-self: flex-start;
+  align-items: center;
+  transition: 0.3s ease;
+  color: #00e404;
+  text-decoration: none;
+  animation: holo-flicker 4s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.hologram::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(rgba(0, 225, 0, 0.1) 0px, rgba(0, 225, 0, 0.1) 1px, transparent 1px, transparent 1.5%);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: scanlines 0.25s linear infinite;
+}
+
+.hologram::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(180deg, transparent 35%, rgba(4, 225, 0, 0.1) 50%, transparent 65%);
+  pointer-events: none;
+  animation: holosweep 10s linear infinite;
+}
+
+@keyframes holo-flicker {
+  0%,
+  10%,
+  18%,
+  22%,
+  30%,
+  40%,
+  50%,
+  58%,
+  62%,
+  63%,
+  67%,
+  70%,
+  80%,
+  90%,
+  100% {opacity: 1;} 
+  
+  20%,
+  60%,
+  65% {opacity: 0.85;}
+}
+
+@keyframes scanlines {
+  from {transform: translateY(0);}
+  to {transform: translateY(1.5%);}
+}
+
+@keyframes holosweep {
+  0% {transform: translateY(-60%);}
+  40% {transform: translateY(60%);}
+  100% {transform: translateY(60%);}
+}
+
+
+
+
+.HostHolo {
+  border: 1px solid rgba(34, 225, 0, 0.3);
+  box-shadow: 0 0 15px rgba(15, 225, 0, 0.6), inset 0 0 30px rgba(0, 225, 7, 0.6);
+  background: linear-gradient(180deg, rgba(37, 225, 0, 0.15), rgba(0, 225, 15, 0.05));
+  transition: 0.5s ease;
+}
+
+.HostHolo:hover::before {
+  opacity: 0.8;
+  animation-duration: 0.075s;
+}

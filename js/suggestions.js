@@ -125,7 +125,8 @@ formItems.addEventListener("keydown", ev => {
             } else if (confval === "n" || confval === "N") {
                 var formChild = Array.from(formItems.children);
                 formChild.toReversed().forEach(el => {
-                    cliCont.insertBefore(el, Array.from(cliCont.children)[5]);
+                    if (el.name !== "_next" && el.name !== "_template")
+                        cliCont.insertBefore(el, Array.from(cliCont.children)[5]);
                 });
 
                 inp.readOnly = true;
