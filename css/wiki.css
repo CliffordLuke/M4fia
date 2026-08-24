@@ -331,7 +331,8 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
         }
 
         #FOLDER-OPENED-CONTAINER {
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 5rem
         }
 
         #FOLDER-OPENED-CONTAINER .folder {
@@ -553,11 +554,11 @@ body:has(#FOLDER-OPENED-CONTAINER.opened) {
     }
 
     @media screen and (max-width: 425px) {
-        #NEXT-PAGE { right: 15%; bottom: 5% }
-        #PREV-PAGE { left: 15%; bottom: 5% }
+        #NEXT-PAGE { right: 15%; bottom: 20% }
+        #PREV-PAGE { left: 15%; bottom: 20% }
 
         #FOLDER-OPEN-RETURN-BTN {
-            bottom: 5%;
+            bottom: 20%;
             left: 50%;
             transform: translateX(-50%);
         }
